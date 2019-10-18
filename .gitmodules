@@ -1,3 +1,12 @@
 [submodule "clasdis-nocernlib"]
 	path = clasdis-nocernlib
 	url = https://github.com/jeffersonlab/clasdis-nocernlib
+[submodule "inclusive-dis-rad"]
+	path = inclusive-dis-rad
+	url = https://github.com/JeffersonLab/inclusive-dis-rad
+[submodule "dvcsgen"]
+	path = dvcsgen
+	url = https://github.com/JeffersonLab/dvcsgen
+[submodule "genKYandOnePion"]
+	path = genKYandOnePion
+	url = https://github.com/ValeriiKlimenko/genKYandOnePion

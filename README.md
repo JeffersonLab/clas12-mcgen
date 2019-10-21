@@ -1,1 +1,1 @@
-These will be available in the Docker/Singularity containers and available for offsite simulation jobs.
+The generators in this repository will be available in the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.

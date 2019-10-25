@@ -10,3 +10,6 @@
 [submodule "genKYandOnePion"]
 	path = genKYandOnePion
 	url = https://github.com/ValeriiKlimenko/genKYandOnePion
+[submodule "claspyth-nocernlib"]
+	path = claspyth-nocernlib
+	url = https://github.com/jeffersonlab/claspyth-nocernlib

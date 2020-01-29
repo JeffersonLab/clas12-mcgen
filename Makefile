@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis-nocernlib claspyth-nocernlib dvcsgen inclusive-dis-rad
+SUBDIRS = clasdis-nocernlib claspyth-nocernlib dvcsgen inclusive-dis-rad tcsgen
 
 all:
 	for dir in $(SUBDIRS); do\

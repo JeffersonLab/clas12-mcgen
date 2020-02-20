@@ -1,5 +1,9 @@
 The generators in this repository will be available in the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
 
+### Dependencies
+
+1. ROOT
+
 ### Notes on Updating Submodules
 
 To update to the latest commit in one submodule:

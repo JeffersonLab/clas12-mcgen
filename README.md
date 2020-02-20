@@ -1,5 +1,10 @@
 The generators in this repository will be available in the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
 
+To clone this repo:
+
+`git clone  --recurse-submodules git@github.com:JeffersonLab/clas12-mcgen.git`
+
+
 ### Dependencies
 
 1. ROOT

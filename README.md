@@ -11,6 +11,14 @@ To clone this repo:
 - An executable with the same name as the github repository name
 - If necessary, an environment variable with the same name as the repository name where the executable will look for data
 
+
+## Generators 
+
+name                 | maintainer        | email             | requirements met
+-------------------- | ----------------- | ----------------- | ----------------------------------------
+clasdis-nocernlib    |   Harut Avakian   |  avakian@jlab.org | executable and environment variable name
+
+
 ### Dependencies
 
 1. ROOT
@@ -34,15 +42,9 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 
 
-## Generators 
-
-name                 | maintainer        | email             | requirements met
--------------------------------------------------------------------------------------------------------
-clasdis-nocernlib    |   Harut Avakian   |  avakian@jlab.org | executable and environment variable name
-
 
 ### emails
 
-
+avakian@jlab.org, 
 
 

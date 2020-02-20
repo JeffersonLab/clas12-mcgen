@@ -15,3 +15,5 @@ To update to a particular commit in a submodule:
 * `cd ./inclusive-dis-rad`
 * `git checkout bb9025c`
 
+In all cases above, you'd need to subsequently commit (and push) the changes.
+

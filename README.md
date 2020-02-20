@@ -14,10 +14,10 @@ To clone this repo:
 
 # Generators 
 
-name                 | maintainer        | email             | requirements met
--------------------- | ----------------- | ----------------- | ----------------------------------------
-clasdis-nocernlib    |   Harut Avakian   |  avakian@jlab.org | executable and environment variable name
-
+name                 | summary description         | maintainer        | email             | requirements met
+-------------------- | ----------------------------| ----------------- | ----------------- | ---------------------
+clasdis-nocernlib    |   SIDIS MC based on PEPSI   | Harut Avakian   |  avakian@jlab.org | executable and environment variable name
+claspyth-nocernlib   | PYTHIA                      | Harut Avakian   |  avakian@jlab.org | executable and environment variable name
 
 ---
 
@@ -47,6 +47,6 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 ### emails
 
-avakian@jlab.org, 
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, 
 
 

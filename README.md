@@ -8,9 +8,9 @@ To clone this repo:
 
 - A github repository, ideally inside https://github.com/JeffersonLab
 - A README in each github describing the generator and its options, and packages requirement
-- A working build system
-- An executable with the same name as the github repository name
-- If libraries are needed, they should be put in a lib directory
+- A working build system 
+- An executable with the same name as the github repository name, installed at the top level dir
+- If libraries are needed, they should be put inside a lib directory, at the top level dir
 - If necessary, an environment variable with the same name as the repository name where the executable will look for data
 
 

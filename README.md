@@ -7,7 +7,8 @@ To clone this repo:
 # Requirements
 
 - A github repository, ideally inside https://github.com/JeffersonLab
-- A README in each github describing the generator and its options
+- A README in each github describing the generator and its options, and packages requirement
+- A working build system
 - An executable with the same name as the github repository name
 - If libraries are needed, they should be put in a lib directory
 - If necessary, an environment variable with the same name as the repository name where the executable will look for data

@@ -4,6 +4,12 @@ To clone this repo:
 
 `git clone  --recurse-submodules git@github.com:JeffersonLab/clas12-mcgen.git`
 
+# Requirements
+
+- A github repository, ideally inside jeffersonlab
+- A README in each github describing the generator and its options
+- An executable with the same name as the github repository name
+- If necessary, an environment variable with the same name as the repository name where the executable will look for data
 
 ### Dependencies
 
@@ -25,4 +31,18 @@ To update to a particular commit in a submodule:
 * `git checkout bb9025c`
 
 In all cases above, you'd need to subsequently commit (and push) the changes.
+
+
+
+## Generators 
+
+name                 | maintainer        | email             | requirements met
+-------------------------------------------------------------------------------------------------------
+clasdis-nocernlib    |   Harut Avakian   |  avakian@jlab.org | executable and environment variable name
+
+
+### emails
+
+
+
 

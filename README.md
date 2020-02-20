@@ -12,6 +12,6 @@ Or for all submodules:
 
 To update to a particular commit in a submodule:
 
-`cd ./inclusive-dis-rad`
-`git checkout bb9025c`
+* `cd ./inclusive-dis-rad`
+* `git checkout bb9025c`
 

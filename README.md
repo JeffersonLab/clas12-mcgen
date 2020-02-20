@@ -52,6 +52,6 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 ### emails
 
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org
 
 

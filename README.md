@@ -14,10 +14,15 @@ To clone this repo:
 
 # Generators 
 
-name                 | summary description         | maintainer        | email             | requirements met
--------------------- | ----------------------------| ----------------- | ----------------- | ---------------------
-clasdis-nocernlib    |   SIDIS MC based on PEPSI   | Harut Avakian   |  avakian@jlab.org | executable and environment variable name
-claspyth-nocernlib   | PYTHIA                      | Harut Avakian   |  avakian@jlab.org | executable and environment variable name
+name                 | summary description          | maintainer        | email             | requirements met
+-------------------- | ---------------------------- | ----------------- | ----------------- | ---------------------
+clasdis-nocernlib    |   SIDIS MC based on PEPSI    | Harut Avakian     |  avakian@jlab.org | :red_circle: executable and environment variable name
+claspyth-nocernlib   | PYTHIA                       | Harut Avakian     |  avakian@jlab.org | :red_circle: executable and environment variable name
+dvcsgen              | :red_circle: no description  | Harut Avakian     |  avakian@jlab.org | :red_circle: executable and environment variable name
+genKYandOnePion      |  :red_circle: no description | Valerii Klimenko  |  valerii@jlab.org | :red_circle: executable and environment variable name
+inclusive-dis-rad    | :red_circle: no description  | Harut Avakian     |  avakian@jlab.org | :red_circle: executable and environment variable name
+TCSGen               | Timelike Compton Scattering  | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: executable and environment variable name
+
 
 ---
 
@@ -47,6 +52,6 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 ### emails
 
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, 
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org
 
 

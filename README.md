@@ -64,5 +64,15 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 
 
+### To add a submodule:
+
+`git submodule add submoduleRepo.git` 
+
+### To remove a submodule:
+
+
+`git submodule deinit -f path/to/submodule`
+`rm -rf .git/modules/path/to/submodule`
+`git rm -f path/to/submodule`
 
 

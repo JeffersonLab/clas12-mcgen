@@ -26,6 +26,10 @@ inclusive-dis-rad    | :red_circle: no description  | Harut Avakian     |  avaki
 TCSGen               | Timelike Compton Scattering  | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: executable and environment variable name
 
 
+### emails
+
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org
+
 ---
 
 ## Updating a generator
@@ -60,9 +64,5 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 
 
-
-### emails
-
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org
 
 

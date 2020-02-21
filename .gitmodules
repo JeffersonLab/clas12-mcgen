@@ -1,6 +1,6 @@
-[submodule "clasdis-nocernlib"]
+[submodule "clasdis"]
 	path = clasdis-nocernlib
-	url = https://github.com/jeffersonlab/clasdis-nocernlib
+	url = https://github.com/jeffersonlab/clasdis
 [submodule "inclusive-dis-rad"]
 	path = inclusive-dis-rad
 	url = https://github.com/JeffersonLab/inclusive-dis-rad
@@ -10,9 +10,9 @@
 [submodule "genKYandOnePion"]
 	path = genKYandOnePion
 	url = https://github.com/ValeriiKlimenko/genKYandOnePion
-[submodule "claspyth-nocernlib"]
+[submodule "claspyth"]
 	path = claspyth-nocernlib
-	url = https://github.com/jeffersonlab/claspyth-nocernlib
+	url = https://github.com/jeffersonlab/claspyth
 [submodule "tcsgen"]
 	path = tcsgen
 	url = https://github.com/JeffersonLab/tcsgen

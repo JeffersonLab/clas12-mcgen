@@ -19,10 +19,10 @@ To clone this repo:
 name                 | summary description          | maintainer        | email             | requirements met
 -------------------- | ---------------------------- | ----------------- | ----------------- | ---------------------
 clasdis    |   SIDIS MC based on PEPSI    | Harut Avakian     |  avakian@jlab.org | :white_check_mark:
-claspyth   | PYTHIA                       | Harut Avakian     |  avakian@jlab.org | :red_circle: environment variable name
+claspyth   | PYTHIA                       | Harut Avakian     |  avakian@jlab.org |  :white_check_mark:
 dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian     |  avakian@jlab.org | :red_circle: environment variable name
 genKYandOnePion      |  :red_circle: no description | Valerii Klimenko  |  valerii@jlab.org | :red_circle: executable and environment variable name
-inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :red_circle: environment variable name
+inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :white_check_mark:
 TCSGen               | Timelike Compton Scattering  | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: executable and environment variable name
 
 

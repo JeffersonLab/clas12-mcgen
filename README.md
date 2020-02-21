@@ -11,7 +11,7 @@ To clone this repo:
 - A working build system 
 - An executable with the same name as the github repository name, installed at the top level dir
 - If libraries are needed, they should be put inside a lib directory, at the top level dir
-- If necessary, an environment variable with the same name as the repository name where the executable will look for data
+- If necessary, an environment variable (name in its README) where the executable will look for data
 
 
 # Generators 

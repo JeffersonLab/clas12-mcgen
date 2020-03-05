@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad tcsgen
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad tcsgen jpsigen
 
 all:
 	for dir in $(SUBDIRS); do\

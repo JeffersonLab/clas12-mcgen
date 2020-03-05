@@ -16,3 +16,6 @@
 [submodule "claspyth"]
 	path = claspyth
 	url = https://github.com/JeffersonLab/claspyth.git
+[submodule "jpsigen"]
+	path = jpsigen
+	url = https://github.com/jeffersonlab/jpsigen

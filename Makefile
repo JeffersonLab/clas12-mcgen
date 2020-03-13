@@ -1,19 +1,24 @@
 
 SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad tcsgen genKYandOnePion jpsigen
 
-all:
+all: build install
+
+build:
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir; \
 	done
 
 install:
-	install clasdis/clasdis $(JLAB_SOFTWARE)/clas12/bin
-	install inclusive-dis-rad/inclusive-dis-rad $(JLAB_SOFTWARE)/clas12/bin/generate-dis
-	install dvcsgen/dvcsgen $(JLAB_SOFTWARE)/clas12/bin
-	install genKYandOnePion/genKYandOnePion $(JLAB_SOFTWARE)/clas12/bin/eg_ky
-	install tcsgen/TCSGen.exe $(JLAB_SOFTWARE)/clas12/bin
+	mkdir -p bin
+	install clasdis/clasdis bin
+	install inclusive-dis-rad/inclusive-dis-rad bin
+	install dvcsgen/dvcsgen bin
+	install genKYandOnePion/genKYandOnePion bin
+	install tcsgen/TCSGen.exe bin
+	install jpsigen/JPsiGen.exe bin
 
 clean:
+	rm -rf bin
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done

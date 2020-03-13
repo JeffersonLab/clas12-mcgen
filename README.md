@@ -36,7 +36,7 @@ ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@
 ## Updating a generator
 
 Each generator is linked to a particular commit of its github repository.
-If you are the maintainer of a package and made changes since that commit that you want to include here, please send email to:
+If you are the maintainer of a package and made changes since that commit that you want to include here, submit a PR or send email to:
 
 ungaro@jlab.org, baltzell@jlab.org
 

@@ -16,6 +16,8 @@ install:
 	install genKYandOnePion/genKYandOnePion bin
 	install tcsgen/TCSGen.exe bin
 	install jpsigen/JPsiGen.exe bin
+	install tcsgen/tcsgen bin
+	install jpsigen/jpsigen bin
 
 clean:
 	rm -rf bin

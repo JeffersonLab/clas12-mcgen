@@ -18,6 +18,7 @@ To clone / pull this repo:
 - To specify the number of events, the option "--trig" must be used
 - If libraries are needed, they should be put inside a lib directory, at the top level dir
 - If necessary, an environment variable (name in its README) where the executable will look for data
+- the optional argument --docker will be added by default to all executable. This option can be ignored or used by the executable to set conditions to run on the OSG container
 
 
 # Generators 

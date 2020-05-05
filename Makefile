@@ -11,13 +11,14 @@ build:
 install:
 	mkdir -p bin
 	install clasdis/clasdis bin
-	install inclusive-dis-rad/inclusive-dis-rad bin
+	install claspyth/claspyth bin
 	install dvcsgen/dvcsgen bin
 	install genKYandOnePion/genKYandOnePion bin
-	install tcsgen/TCSGen.exe bin
+	install inclusive-dis-rad/inclusive-dis-rad bin
 	install jpsigen/JPsiGen.exe bin
-	install tcsgen/tcsgen bin
 	install jpsigen/jpsigen bin
+	install tcsgen/TCSGen.exe bin
+	install tcsgen/tcsgen bin
 
 clean:
 	rm -rf bin

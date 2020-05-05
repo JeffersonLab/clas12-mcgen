@@ -14,6 +14,8 @@ To clone / pull this repo:
 - A README in each github describing the generator and its options, and packages requirement
 - A working build system 
 - An executable with the same name as the github repository name, installed at the top level dir
+- The default output name is the same name as the exectuable + ".dat"
+- To specify the number of events, the option "--trig" must be used
 - If libraries are needed, they should be put inside a lib directory, at the top level dir
 - If necessary, an environment variable (name in its README) where the executable will look for data
 

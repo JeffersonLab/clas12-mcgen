@@ -29,8 +29,8 @@ claspyth             | SIDIS full event generator based on PYTHIA               
 dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian     |  avakian@jlab.org | :white_check_mark:
 genKYandOnePion      |  :red_circle: no description                                             | Valerii Klimenko  |  valerii@jlab.org | :white_check_mark:
 inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :white_check_mark:
-TCSGen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark:
-JPsiGen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark:
+tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark:
+jpsiGen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark:
 
 
 ### emails

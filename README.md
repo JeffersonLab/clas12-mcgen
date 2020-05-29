@@ -28,7 +28,7 @@ name                 | summary description      | maintainer        | email     
 clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian     |  avakian@jlab.org | :red_circle: 
 claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian     |  avakian@jlab.org |  :red_circle: 
 dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian     |  avakian@jlab.org | :red_circle: 
-genKYandOnePion      |  :red_circle: no description                                             | Valerii Klimenko  |  valerii@jlab.org | :red_circle: 
+genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko  |  valerii@jlab.org | :white_check_mark: 
 inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :red_circle: 
 tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: 
 jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: 

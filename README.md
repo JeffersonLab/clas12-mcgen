@@ -31,7 +31,7 @@ dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizat
 genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko  |  valerii@jlab.org | :white_check_mark: 
 inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :red_circle: 
 tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: 
-jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: 
+jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark: 
 
 
 ### emails

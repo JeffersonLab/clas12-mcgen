@@ -51,7 +51,7 @@ ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@
 
 To clone / pull this repo:
 
-`git clone  --recurse-submodules git@github.com:JeffersonLab/clas12-mcgen.git`
+`git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git`
 
 `git pull  --recurse-submodules`
 

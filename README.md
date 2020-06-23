@@ -1,27 +1,34 @@
-The generators in this repository will be available in the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
-
-To clone / pull this repo:
-
-`git clone  --recurse-submodules git@github.com:JeffersonLab/clas12-mcgen.git`
-
-`git pull  --recurse-submodules`
+This repository is a collection of generators distributed to the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
+The generators are linked through git submodules: each is linked to a particular commit of the generator's github repository.
 
 ---
 
-# Requirements
+# Adding your event generator
 
-- A github repository, ideally inside https://github.com/JeffersonLab
-- A README in each github describing the generator and its options, and packages requirement
-- A working build system 
+If you want to add your generator to the CLAS12 containers follow this steps:
+
+1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
+2. Make sure to include the README.md describing the generator and its options, and packages requirement
+3. Have a working build system (for example a Makefile)
+4. Satisfy the additional requirements below.
+5. Send email to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) with the repository address,
+
+
+---
+
+# Additional Requirements
+
 - An executable with the same name as the github repository name, installed at the top level dir
 - If libraries are needed, they should be put inside a lib directory, at the top level dir
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
 - If necessary, an environment variable (name in its README) where the executable will look for data
-- the optional argument --docker will be added by default to all executable. This option can be ignored or used by the executable to set conditions to run on the OSG container
+- The optional argument --docker will be added by default to all executable. This option can be ignored or used by the executable to set conditions to run on the OSG container
+
+If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
 
 
-# Generators 
+# List of Generators 
 
 name                 | summary description      | maintainer        | email             | requirements met
 -------------------- | ------------------------ | ----------------- | ----------------- | ---------------------
@@ -40,12 +47,13 @@ ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@
 
 ---
 
-## Updating a generator
+# clas12-mcgen maintanance
 
-Each generator is linked to a particular commit of its github repository.
-If you are the maintainer of a package and made changes since that commit that you want to include here, submit a PR or send email to:
+To clone / pull this repo:
 
-ungaro@jlab.org, baltzell@jlab.org
+`git clone  --recurse-submodules git@github.com:JeffersonLab/clas12-mcgen.git`
+
+`git pull  --recurse-submodules`
 
 ---
 
@@ -71,7 +79,6 @@ To update to a particular commit in a submodule:
 * `git checkout bb9025c`
 
 In all cases above, you'd need to subsequently commit (and push) the changes.
-
 
 
 ### To add a submodule:

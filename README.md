@@ -23,7 +23,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
 - If necessary, an environment variable (name in its README) where the executable will look for data
-- The optional argument --docker will be added by default to all executable. This option can be ignored or used by the executable to set conditions to run on the OSG container
+- The optional argument --docker will be added by default to all executable. This option must be ignored or used by the executable to set conditions to run on the OSG container
 
 If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
 

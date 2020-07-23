@@ -16,3 +16,6 @@
 [submodule "jpsigen"]
 	path = jpsigen
 	url = https://github.com/jeffersonlab/jpsigen
+[submodule "TCSGen"]
+	path = TCSGen
+	url = https://github.com/JeffersonLab/TCSGen

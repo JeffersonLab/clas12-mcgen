@@ -19,3 +19,6 @@
 [submodule "TCSGen"]
 	path = TCSGen
 	url = https://github.com/JeffersonLab/TCSGen
+[submodule "JPsiGen"]
+	path = JPsiGen
+	url = https://github.com/JeffersonLab/JPsiGen

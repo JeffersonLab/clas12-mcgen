@@ -12,7 +12,7 @@ export CLASDVCS_PDF=$PWD/dvcsgen
 export DISRAD_PDF=$PWD/inclusive-dis-rad
 export DataKYandOnePion=$PWD/genKYandOnePion/data
 
-generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad jpsigen TCSGen)
+generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen)
 
 declare -A executableN
 declare -A outputExist

@@ -15,8 +15,8 @@ install:
 	install dvcsgen/dvcsgen bin
 	install genKYandOnePion/genKYandOnePion bin
 	install inclusive-dis-rad/inclusive-dis-rad bin
-	install jpsigen/JPsiGen.exe bin
-	install jpsigen/jpsigen bin
+	install JPsiGen/JPsiGen.exe bin
+	install JPsiGen/JPsiGen bin
 	install TCSGen/TCSGen.exe bin
 	install TCSGen/TCSGen bin
 

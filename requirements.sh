@@ -2,7 +2,7 @@
 
 source /group/clas12/packages/setup.sh
 module load clas12/pro
-make -j4 > /dev/null
+make -j4 2> errors.txt
 echo
 echo
 

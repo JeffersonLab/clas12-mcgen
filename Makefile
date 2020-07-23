@@ -17,8 +17,8 @@ install:
 	install inclusive-dis-rad/inclusive-dis-rad bin
 	install jpsigen/JPsiGen.exe bin
 	install jpsigen/jpsigen bin
-	install tcsgen/TCSGen.exe bin
-	install tcsgen/tcsgen bin
+	install TCSGen/TCSGen.exe bin
+	install TCSGen/TCSGen bin
 
 clean:
 	rm -rf bin

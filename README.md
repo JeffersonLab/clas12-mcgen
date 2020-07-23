@@ -31,6 +31,9 @@ We used this criteria to check if the requirements are met:
 
 This should produce a file genName.dat.
 
+The script requirements.sh will compile the generators, check for the executable names, run them with their environment and the above options, 
+and check for the output file. It will output a table that is parsed below in the Requirements Summary.
+
 
 # Additional Notes
 

@@ -16,29 +16,44 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 
 ---
 
-# Additional Requirements
+# Requirements
 
 - An executable with the same name as the github repository name, installed at the top level dir
-- If libraries are needed, they should be put inside a lib directory, at the top level dir
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
+- The optional argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
+
+# Test of requirements
+
+We used this criteria to check if the requirements are met:
+
+`geName --trig 10 --docker`
+
+This should produce a file genName.dat.
+
+
+# Additional Notes
+
+- If libraries are needed, they should be put inside a lib directory, at the top level dir
 - If necessary, an environment variable (name in its README) where the executable will look for data
-- The optional argument --docker will be added by default to all executable. This option must be ignored or used by the executable to set conditions to run on the OSG container
 
 If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
 
 
 # List of Generators 
 
-name                 | summary description      | maintainer        | email             | requirements met
--------------------- | ------------------------ | ----------------- | ----------------- | ---------------------
-clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian     |  avakian@jlab.org | :red_circle: 
-claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian     |  avakian@jlab.org |  :red_circle: 
-dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian     |  avakian@jlab.org | :red_circle: 
-genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko  |  valerii@jlab.org | :white_check_mark: 
-inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org | :red_circle: 
-tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org | :red_circle: 
-jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org | :white_check_mark: 
+name                 | summary description      | maintainer        | email             
+-------------------- | ------------------------ | ----------------- | ----------------- 
+clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian     |  avakian@jlab.org 
+claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian     |  avakian@jlab.org 
+dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian     |  avakian@jlab.org 
+genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko  |  valerii@jlab.org  
+inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org 
+tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org 
+jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
+
+# Requirements Summary
+
 
 
 ### emails

@@ -31,6 +31,9 @@ We used this criteria to check if the requirements are met:
 
 This should produce a file genName.dat.
 
+The script requirements.sh will compile the generators, check for the executable names, run them with their environment and the above options, 
+and check for the output file. It will output a table that is parsed below in the Requirements Summary.
+
 
 # Additional Notes
 
@@ -54,7 +57,15 @@ jpsigen              | J/Psi                                                    
 
 # Requirements Summary
 
-
+name | executable name | output ok
+---- | --------------- | -------
+clasdis | :white_check_mark: | :white_check_mark:
+claspyth | :white_check_mark: | :red_circle:
+dvcsgen | :white_check_mark: | :white_check_mark:
+genKYandOnePion | :white_check_mark: | :red_circle:
+inclusive-dis-rad | :white_check_mark: | :red_circle:
+jpsigen | :white_check_mark: | :red_circle:
+TCSGen | :white_check_mark: | :red_circle:
 
 ### emails
 

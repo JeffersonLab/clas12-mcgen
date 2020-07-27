@@ -40,6 +40,11 @@ and check for the output file. It will output a table that is parsed below in th
 - If libraries are needed, they should be put inside a lib directory, at the top level dir
 - If necessary, an environment variable (name in its README) where the executable will look for data
 
+Note: if you want to use `requirements.sh` to test your latest changes to the generator, make sure you update the submodules first:
+
+`git submodule update --remote --merge .`
+
+
 If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
 
 
@@ -110,6 +115,7 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 ### To add a submodule:
 
 `git submodule add submoduleRepo.git` 
+
 
 ### To remove a submodule:
 

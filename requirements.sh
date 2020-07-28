@@ -8,6 +8,7 @@ make -j4 2>> errors.txt
 echo
 echo
 export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH
+export PATH=$PWD/bin:$PATH
 
 export CLASDIS_PDF=$PWD/clasdis/pdf
 export CLASPYTHIA_DECLIST=$PWD/claspyth/pdf

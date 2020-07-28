@@ -11,6 +11,7 @@ export CLASPYTHIA_DECLIST=$PWD/claspyth/pdf
 export CLASDVCS_PDF=$PWD/dvcsgen
 export DISRAD_PDF=$PWD/inclusive-dis-rad
 export DataKYandOnePion=$PWD/genKYandOnePion/data
+export TCSGEN_DIR=$PWD/TCSGen
 
 generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen)
 

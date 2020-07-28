@@ -10,6 +10,7 @@ build:
 
 install:
 	mkdir -p bin
+	mkdir -p lib
 	install clasdis/clasdis bin
 	install claspyth/claspyth bin
 	install dvcsgen/dvcsgen bin
@@ -17,8 +18,10 @@ install:
 	install inclusive-dis-rad/inclusive-dis-rad bin
 	install JPsiGen/JPsiGen.exe bin
 	install JPsiGen/JPsiGen bin
+	install JPsiGen/lib/libJPsiGen.so lib
 	install TCSGen/TCSGen.exe bin
 	install TCSGen/TCSGen bin
+	install TCSGen/lib/libTCSGen.so lib
 
 clean:
 	rm -rf bin

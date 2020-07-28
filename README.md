@@ -69,9 +69,8 @@ claspyth | :white_check_mark: | :red_circle:
 dvcsgen | :white_check_mark: | :white_check_mark:
 genKYandOnePion | :white_check_mark: | :white_check_mark:
 inclusive-dis-rad | :white_check_mark: | :red_circle:
-JPsiGen | :red_circle: | :red_circle:
-TCSGen | :white_check_mark: | :red_circle:
-
+JPsiGen | :white_check_mark: | :white_check_mark:
+TCSGen | :white_check_mark: | :white_check_mark:
 ### emails
 
 ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org

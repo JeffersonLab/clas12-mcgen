@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 source /group/clas12/packages/setup.sh
-module load clas12/pro
+module load root
 
 make -j10 2> errors.txt
 echo

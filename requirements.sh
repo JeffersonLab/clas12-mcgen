@@ -3,15 +3,14 @@
 source /group/clas12/packages/setup.sh
 module load clas12/pro
 
-make -j4 2> errors.txt
-make -j4 2>> errors.txt
+make -j10 2> errors.txt
 echo
 echo
 export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH
 export PATH=$PWD/bin:$PATH
 
 export CLASDIS_PDF=$PWD/clasdis/pdf
-export CLASPYTHIA_DECLIST=$PWD/claspyth/pdf
+export CLASPYTHIA_DECLIST=$PWD/claspyth
 export CLASDVCS_PDF=$PWD/dvcsgen
 export DISRAD_PDF=$PWD/inclusive-dis-rad
 export DataKYandOnePion=$PWD/genKYandOnePion/data

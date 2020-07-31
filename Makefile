@@ -1,14 +1,14 @@
 
 SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen
 
-all: build install
-
 build:
-	for dir in $(SUBDIRS); do\
-		$(MAKE) -C $$dir; \
-	done
-
-install:
+	$(MAKE) -C clasdis
+	$(MAKE) -C claspyth
+	$(MAKE) -C dvcsgen
+	$(MAKE) -C genKYandOnePion
+	$(MAKE) -C inclusive-dis-rad
+	$(MAKE) -C JPsiGen
+	$(MAKE) -C TCSGen
 	mkdir -p bin
 	mkdir -p lib
 	install clasdis/clasdis bin
@@ -24,7 +24,7 @@ install:
 	install TCSGen/lib/libTCSGen.so lib
 
 clean:
-	rm -rf bin
+	rm -rf bin lib
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done

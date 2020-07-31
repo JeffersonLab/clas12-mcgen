@@ -62,16 +62,16 @@ jpsigen              | J/Psi                                                    
 
 # Requirements Summary
 
+
 name | executable name | output ok
 ---- | --------------- | -------
 clasdis | :white_check_mark: | :white_check_mark:
-claspyth | :white_check_mark: | :red_circle:
+claspyth | :white_check_mark: | :white_check_mark:
 dvcsgen | :white_check_mark: | :white_check_mark:
 genKYandOnePion | :white_check_mark: | :white_check_mark:
 inclusive-dis-rad | :white_check_mark: | :white_check_mark:
 JPsiGen | :white_check_mark: | :white_check_mark:
 TCSGen | :white_check_mark: | :white_check_mark:
-
 
 ### emails
 

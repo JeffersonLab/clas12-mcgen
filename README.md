@@ -68,9 +68,11 @@ clasdis | :white_check_mark: | :white_check_mark:
 claspyth | :white_check_mark: | :red_circle:
 dvcsgen | :white_check_mark: | :white_check_mark:
 genKYandOnePion | :white_check_mark: | :white_check_mark:
-inclusive-dis-rad | :white_check_mark: | :red_circle:
+inclusive-dis-rad | :white_check_mark: | :white_check_mark:
 JPsiGen | :white_check_mark: | :white_check_mark:
 TCSGen | :white_check_mark: | :white_check_mark:
+
+
 ### emails
 
 ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org

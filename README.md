@@ -22,7 +22,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
 - The argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
-- The argument --seed \<integer value\> will be added by default to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using <integer value>
+- The argument --seed \<integer value\> will be added by default to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
 
 # Test of requirements
 

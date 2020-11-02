@@ -64,8 +64,8 @@ jpsigen              | J/Psi                                                    
 # Requirements Summary
 
 
-name | executable name | output ok | seed support 
----- | --------------- | --------- |
+name | executable name | output ok | seed support | 
+---- | --------------- | --------- | ------------ |
 clasdis           | :white_check_mark: | :white_check_mark: | :red_circle: 
 claspyth          | :white_check_mark: | :white_check_mark: | :red_circle: 
 dvcsgen           | :white_check_mark: | :white_check_mark: | :red_circle: 

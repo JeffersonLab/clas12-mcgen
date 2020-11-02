@@ -23,6 +23,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - To specify the number of events, the option "--trig" must be used
 - The argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
 - The argument --seed \<integer value\> will be added by default to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
+- If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock. 
 
 # Test of requirements
 

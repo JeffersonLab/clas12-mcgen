@@ -21,7 +21,8 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - An executable with the same name as the github repository name, installed at the top level dir
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
-- The optional argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
+- The argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
+- The argument --seed <integer value> will be added by default to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using <integer value>
 
 # Test of requirements
 
@@ -63,15 +64,15 @@ jpsigen              | J/Psi                                                    
 # Requirements Summary
 
 
-name | executable name | output ok
----- | --------------- | -------
-clasdis | :white_check_mark: | :white_check_mark:
-claspyth | :white_check_mark: | :white_check_mark:
-dvcsgen | :white_check_mark: | :white_check_mark:
-genKYandOnePion | :white_check_mark: | :white_check_mark:
-inclusive-dis-rad | :white_check_mark: | :white_check_mark:
-JPsiGen | :white_check_mark: | :white_check_mark:
-TCSGen | :white_check_mark: | :white_check_mark:
+name | executable name | output ok | seed support 
+---- | --------------- | --------- |
+clasdis           | :white_check_mark: | :white_check_mark: | :red_circle: 
+claspyth          | :white_check_mark: | :white_check_mark: | :red_circle: 
+dvcsgen           | :white_check_mark: | :white_check_mark: | :red_circle: 
+genKYandOnePion   | :white_check_mark: | :white_check_mark: | :red_circle: 
+inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :red_circle: 
+JPsiGen           | :white_check_mark: | :white_check_mark: | :red_circle: 
+TCSGen            | :white_check_mark: | :white_check_mark: | :red_circle: 
 
 ### emails
 

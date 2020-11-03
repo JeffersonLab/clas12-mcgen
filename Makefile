@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg
 
 build:
 	$(MAKE) -C clasdis
@@ -9,8 +9,9 @@ build:
 	$(MAKE) -C inclusive-dis-rad
 	$(MAKE) -C JPsiGen
 	$(MAKE) -C TCSGen
-	mkdir -p bin
-	mkdir -p lib
+	# seems twopeg has a non-standard(?) Makefile and requires this instead:
+	cd twopeg ; make nobos ; cd --
+	mkdir -p bin lib
 	install clasdis/clasdis bin
 	install claspyth/claspyth bin
 	install dvcsgen/dvcsgen bin
@@ -18,6 +19,7 @@ build:
 	install inclusive-dis-rad/inclusive-dis-rad bin
 	install JPsiGen/JPsiGen.exe bin
 	install JPsiGen/JPsiGen bin
+	install twopeg/twopeg bin
 	install JPsiGen/lib/libJPsiGen.so lib
 	install TCSGen/TCSGen.exe bin
 	install TCSGen/TCSGen bin

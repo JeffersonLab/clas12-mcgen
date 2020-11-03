@@ -22,3 +22,6 @@
 [submodule "JPsiGen"]
 	path = JPsiGen
 	url = https://github.com/JeffersonLab/JPsiGen
+[submodule "twopeg"]
+	path = twopeg
+	url = https://github.com/skorodumina/twopeg

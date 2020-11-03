@@ -61,6 +61,7 @@ genKYandOnePion      |  KY, pi0P and pi+N                                       
 inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org 
 tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org 
 jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
+twopeg               | exclusive electroproduction                                              | Iuliia Skorodumina | skorodumina@gmail.com
 
 # Requirements Summary
 
@@ -74,6 +75,7 @@ genKYandOnePion   | :white_check_mark: | :white_check_mark: | :red_circle:
 inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :red_circle: 
 JPsiGen           | :white_check_mark: | :white_check_mark: | :red_circle: 
 TCSGen            | :white_check_mark: | :white_check_mark: | :red_circle: 
+twopeg            | :white_check_mark: | :white_check_mark: | :white_check_mark:
 
 ### emails
 

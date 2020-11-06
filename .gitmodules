@@ -7,9 +7,6 @@
 [submodule "genKYandOnePion"]
 	path = genKYandOnePion
 	url = https://github.com/ValeriiKlimenko/genKYandOnePion
-[submodule "tcsgen"]
-	path = tcsgen
-	url = https://github.com/JeffersonLab/tcsgen
 [submodule "clasdis"]
 	path = clasdis
 	url = https://github.com/JeffersonLab/clasdis.git
@@ -19,3 +16,12 @@
 [submodule "jpsigen"]
 	path = jpsigen
 	url = https://github.com/jeffersonlab/jpsigen
+[submodule "TCSGen"]
+	path = TCSGen
+	url = https://github.com/JeffersonLab/TCSGen
+[submodule "JPsiGen"]
+	path = JPsiGen
+	url = https://github.com/JeffersonLab/JPsiGen
+[submodule "twopeg"]
+	path = twopeg
+	url = https://github.com/skorodumina/twopeg

@@ -65,24 +65,28 @@ twopeg               | pi+pi- electroproduction off protons                     
 
 # Requirements Summary
 
-- compiles
-- executable name is the same as generator
-- options --docker is used or ignored
-- --trig is used to set the number of events
-- --seed is ignored or used to set the seed (the 
+* compilation and executable name 
+  - compiles
+  - executable name is the same as generator
+* options and output ok  
+  - options --docker is used or ignored
+  - --trig is used to set the number of events
+  - --seed is ignored or used to set the seed (the actual usage is not tested here)
+  - the output filename is the generator + .dat
+* runs in container:
+  - runs with --docker --trig 10 --seed 123
+  - the output filename is the generator + .dat
 
-name | compilation and executable name | options and output ok
----- | ------------------------------- | ---------------------
-clasdis | :white_check_mark: | :white_check_mark:
-claspyth | :white_check_mark: | :white_check_mark:
-dvcsgen | :white_check_mark: | :white_check_mark:
-genKYandOnePion | :white_check_mark: | :white_check_mark:
-inclusive-dis-rad | :white_check_mark: | :white_check_mark:
-JPsiGen | :white_check_mark: | :white_check_mark:
-TCSGen | :white_check_mark: | :white_check_mark:
-twopeg | :white_check_mark: | :white_check_mark:
-
-
+name | compilation and executable name | options and output ok | runs in container
+---- | ------------------------------- | --------------------- | -----------------
+clasdis | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+claspyth | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+dvcsgen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+genKYandOnePion | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 ### emails
 
 ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org, skorodum@jlab.org

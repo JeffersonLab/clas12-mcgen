@@ -46,11 +46,11 @@ for g in $generators
 done
 echo
 echo
-echo "name | compilation and executable name | options and output ok"
-echo "---- | ------------------------------- | ---------------------"
+echo "name | compilation and executable name | options and output ok | runs in container "
+echo "---- | ------------------------------- | --------------------- | ----------------- "
 for g in $generators
 	do
-	echo $g "|" $executableN[$g] "|" $outputExist[$g]
+	echo $g "|" $executableN[$g] "|" $outputExist[$g] "|" ":red_circle:" "|"
 done
 echo
 echo

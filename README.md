@@ -54,32 +54,38 @@ If you are the maintainer of a package and made changes that you want to include
 
 name                 | summary description      | maintainer        | email             
 -------------------- | ------------------------ | ----------------- | ----------------- 
-clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian     |  avakian@jlab.org 
-claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian     |  avakian@jlab.org 
-dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian     |  avakian@jlab.org 
-genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko  |  valerii@jlab.org  
-inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian     |  avakian@jlab.org 
+clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian      |  avakian@jlab.org 
+claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian      |  avakian@jlab.org 
+dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian      |  avakian@jlab.org 
+genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko   |  valerii@jlab.org  
+inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian      |  avakian@jlab.org 
 tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org 
 jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
 twopeg               | pi+pi- electroproduction off protons                                     | Iuliia Skorodumina | skorodum@jlab.org
 
 # Requirements Summary
 
+- compiles
+- executable name is the same as generator
+- options --docker is used or ignored
+- --trig is used to set the number of events
+- --seed is ignored or used to set the seed (the 
 
-name | executable name | output ok | seed support | 
----- | --------------- | --------- | ------------ |
-clasdis           | :white_check_mark: | :white_check_mark: | :red_circle: 
-claspyth          | :white_check_mark: | :white_check_mark: | :red_circle: 
-dvcsgen           | :white_check_mark: | :white_check_mark: | :red_circle: 
-genKYandOnePion   | :white_check_mark: | :white_check_mark: | :red_circle: 
-inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :red_circle: 
-JPsiGen           | :white_check_mark: | :white_check_mark: | :red_circle: 
-TCSGen            | :white_check_mark: | :white_check_mark: | :red_circle: 
-twopeg            | :white_check_mark: | :white_check_mark: | :white_check_mark:
+name | compilation and executable name | options and output ok
+---- | ------------------------------- | ---------------------
+clasdis | :white_check_mark: | :white_check_mark:
+claspyth | :white_check_mark: | :white_check_mark:
+dvcsgen | :white_check_mark: | :white_check_mark:
+genKYandOnePion | :white_check_mark: | :white_check_mark:
+inclusive-dis-rad | :white_check_mark: | :white_check_mark:
+JPsiGen | :white_check_mark: | :white_check_mark:
+TCSGen | :white_check_mark: | :white_check_mark:
+twopeg | :white_check_mark: | :white_check_mark:
+
 
 ### emails
 
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org, skorodum@jlab.org
 
 ---
 

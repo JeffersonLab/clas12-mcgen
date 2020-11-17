@@ -8,10 +8,10 @@ The generators are linked through git submodules: each is linked to a particular
 If you want to add your generator to the CLAS12 containers follow this steps:
 
 1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
-2. Make sure to include the README.md describing the generator and its options, and packages requirement
+2. Make sure to include the README.md describing the generator, its options, and the software requirements
 3. Have a working build system (for example a Makefile)
-4. Satisfy the additional requirements below.
-5. Send email to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) with the repository address,
+4. Satisfy the additional requirements described below.
+5. Send email to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) with the repository address.
 
 
 ---
@@ -21,15 +21,15 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - An executable with the same name as the github repository name, installed at the top level dir
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
-- The argument --docker will be added by default to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
-- The argument --seed \<integer value\> will be added by default to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
+- The argument --docker is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
+- The argument --seed \<integer value\> is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
 - If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock. 
 
 # Test of requirements
 
 We used this criteria to check if the requirements are met:
 
-`genName --trig 10 --docker`
+`genName --trig 10 --docker --seed 123`
 
 This should produce a file genName.dat.
 
@@ -63,6 +63,10 @@ tcsgen               | Timelike Compton Scattering                              
 jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
 twopeg               | pi+pi- electroproduction off protons                                     | Iuliia Skorodumina | skorodum@jlab.org
 
+### email list
+
+ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org, skorodum@jlab.org
+
 # Requirements Summary
 
 * compilation and executable name 
@@ -87,9 +91,6 @@ inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark:
 JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-### emails
-
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org, skorodum@jlab.org
 
 ---
 

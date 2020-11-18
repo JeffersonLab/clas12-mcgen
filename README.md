@@ -29,7 +29,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 
 We used this criteria to check if the requirements are met:
 
-`genName --trig 10 --docker --seed 123`
+`genName --trig 10 --docker --seed 1448577483`
 
 This should produce a file genName.dat.
 

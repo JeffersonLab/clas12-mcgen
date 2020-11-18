@@ -35,7 +35,7 @@ for g in $generators
 	if test -f "$eName"; then
 		executableN[$g]=":white_check_mark:"
 		echo $eName" exists. testing --docker and --trig 10 options"
-		bin/$g --docker --trig 10 --seed 123 > $g".log"
+		bin/$g --docker --trig 10 --seed 1448577483 > $g".log"
 		echo checking for output $eOut
 		if test -f "$eOut"; then
 			echo $eOut" exists. "$g is good

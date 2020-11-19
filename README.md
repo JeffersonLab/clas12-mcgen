@@ -17,7 +17,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 ---
 
 # Requirements
-
+- C++ and Fortran: software should compile using gcc > 8.  
 - An executable with the same name as the github repository name, installed at the top level dir
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used

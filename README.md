@@ -75,7 +75,7 @@ ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@
 * options and output ok  
   - options --docker is used or ignored
   - --trig is used to set the number of events
-  - --seed is ignored or used to set the seed (the actual usage is not tested here)
+  - --seed is ignored or used to set the seed
   - the output filename is the generator + .dat
 * runs in container:
   - runs with --docker --trig 10 --seed 123

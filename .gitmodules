@@ -23,5 +23,6 @@
 	path = JPsiGen
 	url = https://github.com/JeffersonLab/JPsiGen
 [submodule "twopeg"]
+    branch = main
 	path = twopeg
 	url = https://github.com/skorodumina/twopeg

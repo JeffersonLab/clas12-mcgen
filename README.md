@@ -4,6 +4,7 @@ The generators are linked through git submodules: each is linked to a particular
 All tests on the JLab cue machines use the CLAS12 module environment loaded with:
 
 `/group/clas12/packages/setup.sh`
+
 `module load clas12`
 
 ---

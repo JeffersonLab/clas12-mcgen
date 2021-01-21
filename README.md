@@ -1,6 +1,11 @@
 This repository is a collection of generators distributed to the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
 The generators are linked through git submodules: each is linked to a particular commit of the generator's github repository.
 
+All tests on the JLab cue machines use the CLAS12 module environment loaded with:
+
+`/group/clas12/packages/setup.sh`
+`module load clas12`
+
 ---
 
 # Adding your event generator

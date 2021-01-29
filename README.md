@@ -97,6 +97,7 @@ inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark:
 JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+clas12-elSpectro | :red_check_mark: | :red_check_mark: | :red_check_mark: |
 
 ---
 
@@ -138,9 +139,12 @@ In all cases above, you'd need to subsequently commit (and push) the changes.
 
 `git submodule add submoduleRepo.git` 
 
+If the submodule has its own submodules, this is necessary:
+
+`git submodule --init --recursive path`
+
 
 ### To remove a submodule:
-
 
 * `git submodule deinit -f path/to/submodule`
 * `rm -rf .git/modules/path/to/submodule`

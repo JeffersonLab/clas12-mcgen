@@ -26,3 +26,6 @@
     branch = main
 	path = twopeg
 	url = https://github.com/skorodumina/twopeg
+[submodule "clas12-elSpectro"]
+	path = clas12-elSpectro
+	url = https://github.com/dglazier/clas12-elSpectro

@@ -12,7 +12,7 @@ build:
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; make nobos ; cd --
 	# clas12-elSpectro uses cmake:
-	cd clas12-elSpectro && mkdir build && cd build && cmake ../ && cmake --build . --target install
+	cd clas12-elSpectro && mkdir -p build && cd build && cmake ../ && cmake --build . --target install
 	mkdir -p bin lib
 	install clasdis/clasdis bin
 	install claspyth/claspyth bin
@@ -33,4 +33,5 @@ clean:
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
+	rm -rf clas12-elSpectro/build
 

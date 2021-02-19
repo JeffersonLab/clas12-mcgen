@@ -2,6 +2,7 @@
 SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg
 
 build:
+	mkdir -p bin lib
 	$(MAKE) -C clasdis
 	$(MAKE) -C claspyth
 	$(MAKE) -C dvcsgen
@@ -12,8 +13,7 @@ build:
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; make nobos ; cd --
 	# clas12-elSpectro uses cmake:
-	cd clas12-elSpectro && mkdir -p build && cd build && cmake ../ && cmake --build . --target install
-	mkdir -p bin lib
+	mkdir build && cd build && cmake ../ && cmake --build . --target install && cd ..
 	install clasdis/clasdis bin
 	install claspyth/claspyth bin
 	install dvcsgen/dvcsgen bin
@@ -26,12 +26,10 @@ build:
 	install TCSGen/TCSGen.exe bin
 	install TCSGen/TCSGen bin
 	install TCSGen/lib/libTCSGen.so lib
-	install clas12-elSpectro/build/clas12-elSpectro bin
+	rm -rf build
 
 clean:
 	rm -rf bin lib
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
-	rm -rf clas12-elSpectro/build
-

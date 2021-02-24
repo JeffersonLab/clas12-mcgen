@@ -127,10 +127,15 @@ Or for all submodules:
 
 `git submodule update --remote --merge .`
 
-To update to a particular commit in a submodule:
+To update to a particular commit or tag in a submodule:
 
 * `cd ./inclusive-dis-rad`
 * `git checkout bb9025c`
+* `git checkout v1.0`
+
+If that submodule has its own submodules, then, in addition need to:
+
+* `git submodule update --recursive`
 
 In all cases above, you'd need to subsequently commit (and push) the changes.
 

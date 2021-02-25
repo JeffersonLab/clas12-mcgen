@@ -4,6 +4,7 @@
 
 source /group/clas12/packages/setup.sh
 module load gcc/9.2.0
+module load cmake # need > 3
 module load root
 
 make -j10 2> errors.txt
@@ -19,8 +20,10 @@ export DISRAD_PDF=$PWD/inclusive-dis-rad
 export DataKYandOnePion=$PWD/genKYandOnePion/data
 export TCSGEN_DIR=$PWD/TCSGen
 export TWOPEG_DATA_DIR=$PWD/twopeg
+export C12ELSPECTRO=$PWD/clas12-elSpectro
+export ELSPECTRO=$C12ELSPECTRO/elSpectro
 
-generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen twopeg)
+generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen twopeg clas12-elSpectro)
 
 declare -A executableN
 declare -A outputExist

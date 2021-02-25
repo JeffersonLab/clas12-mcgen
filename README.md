@@ -110,14 +110,16 @@ To clone / pull this repo:
 
 `git checkout <tagversion>`
 
-`git pull  --recurse-submodules`
-
 
 To compile:
 
-`module load clas12`
+`source /group/clas12/packages/setup.sh`
+
+`module load gcc/9.2.0`
 
 `module load cmake`
+
+`module load root`
 
 `make -j8`
 

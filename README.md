@@ -107,6 +107,7 @@ clas12-elSpectro | :white_check_mark: | :white_check_mark: | :x: |
 To clone / pull this repo:
 
 `git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git`
+
 `git checkout <tagversion>`
 
 `git pull  --recurse-submodules`
@@ -115,7 +116,9 @@ To clone / pull this repo:
 To compile:
 
 `module load clas12`
+
 `module load cmake`
+
 `make -j8`
 
 ---

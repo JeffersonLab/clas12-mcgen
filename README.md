@@ -68,6 +68,7 @@ inclusive-dis-rad    | generates inclusive electron and optionally radiative pho
 tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org 
 jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
 twopeg               | pi+pi- electroproduction off protons                                     | Iuliia Skorodumina | skorodum@jlab.org
+clas12-elspectro     | General electroproduction final states                                   | Derek Glazier      | derek.glazier@glasgow.ac.uk
 
 ### email list
 

@@ -98,7 +98,7 @@ inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark:
 JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-clas12-elSpectro | :white_check_mark: | :white_check_mark: | :x: |
+clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 ---
 

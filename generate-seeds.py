@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # generate-seeds.py -h
 # generate-seeds.py generate

@@ -139,10 +139,10 @@ git rm -f path/to/submodule
 [clasdis]: https://github.com/jeffersonlab/clasdis 
 [claspyth]: https://github.com/jeffersonlab/claspyth
 [dvcsgen]: https://github.com/jeffersonlab/dvcsgen
-[genKYandOnePion]: https://github.com/jeffersonlab/genKYandOnePion
-[inclusive-dis-rad]: https://github.com/jeffersonlab/includive-dis-rad
+[genKYandOnePion]: https://github.com/ValeriiKlimenko/genKYandOnePion
+[inclusive-dis-rad]: https://github.com/jeffersonlab/inclusive-dis-rad
 [tcsgen]: https://github.com/jeffersonlab/tcsgen
 [jpsigen]: https://github.com/jeffersonlab/jpsigen
-[twopeg]: https://github.com/jeffersonlab/twopeg
+[twopeg]: https://github.com/skorodumina/twopeg
 [clas12-elspectro]: https://github.com/jeffersonlab/clas12-elspectro/
 

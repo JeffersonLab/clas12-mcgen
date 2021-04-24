@@ -1,6 +1,4 @@
-This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
-
-Note, these generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
+This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.  These generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
 
 # Current Generators 
 
@@ -35,7 +33,7 @@ name                 | description                                              
 - The `--docker` argument is passed to all generators on the OSG and must be accepted. It can be ignored or used for setting conditions for OSG.
 - The `--seed #` option is passed to all generators on the OSG and must be accepted. It can be ignored or used to set the RNG seed in the generator.
 - If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
-- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](https://github.com/jeffersonlab/clas12-mcgen/versions.json) stores the current verisions for insertion into the data stream.
+- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](versions.json) stores the current verisions for insertion into the data stream.
 
 ### Test of Requirements
 

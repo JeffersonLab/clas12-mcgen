@@ -144,5 +144,5 @@ git rm -f path/to/submodule
 [tcsgen]: https://github.com/jeffersonlab/tcsgen
 [jpsigen]: https://github.com/jeffersonlab/jpsigen
 [twopeg]: https://github.com/skorodumina/twopeg
-[clas12-elspectro]: https://github.com/jeffersonlab/clas12-elspectro/
+[clas12-elspectro]: https://github.com/dglazier/clas12-elspectro/
 

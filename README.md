@@ -39,7 +39,7 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 - If shared libraries are needed, the build system should put them inside a top level "lib" directory
 - Required environment variables should be described in the repository's README.md
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
-- To specify the number of events, the option "--trig" must be used
+- To specify the number of events, the option "--trig #" must be honored
 - The argument --docker is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
 - The argument --seed \<integer value\> is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
 - If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock
@@ -49,27 +49,16 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 
 We use this criteria to check if the requirements are met:
 
-`$GENERATOR_NAME --trig 10 --docker --seed 1448577483`
+`GENERATOR_NAME --trig 10 --docker --seed 1448577483`
 
-This should produce a file $GENERATOR_NAME.dat in the current working directory.
+This should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
 The script `requirements.sh` will compile the generators, check for the executable names, run them with their environment and the above options, 
 and check for the output file. It will output a table that is parsed below in the Requirements Summary.
 
 ## Requirements Summary
 
-* compilation and executable name 
-  - compiles
-  - executable name is the same as its repository's name
-* options
-  - --trig is used to set the number of events
-  - --docker is accepted, but can be used or ignored
-  - --seed is accepted, but can be ignored or used to set the RNG seed
-* runs in container
-  - runs with --docker --trig 10 --seed 123
-  - the output filename is the generator + .dat
-
-name | compilation and executable name | options ok | runs in container
+name | compilation and executable name | CLI options | runs in container w/ output
 ---- | ------------------------------- | --------------------- | -----------------
 clasdis | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 claspyth | :white_check_mark: | :white_check_mark: | :white_check_mark: |
@@ -86,23 +75,19 @@ clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 # Maintanance
 
 To clone / pull this repo:
-
-`git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git`
-
-`git checkout <tagversion>`
-
+```
+git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git
+git checkout <tagversion>
+```
 
 To compile on JLab machines:
-
-`source /group/clas12/packages/setup.sh`
-
-`module load gcc/9.2.0`
-
-`module load cmake`
-
-`module load root`
-
-`make -j8`
+```
+source /group/clas12/packages/setup.sh
+module load gcc/9.2.0
+module load cmake
+module load root
+make -j8
+```
 
 ---
 
@@ -110,7 +95,7 @@ To compile on JLab machines:
 
 1. ROOT with MathMore and Minuit2
 2. cmake >= 2.9
-3. gcc >= 8
+3. gcc >= 8.0
 
 ---
 
@@ -126,13 +111,15 @@ Or for all submodules:
 
 To update to a particular commit or tag in a submodule:
 
-* `cd ./inclusive-dis-rad`
-* `git checkout bb9025c`
-* `git checkout v1.0`
+```
+cd ./inclusive-dis-rad
+git checkout bb9025c
+git checkout v1.0
+```
 
 If that submodule has its own submodules, then, in addition need to:
 
-* `git submodule update --recursive`
+`git submodule update --recursive`
 
 In all cases above, you'd need to subsequently commit (and push) the changes.
 
@@ -148,8 +135,10 @@ If the submodule has its own submodules, this is necessary:
 
 ### To remove a submodule:
 
-* `git submodule deinit -f path/to/submodule`
-* `rm -rf .git/modules/path/to/submodule`
-* `git rm -f path/to/submodule`
+```
+git submodule deinit -f path/to/submodule
+rm -rf .git/modules/path/to/submodule
+git rm -f path/to/submodule
+```
 
 

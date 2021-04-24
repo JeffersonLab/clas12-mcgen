@@ -45,7 +45,7 @@ GENERATOR_NAME --trig 10 --docker --seed 1448577483
 
 That should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
-The script `requirements.sh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output a table the table in the next section.
+The script `requirements.sh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
 
 ### Requirements Summary
 
@@ -86,9 +86,9 @@ git clone --recurse-submodules https://github.com/jeffersonlab/clas12-mcgen
 cd clas12-mcgen
 make
 ```
-*Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, either with some environment variables or updates to the dependents' build system or ROOT itself.  Meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).*
+_Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).  A centos8 build of ROOT is available at `/work/clas12/users/baltzell/Linux_Centos8...` that can be used for building clas12-mcgen in the container.  Its exact path must be /srv/root-6.22.06-build in the container!_
 
-*Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`.*
+*Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`, and that is done in the CVMFS environment module for clas12-mcgen.*
 
 ### Dependencies/Requirements
 

@@ -24,14 +24,14 @@ name                 | description                                              
 
 # Requirements
 
-- C/C++ and Fortran should compile using gcc > 8.0
+- C/C++ and Fortran should compile using gcc > 8.0, and all python should be python3
 - An executable with the same name as the github repository name, installed at the top level directory
 - If shared libraries are needed, the build system should put them inside a top level "lib" directory
 - Required environment variables should be described in the repository's README.md
 - The generator output file name must be the same name as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option `--trig #` must be honored
 - The `--docker` argument is passed to all generators on the OSG and must be accepted. It can be ignored or used for setting conditions for OSG.
-- The `--seed #` option is passed to all generators on the OSG and must be accepted. It can be ignored or used to set the RNG seed in the generator.
+- The `--seed #` option is passed to all generators on the OSG and must be accepted. Its value is a RNG seed based on system clock with microsecond precision.  It can be ignored or used to initialize your RNG.
 - If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
 - A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](versions.json) stores the current verisions for insertion into the data stream.
 

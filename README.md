@@ -4,7 +4,7 @@ Note, generators are also available for use on JLab machines via [CLAS12 environ
 
 ---
 
-# List of Current Generators 
+# Current Generators 
 
 name                 | summary description      | maintainer        | email             
 -------------------- | ------------------------ | ----------------- | ----------------- 
@@ -22,8 +22,6 @@ clas12-elspectro     | General electroproduction final states                   
 
 # Adding or Modifying a Generator
 
-If you want to add your generator to the CLAS12 containers follow this steps:
-
 1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
 2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
@@ -34,15 +32,15 @@ If you want to add your generator to the CLAS12 containers follow this steps:
 
 # Requirements
 
-- C++ and Fortran: software should compile using gcc > 8.0
+- C/C++ and Fortran should compile using gcc > 8.0
 - An executable with the same name as the github repository name, installed at the top level directory
 - If shared libraries are needed, the build system should put them inside a top level "lib" directory
 - Required environment variables should be described in the repository's README.md
-- The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
-- To specify the number of events, the option "--trig #" must be honored
-- The argument --docker is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
-- The argument --seed \<integer value\> is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
-- If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock
+- The generator output file name must be the same name as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
+- To specify the number of events, the option `--trig #` must be honored
+- The `--docker` argument is passed to all generators on the OSG and must be accepted. It can be ignored or used for setting conditions for OSG.
+- The `--seed #` option is passed to all generators on the OSG and must be accepted. It can be ignored or used to set the RNG seed in the generator.
+- If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
 - A git tag to reference for including the generator as a submodule into this repository
 
 ## Test of Requirements

@@ -1,7 +1,6 @@
-This repository is a collection of generators distributed to the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
-The generators are linked through git submodules: each is linked to a particular commit of the generator's github repository.
+This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
 
-Note, generators are also available for use on JLab machines via [CLAS12 environment modules](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab):
+Note, generators are also available for use on JLab machines via [CLAS12 environment modules](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab).
 
 ---
 
@@ -21,49 +20,41 @@ clas12-elspectro     | General electroproduction final states                   
 
 ---
 
-# Adding a New Generator
+# Adding or Modifying a Generator
 
 If you want to add your generator to the CLAS12 containers follow this steps:
 
 1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
-2. Make sure to include the README.md describing the generator, its options, and the software requirements
+2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
 4. Satisfy the additional requirements described below
-5. Send email to ungaro@jlab.org or baltzell@jlab.org (Mauri or Nathan) with the repository address
+5. Send email to ungaro@jlab.org or baltzell@jlab.org (Mauri or Nathan) with the repository address and the git tag to use
 
 ---
 
 # Requirements
 
-- C++ and Fortran: software should compile using gcc > 8.  
-- An executable with the same name as the github repository name, installed at the top level dir
+- C++ and Fortran: software should compile using gcc > 8.0
+- An executable with the same name as the github repository name, installed at the top level directory
+- If shared libraries are needed, the build system should put them inside a top level "lib" directory
+- Required environment variables should be described in the repository's README.md
 - The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
 - To specify the number of events, the option "--trig" must be used
 - The argument --docker is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
 - The argument --seed \<integer value\> is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
 - If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock
+- A git tag to reference for including the generator as a submodule into this repository
 
 ## Test of Requirements
 
-We used this criteria to check if the requirements are met:
+We use this criteria to check if the requirements are met:
 
-`genName --trig 10 --docker --seed 1448577483`
+`$GENERATOR_NAME --trig 10 --docker --seed 1448577483`
 
-This should produce a file genName.dat.
+This should produce a file $GENERATOR_NAME.dat in the current working directory.
 
 The script `requirements.sh` will compile the generators, check for the executable names, run them with their environment and the above options, 
 and check for the output file. It will output a table that is parsed below in the Requirements Summary.
-
-## Additional Notes
-
-- If libraries are needed, the build system should put them inside the lib directory, at the top level dir
-- Required environment variables should be described in each generators' README.md
-
-Note: if you want to use `requirements.sh` to test your latest changes to the generator, make sure you update the submodules first:
-
-`git submodule update --remote --merge .`
-
-If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
 
 ## Requirements Summary
 

@@ -1,20 +1,22 @@
 This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
 
-Note, generators are also available for use on JLab machines via [CLAS12 environment modules](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab).
+Note, these generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
 
 # Current Generators 
 
-name                 | summary description      | maintainer        | email             
--------------------- | ------------------------ | ----------------- | ----------------- 
-clasdis              | clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian      | avakian@jlab.org 
-claspyth             | SIDIS full event generator based on PYTHIA                              | Harut Avakian      | avakian@jlab.org 
-dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations           | Harut Avakian      | avakian@jlab.org 
-genKYandOnePion      | KY, pi0P and pi+N                                                       | Valerii Klimenko   | valerii@jlab.org  
-inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs | Harut Avakian      | avakian@jlab.org 
-tcsgen               | Timelike Compton Scattering                                             | Rafayel Paremuzyan | rafopar@jlab.org 
-jpsigen              | J/Psi                                                                   | Rafayel Paremuzyan | rafopar@jlab.org 
-twopeg               | pi+pi- electroproduction off protons                                    | Iuliia Skorodumina | skorodum@jlab.org
-clas12-elspectro     | General electroproduction final states                                  | Derek Glazier      | derek.glazier@glasgow.ac.uk
+[clasdis]: http://google.com
+
+name                 | description                                                    | maintainer         | email             
+-------------------- | -------------------------------------------------------------- | ------------------ | ----------------- 
+[clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian      | avakian@jlab.org 
+[claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian      | avakian@jlab.org 
+[dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian      | avakian@jlab.org 
+[genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko   | valerii@jlab.org  
+[inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian      | avakian@jlab.org 
+[tcsgen]             | Timelike Compton Scattering                                    | Rafayel Paremuzyan | rafopar@jlab.org 
+[jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan | rafopar@jlab.org 
+[twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina | skorodum@jlab.org
+[clas12-elspectro]   | General electroproduction final states                         | Derek Glazier      | derek.glazier@glasgow.ac.uk
 
 # Adding or Modifying a Generator
 
@@ -39,16 +41,15 @@ clas12-elspectro     | General electroproduction final states                   
 
 ### Test of Requirements
 
-We use this criteria to check if the requirements are met:
+We use this command line to check if the runtime requirements are met:
 
 ```
 GENERATOR_NAME --trig 10 --docker --seed 1448577483
 ```
 
-This should produce a file `GENERATOR_NAME.dat` in the current working directory.
+That should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
-The script `requirements.sh` will compile the generators, check for the executable names, run them with their environment and the above options, 
-and check for the output file. It will output a table that is parsed below in the Requirements Summary.
+The script `requirements.sh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output a table the table in the next section.
 
 ### Requirements Summary
 

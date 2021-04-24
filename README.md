@@ -46,7 +46,7 @@ GENERATOR_NAME --trig 10 --docker --seed 1448577483
 
 That should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
-The script `requirements.sh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
+The script `requirements.zsh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
 
 ### Requirements Summary
 
@@ -77,15 +77,13 @@ module load cmake
 module load root
 make -j8
 ```
-To compile in the container:
+To compile in the singularity container on JLab machines:
 ```
 module load singularity
 singularity shell --home ${PWD}:/srv --pwd /srv --bind /cvmfs --contain --ipc --pid \ 
 --cleanenv /cvmfs/singularity.opensciencegrid.org/jeffersonlab/clas12software:production
 source /srv/root-6.22.06-build/bin/thisroot.sh
-git clone --recurse-submodules https://github.com/jeffersonlab/clas12-mcgen
-cd clas12-mcgen
-make
+make -j8
 ```
 _Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).  A centos8 build of ROOT is available at `/work/clas12/users/baltzell/Linux_Centos8...` that can be used for building clas12-mcgen in singularity.  Its exact path in the container must be `/srv/root-6.22.06-build`!_
 

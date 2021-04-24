@@ -10,18 +10,10 @@ module load root
 make -j10 2> errors.txt
 echo
 echo
-export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH
-export PATH=$PWD/bin:$PATH
 
-export CLASDIS_PDF=$PWD/clasdis/pdf
-export CLASPYTHIA_DECLIST=$PWD/claspyth
-export CLASDVCS_PDF=$PWD/dvcsgen
-export DISRAD_PDF=$PWD/inclusive-dis-rad
-export DataKYandOnePion=$PWD/genKYandOnePion/data
-export TCSGEN_DIR=$PWD/TCSGen
-export TWOPEG_DATA_DIR=$PWD/twopeg
-export C12ELSPECTRO=$PWD/clas12-elSpectro
-export ELSPECTRO=$C12ELSPECTRO/elSpectro
+d="$( cd "$( dirname "${(%):-%N}" )" && pwd )"
+
+. $d/env.zsh
 
 generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen twopeg clas12-elSpectro)
 

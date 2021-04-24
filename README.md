@@ -97,9 +97,9 @@ git clone --recurse-submodules https://github.com/jeffersonlab/clas12-mcgen
 cd clas12-mcgen
 make
 ```
-Starting with some later versions of ROOT, if it is moved after it's built, linking against it doesn't appear to work.  Hopefully there is some way to address that properly, either with some environment variables or updates to the dependents' build system.  Meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be it's final destination on CVMFS).
+*Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, either with some environment variables or updates to the dependents' build system or ROOT itself.  Meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).*
 
-Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`.
+*Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`.*
 
 ---
 

@@ -1,94 +1,55 @@
-This repository is a collection of generators distributed to the official CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.
-The generators are linked through git submodules: each is linked to a particular commit of the generator's github repository.
+This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.  These generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
 
-All tests on the JLab cue machines use the CLAS12 module environment loaded with:
+# Current Generators 
 
-`/group/clas12/packages/setup.sh`
+name                 | description                                                    | maintainer         | email             
+-------------------- | -------------------------------------------------------------- | ------------------ | ----------------- 
+[clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian      | avakian@jlab.org 
+[claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian      | avakian@jlab.org 
+[dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian      | avakian@jlab.org 
+[genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko   | valerii@jlab.org  
+[inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian      | avakian@jlab.org 
+[tcsgen]             | Timelike Compton Scattering                                    | Rafayel Paremuzyan | rafopar@jlab.org 
+[jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan | rafopar@jlab.org 
+[twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina | skorodum@jlab.org
+[clas12-elspectro]   | General electroproduction final states                         | Derek Glazier      | derek.glazier@glasgow.ac.uk
 
-`module load clas12`
-
----
-
-# Adding your event generator
-
-If you want to add your generator to the CLAS12 containers follow this steps:
+# Adding or Modifying a Generator
 
 1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
-2. Make sure to include the README.md describing the generator, its options, and the software requirements
+2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
-4. Satisfy the additional requirements described below.
-5. Send email to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) with the repository address.
-
-
----
+4. Satisfy the additional requirements described below
+5. Send email to ungaro@jlab.org or baltzell@jlab.org (Mauri or Nathan) with the repository address and the git tag to use
 
 # Requirements
-- C++ and Fortran: software should compile using gcc > 8.  
-- An executable with the same name as the github repository name, installed at the top level dir
-- The generator output file name must be the same name as the exectuable + ".dat". For example, the output of clasdis must be clasdis.dat
-- To specify the number of events, the option "--trig" must be used
-- The argument --docker is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set conditions to run on the OSG container
-- The argument --seed \<integer value\> is added on the OSG to all executable. This option must be ignored or it can be used by the executable to set the generator random seed using \<integer value\>
-- If --seed is ignored, the generator is responsible for choosing unique random seeds (without preserving state between jobs), which could be done from a millisecond or better precision system clock. 
 
-# Test of requirements
+- C/C++ and Fortran should compile using gcc > 8.0, and all python should be python3
+- An executable with the same name as the github repository name, installed at the top level directory
+- If shared libraries are needed, the build system should put them inside a top level "lib" directory
+- Required environment variables should be described in the repository's README.md
+- The generator output file name must be the same name as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
+- To specify the number of events, the option `--trig #` must be honored
+- The `--docker` argument is passed to all generators on the OSG and must be accepted. It can be ignored or used for setting conditions for OSG.
+- The `--seed #` option is passed to all generators on the OSG and must be accepted. Its value is a RNG seed based on system clock with microsecond precision.  It can be ignored or used to initialize your RNG.
+- If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
+- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](versions.json) stores the current verisions for insertion into the data stream.
 
-We used this criteria to check if the requirements are met:
+### Test of Requirements
 
-`genName --trig 10 --docker --seed 1448577483`
+We use this command line to check if the runtime requirements are met:
 
-This should produce a file genName.dat.
+```
+GENERATOR_NAME --trig 10 --docker --seed 1448577483
+```
 
-The script `requirements.sh` will compile the generators, check for the executable names, run them with their environment and the above options, 
-and check for the output file. It will output a table that is parsed below in the Requirements Summary.
+That should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
+The script `requirements.sh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
 
-# Additional Notes
+### Requirements Summary
 
-- If libraries are needed, they should be put inside a lib directory, at the top level dir
-- If necessary, an environment variable (name in its README) where the executable will look for data
-
-Note: if you want to use `requirements.sh` to test your latest changes to the generator, make sure you update the submodules first:
-
-`git submodule update --remote --merge .`
-
-
-If you are the maintainer of a package and made changes that you want to include here, send emails to ungaro@jlab.org, baltzell@jlab.org (Mauri or Nathan) requesting the update.
-
-
-# List of Generators 
-
-name                 | summary description      | maintainer        | email             
--------------------- | ------------------------ | ----------------- | ----------------- 
-clasdis              |  clas SIDIS MC based on PEPSI LUND MC                                    | Harut Avakian      |  avakian@jlab.org 
-claspyth             | SIDIS full event generator based on PYTHIA                               | Harut Avakian      |  avakian@jlab.org 
-dvcsgen              | DVCS/pi0/eta generator based on GPD and PDF parameterizations            | Harut Avakian      |  avakian@jlab.org 
-genKYandOnePion      |  KY, pi0P and pi+N                                                       | Valerii Klimenko   |  valerii@jlab.org  
-inclusive-dis-rad    | generates inclusive electron and optionally radiative photon using PDFs  | Harut Avakian      |  avakian@jlab.org 
-tcsgen               | Timelike Compton Scattering                                              | Rafayel Paremuzyan | rafopar@jlab.org 
-jpsigen              | J/Psi                                                                    | Rafayel Paremuzyan | rafopar@jlab.org 
-twopeg               | pi+pi- electroproduction off protons                                     | Iuliia Skorodumina | skorodum@jlab.org
-clas12-elspectro     | General electroproduction final states                                   | Derek Glazier      | derek.glazier@glasgow.ac.uk
-
-### email list
-
-ungaro@jlab.org, baltzell@jlab.org, avakian@jlab.org, valerii@jlab.org, rafopar@jlab.org, skorodum@jlab.org
-
-# Requirements Summary
-
-* compilation and executable name 
-  - compiles
-  - executable name is the same as generator
-* options and output ok  
-  - options --docker is used or ignored
-  - --trig is used to set the number of events
-  - --seed is ignored or used to set the seed
-  - the output filename is the generator + .dat
-* runs in container:
-  - runs with --docker --trig 10 --seed 123
-  - the output filename is the generator + .dat
-
-name | compilation and executable name | options and output ok | runs in container
+name | compilation and executable name | CLI options | runs in container w/ output
 ---- | ------------------------------- | --------------------- | -----------------
 clasdis | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 claspyth | :white_check_mark: | :white_check_mark: | :white_check_mark: |
@@ -100,73 +61,86 @@ TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
----
+# Maintanance
 
-# clas12-mcgen maintanance
+To clone this repo:
+```
+git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git
+git checkout <tagversion>
+```
+To compile on JLab machines:
+```
+source /group/clas12/packages/setup.sh
+module load gcc/9.2.0
+module load cmake
+module load root
+make -j8
+```
+To compile in the container:
+```
+module load singularity
+singularity shell --home ${PWD}:/srv --pwd /srv --bind /cvmfs --contain --ipc --pid \ 
+--cleanenv /cvmfs/singularity.opensciencegrid.org/jeffersonlab/clas12software:production
+source /srv/root-6.22.06-build/bin/thisroot.sh
+git clone --recurse-submodules https://github.com/jeffersonlab/clas12-mcgen
+cd clas12-mcgen
+make
+```
+_Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).  A centos8 build of ROOT is available at `/work/clas12/users/baltzell/Linux_Centos8...` that can be used for building clas12-mcgen in singularity.  Its exact path in the container must be `/srv/root-6.22.06-build`!_
 
-To clone / pull this repo:
+*Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`, and that is done in the CVMFS environment module for clas12-mcgen.*
 
-`git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git`
+### Dependencies/Requirements
 
-`git checkout <tagversion>`
-
-
-To compile:
-
-`source /group/clas12/packages/setup.sh`
-
-`module load gcc/9.2.0`
-
-`module load cmake`
-
-`module load root`
-
-`make -j8`
-
----
-
-### Dependencies
-
-1. ROOT
-
----
+1. ROOT with MathMore and Minuit2
+2. cmake >= 2.9
+3. gcc >= 8.0
 
 ### Notes on Updating Submodules
 
 To update to the latest commit in one submodule:
-
-`git submodule update --remote --merge ./inclusive-dis-rad/`
-
+```
+git submodule update --remote --merge ./inclusive-dis-rad/
+```
 Or for all submodules:
-
-`git submodule update --remote --merge .`
-
+```
+git submodule update --remote --merge .
+```
 To update to a particular commit or tag in a submodule:
-
-* `cd ./inclusive-dis-rad`
-* `git checkout bb9025c`
-* `git checkout v1.0`
-
+```
+cd ./inclusive-dis-rad
+git checkout bb9025c
+git checkout v1.0
+```
 If that submodule has its own submodules, then, in addition need to:
-
-* `git submodule update --recursive`
-
+```
+git submodule update --recursive
+```
 In all cases above, you'd need to subsequently commit (and push) the changes.
 
-
 ### To add a submodule:
-
-`git submodule add submoduleRepo.git` 
-
+```
+git submodule add submoduleRepo.git
+```
 If the submodule has its own submodules, this is necessary:
-
-`git submodule --init --recursive path`
-
-
+```
+git submodule --init --recursive path
+```
 ### To remove a submodule:
+```
+git submodule deinit -f path/to/submodule
+rm -rf .git/modules/path/to/submodule
+git rm -f path/to/submodule
+```
 
-* `git submodule deinit -f path/to/submodule`
-* `rm -rf .git/modules/path/to/submodule`
-* `git rm -f path/to/submodule`
 
+[clasdis]: https://github.com/jeffersonlab/clasdis 
+[claspyth]: https://github.com/jeffersonlab/claspyth
+[dvcsgen]: https://github.com/jeffersonlab/dvcsgen
+[genKYandOnePion]: https://github.com/ValeriiKlimenko/genKYandOnePion
+[inclusive-dis-rad]: https://github.com/jeffersonlab/inclusive-dis-rad
+[tcsgen]: https://github.com/jeffersonlab/tcsgen
+[jpsigen]: https://github.com/jeffersonlab/jpsigen
+[twopeg]: https://github.com/skorodumina/twopeg
+[clas12-elspectro]: https://github.com/dglazier/clas12-elspectro/
 

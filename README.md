@@ -4,8 +4,6 @@ Note, these generators are also available for use on JLab machines via the [CLAS
 
 # Current Generators 
 
-[clasdis]: http://google.com
-
 name                 | description                                                    | maintainer         | email             
 -------------------- | -------------------------------------------------------------- | ------------------ | ----------------- 
 [clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian      | avakian@jlab.org 
@@ -37,7 +35,7 @@ name                 | description                                              
 - The `--docker` argument is passed to all generators on the OSG and must be accepted. It can be ignored or used for setting conditions for OSG.
 - The `--seed #` option is passed to all generators on the OSG and must be accepted. It can be ignored or used to set the RNG seed in the generator.
 - If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
-- A git tag to reference for including the generator as a submodule into this repository
+- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](https://github.com/jeffersonlab/clas12-mcgen/versions.json) stores the current verisions for insertion into the data stream.
 
 ### Test of Requirements
 
@@ -136,4 +134,15 @@ git submodule deinit -f path/to/submodule
 rm -rf .git/modules/path/to/submodule
 git rm -f path/to/submodule
 ```
+
+
+[clasdis]: https://github.com/jeffersonlab/clasdis 
+[claspyth]: https://github.com/jeffersonlab/claspyth
+[dvcsgen]: https://github.com/jeffersonlab/dvcsgen
+[genKYandOnePion]: https://github.com/jeffersonlab/genKYandOnePion
+[inclusive-dis-rad]: https://github.com/jeffersonlab/includive-dis-rad
+[tcsgen]: https://github.com/jeffersonlab/tcsgen
+[jpsigen]: https://github.com/jeffersonlab/jpsigen
+[twopeg]: https://github.com/jeffersonlab/twopeg
+[clas12-elspectro]: https://github.com/jeffersonlab/clas12-elspectro/
 

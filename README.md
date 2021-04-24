@@ -2,8 +2,6 @@ This repository is the collection of generators available in the CLAS12 Docker/S
 
 Note, generators are also available for use on JLab machines via [CLAS12 environment modules](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab).
 
----
-
 # Current Generators 
 
 name                 | summary description      | maintainer        | email             
@@ -18,8 +16,6 @@ jpsigen              | J/Psi                                                    
 twopeg               | pi+pi- electroproduction off protons                                    | Iuliia Skorodumina | skorodum@jlab.org
 clas12-elspectro     | General electroproduction final states                                  | Derek Glazier      | derek.glazier@glasgow.ac.uk
 
----
-
 # Adding or Modifying a Generator
 
 1. Create a github repository for your source code, ideally inside https://github.com/JeffersonLab
@@ -27,8 +23,6 @@ clas12-elspectro     | General electroproduction final states                   
 3. Have a working build system (for example a Makefile)
 4. Satisfy the additional requirements described below
 5. Send email to ungaro@jlab.org or baltzell@jlab.org (Mauri or Nathan) with the repository address and the git tag to use
-
----
 
 # Requirements
 
@@ -43,7 +37,7 @@ clas12-elspectro     | General electroproduction final states                   
 - If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
 - A git tag to reference for including the generator as a submodule into this repository
 
-## Test of Requirements
+### Test of Requirements
 
 We use this criteria to check if the requirements are met:
 
@@ -56,7 +50,7 @@ This should produce a file `GENERATOR_NAME.dat` in the current working directory
 The script `requirements.sh` will compile the generators, check for the executable names, run them with their environment and the above options, 
 and check for the output file. It will output a table that is parsed below in the Requirements Summary.
 
-## Requirements Summary
+### Requirements Summary
 
 name | compilation and executable name | CLI options | runs in container w/ output
 ---- | ------------------------------- | --------------------- | -----------------
@@ -70,11 +64,9 @@ TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
----
-
 # Maintanance
 
-To clone / pull this repo:
+To clone this repo:
 ```
 git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git
 git checkout <tagversion>
@@ -101,15 +93,11 @@ make
 
 *Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`.*
 
----
-
 ### Dependencies/Requirements
 
 1. ROOT with MathMore and Minuit2
 2. cmake >= 2.9
 3. gcc >= 8.0
-
----
 
 ### Notes on Updating Submodules
 

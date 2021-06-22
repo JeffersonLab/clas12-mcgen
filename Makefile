@@ -13,7 +13,7 @@ build:
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; make nobos ; cd --
 	# clas12-elSpectro uses cmake:
-	mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=`which g++` -DCMAKE_C_COMPILER=`which gcc` ../ && cmake --build . --parallel 8 --target install && cd ..
+	mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=`which g++` -DCMAKE_C_COMPILER=`which gcc` ../ && cmake --build . --target install && cd ..
 	install build/clas12-elSpectro/elSpectro/jpacPhoto/libjpacPhoto.so lib
 	install clasdis/clasdis bin
 	install claspyth/claspyth bin

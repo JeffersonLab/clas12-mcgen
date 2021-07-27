@@ -80,8 +80,7 @@ make -j8
 To compile in the singularity container on JLab machines:
 ```
 module load singularity
-singularity shell --home ${PWD}:/srv --pwd /srv --bind /cvmfs --contain --ipc --pid \ 
---cleanenv /cvmfs/singularity.opensciencegrid.org/jeffersonlab/clas12software:production
+singularity shell --home ${PWD}:/srv --pwd /srv --bind /cvmfs --contain --ipc --pid --cleanenv /cvmfs/singularity.opensciencegrid.org/jeffersonlab/clas12software:production
 source /srv/root-6.22.06-build/bin/thisroot.sh
 make -j8
 ```

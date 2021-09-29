@@ -95,6 +95,8 @@ _Starting with some later versions of ROOT, if it is moved after it's built, the
 
 *Similarly, some generators (clas12-elSpectro) that leverage ROOT do not work at runtime if moved after compilation.  A workaround for that is setting `$ROOT_INCLUDE_PATH`, and that is done in the CVMFS environment module for clas12-mcgen.*
 
+*Maybe ROOT should be built with --prefix specified and installed and then it would be easily copiable.  Try that next time.  Another option is chroot.*
+
 ### Dependencies/Requirements
 
 1. ROOT with MathMore and Minuit2

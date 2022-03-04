@@ -4,4 +4,5 @@ lib
 *.root
 *.log
 errors.txt
+.bash_history
 RNDMSTATUS

@@ -29,3 +29,6 @@
 [submodule "clas12-elSpectro"]
 	path = clas12-elSpectro
 	url = https://github.com/dglazier/clas12-elSpectro
+[submodule "MCEGENpiN_radcorr"]
+	path = MCEGENpiN_radcorr
+	url = https://github.com/maksaska/MCEGENpiN_radcorr

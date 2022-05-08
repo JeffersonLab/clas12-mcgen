@@ -13,6 +13,7 @@ name                 | description                                              
 [jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan | rafopar@jlab.org 
 [twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina | skorodum@jlab.org
 [clas12-elspectro]   | General electroproduction final states                         | Derek Glazier      | derek.glazier@glasgow.ac.uk
+[MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov     | davydovm@jlab.org
 
 # Adding or Modifying a Generator
 
@@ -150,4 +151,4 @@ git rm -f path/to/submodule
 [jpsigen]: https://github.com/jeffersonlab/jpsigen
 [twopeg]: https://github.com/skorodumina/twopeg
 [clas12-elspectro]: https://github.com/dglazier/clas12-elspectro/
-
+[MCEGENpiN_radcorr]: https://github.com/Maksaska/MCEGENpiN_radcorr 

@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen
 
 build:
 	mkdir -p bin lib
@@ -11,6 +11,7 @@ build:
 	$(MAKE) -C JPsiGen
 	$(MAKE) -C TCSGen
 	$(MAKE) -C MCEGENpiN_radcorr
+	$(MAKE) -C deep-pipi-gen
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; make nobos ; cd --
 	# clas12-elSpectro uses cmake:
@@ -29,6 +30,7 @@ build:
 	install TCSGen/TCSGen bin
 	install TCSGen/lib/libTCSGen.so lib
 	install MCEGENpiN_radcorr/MCEGENpiN_radcorr bin
+	install deep-pipi-gen/deep-pipi-gen bin
 	rm -rf build
 
 clean:

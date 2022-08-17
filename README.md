@@ -14,6 +14,7 @@ name                 | description                                              
 [twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina | skorodum@jlab.org
 [clas12-elspectro]   | General electroproduction final states                         | Derek Glazier      | derek.glazier@glasgow.ac.uk
 [MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov     | davydovm@jlab.org
+[deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla   | dilinib@jlab.org
 
 # Adding or Modifying a Generator
 
@@ -62,6 +63,8 @@ JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+MCEGENpiN_radcorr | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+deep-pipi-gen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 # Maintanance
 
@@ -152,3 +155,4 @@ git rm -f path/to/submodule
 [twopeg]: https://github.com/skorodumina/twopeg
 [clas12-elspectro]: https://github.com/dglazier/clas12-elspectro/
 [MCEGENpiN_radcorr]: https://github.com/Maksaska/MCEGENpiN_radcorr 
+[deep-pipi-gen]: https://github.com/jeffersonlab/deep-pipi-gen

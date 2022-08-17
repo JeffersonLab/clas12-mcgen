@@ -32,3 +32,6 @@
 [submodule "MCEGENpiN_radcorr"]
 	path = MCEGENpiN_radcorr
 	url = https://github.com/maksaska/MCEGENpiN_radcorr
+[submodule "deep-pipi-gen"]
+	path = deep-pipi-gen
+	url = https://github.com/jeffersonlab/deep-pipi-gen

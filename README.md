@@ -2,19 +2,20 @@ This repository is the collection of generators available in the CLAS12 Docker/S
 
 # Current Generators 
 
-name                 | description                                                    | maintainer         | email             
--------------------- | -------------------------------------------------------------- | ------------------ | ----------------- 
-[clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian      | avakian@jlab.org 
-[claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian      | avakian@jlab.org 
-[dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian      | avakian@jlab.org 
-[genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko   | valerii@jlab.org  
-[inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian      | avakian@jlab.org 
-[tcsgen]             | Timelike Compton Scattering                                    | Rafayel Paremuzyan | rafopar@jlab.org 
-[jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan | rafopar@jlab.org 
-[twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina | skorodum@jlab.org
-[clas12-elspectro]   | General electroproduction final states                         | Derek Glazier      | derek.glazier@glasgow.ac.uk
-[MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov     | davydovm@jlab.org
-[deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla   | dilinib@jlab.org
+name                 | description                                                    | maintainer
+-------------------- | -------------------------------------------------------------- | ------------------
+[clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian
+[claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian
+[dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian
+[genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko
+[inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian
+[tcsgen]             | Timelike Compton Scattering                                    | Rafayel Paremuzyan
+[jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan
+[twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina
+[clas12-elspectro]   | General electroproduction final states                         | Derek Glazier
+[MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov
+[deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla
+[genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
 
 # Adding or Modifying a Generator
 
@@ -22,7 +23,7 @@ name                 | description                                              
 2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
 4. Satisfy the additional requirements described below
-5. Send email to ungaro@jlab.org or baltzell@jlab.org (Mauri or Nathan) with the repository address and the git tag to use
+5. Send email to Mauri (`ungaro at jlab.org`) or Nathan (`baltzell at jlab.org`) with the repository address and the git tag to use
 
 # Requirements
 
@@ -65,6 +66,7 @@ twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 MCEGENpiN_radcorr | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 deep-pipi-gen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+genepi | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 # Maintanance
 
@@ -156,3 +158,4 @@ git rm -f path/to/submodule
 [clas12-elspectro]: https://github.com/dglazier/clas12-elspectro/
 [MCEGENpiN_radcorr]: https://github.com/Maksaska/MCEGENpiN_radcorr 
 [deep-pipi-gen]: https://github.com/jeffersonlab/deep-pipi-gen
+[genepi]: https://github.com/N-Plx/genepi

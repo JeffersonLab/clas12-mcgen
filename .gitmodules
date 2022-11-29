@@ -35,3 +35,6 @@
 [submodule "deep-pipi-gen"]
 	path = deep-pipi-gen
 	url = https://github.com/jeffersonlab/deep-pipi-gen
+[submodule "genepi"]
+	path = genepi
+	url = https://github.com/N-Plx/genepi

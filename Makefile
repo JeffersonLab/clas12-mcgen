@@ -33,6 +33,7 @@ build:
 	install MCEGENpiN_radcorr/MCEGENpiN_radcorr bin
 	install deep-pipi-gen/deep-pipi-gen bin
 	install genepi/genepi bin
+	install generate-seeds.py bin
 	rm -rf build
 
 clean:

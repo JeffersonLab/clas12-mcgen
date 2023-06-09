@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi GiBUU
 
 build:
 	mkdir -p bin lib
@@ -13,6 +13,7 @@ build:
 	$(MAKE) -C MCEGENpiN_radcorr
 	$(MAKE) -C deep-pipi-gen
 	$(MAKE) -C genepi
+	$(MAKE) -C GiBUU
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; $(MAKE) nobos ; cd --
 	# clas12-elSpectro uses cmake:
@@ -34,6 +35,7 @@ build:
 	install deep-pipi-gen/deep-pipi-gen bin
 	install genepi/genepi bin
 	install generate-seeds.py bin
+	install GiBUU/GiBUU.x bin
 	rm -rf build
 
 clean:

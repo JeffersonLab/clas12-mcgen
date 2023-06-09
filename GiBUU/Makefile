@@ -7,18 +7,17 @@ PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 all: $(PACKAGES)
 	$(MAKE) -C release
 	sed -i 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
-	$(MAKE) -C release buildRootTuple
+	+ $(MAKE) -C release buildRootTuple
+	install release/objects/GiBUU.x .
 
 $(PACKAGES):%:%.tar.gz
-	tar -xzvf $<
+	tar -xzvf $< && rm -f $<
 
 $(addsuffix .tar.gz,$(PACKAGES)):
 	wget -N --content-disposition "${URL}?f=$@"
 
-cleanbuild:
+clean:
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
-	rm -rf release/objects
-
-clean: cleanbuild
-	rm -rf $(addsuffix $(RELEASE),$(SYMLINKS)) $(SYMLINKS)
+	rm -rf $(SYMLINKS) $(PACKAGES) libraries$(RELEASE)
+	rm -rf GiBUU.x 
 

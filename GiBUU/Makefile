@@ -3,10 +3,15 @@ URL = https://gibuu.hepforge.org/downloads
 RELEASE = 2021
 SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
+UNAME := $(shell uname)
 
 all: $(PACKAGES)
-	$(MAKE) -C release
+ifeq ($(UNAME),Darwin)
+	sed -i '' 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
+else
 	sed -i 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
+endif
+	+ $(MAKE) -C release
 	+ $(MAKE) -C release buildRootTuple
 	install release/objects/GiBUU.x .
 

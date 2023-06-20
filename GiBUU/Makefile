@@ -11,8 +11,8 @@ ifeq ($(UNAME),Darwin)
 else
 	sed -i 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
 endif
-	+ $(MAKE) -C release
 	+ $(MAKE) -C release buildRootTuple
+	+ $(MAKE) withROOT=1 -C release
 	install release/objects/GiBUU.x .
 
 $(PACKAGES):%:%.tar.gz

@@ -1,4 +1,4 @@
-Just a recipe for building GiBUU.
+Just a recipe for building GENIE.
 
 1. Build the genie-specific dependencies:
  

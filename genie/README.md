@@ -1,3 +1,4 @@
+Just a recipe for building GiBUU.
 
 1. Build the genie-specific dependencies:
  

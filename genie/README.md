@@ -3,7 +3,8 @@
 ## Prerequesites
 1. GSL, not included because it seems to be standard in package managers, e.g., `yum install gsl-devel`
     * Looks like libxml2 is also standard, but currently include in the build procedure below 
-2. Reasonably modern `gcc` and `cmake`
+2. `wget`
+3. Reasonably modern `gcc` and `cmake`
 
 ## Build Procedure
 1. Download and build the genie-specific dependencies:

@@ -7,5 +7,5 @@
 2. ROOT
 3. Reasonably modern `gcc`
 
-## Build procedure
+## Build Procedure
 * `make`

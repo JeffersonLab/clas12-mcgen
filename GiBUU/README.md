@@ -6,3 +6,6 @@
 1. `wget`
 2. ROOT
 3. Reasonably modern `gcc`
+
+## Build procedure
+* `make`

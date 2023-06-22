@@ -15,7 +15,7 @@
 
    `make root ROOTSYS=/path/to/new/ROOT/installation`
 
-3. Build genie:
+3. Download and build genie:
 
    `source ROOTSYS/bin/thisroot.sh`
 

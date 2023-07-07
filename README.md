@@ -16,6 +16,8 @@ name                 | description                                              
 [MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov
 [deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla
 [genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
+GiBUU                | not supported on OSG yet, pending configuration wrapper script |
+GENIE                | not supported on OSG yet, pending configuration wrapper script |
 
 # Adding or Modifying a Generator
 

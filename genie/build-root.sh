@@ -15,20 +15,20 @@ do
     esac
 done
 
-# echo all commands and abort if anything returns non-zero exit code:
-set -x -e
-
 export GCC_VERS=$(gcc --version | head -1 | awk '{print$3}')
 export CXX=`which g++`
 export CC=`which gcc`
 
-STUB=root-${ROOT_VERS}-gcc${GCC_VERS}
+STUB=${ROOT_VERS}-gcc${GCC_VERS}
 
-[ -e root-${ROOT_VERS}.src ] && echo ERROR:  source directory already exists: root-${ROOT_VERS}.src && exit 1
+[ -e ${ROOT_VERS}.src ] && echo ERROR:  source directory already exists: root-${ROOT_VERS}.src && exit 1
 [ -e ${STUB}.build ] && echo ERROR:  build directory already exists: ${STUB}.build && exit 2
 [ -e ${PREFIX}/${STUB} ] && echo ERROR:  install directory already exists: ${PREFIX}/${STUB} && exit 3
 
 touch ${STUB}.log
+
+# echo all commands and abort if anything returns non-zero exit code:
+set -x -e
 
 # Download:
 wget https://root.cern/download/root_v${ROOT_VERS}.source.tar.gz |& tee -a ${STUB}.log

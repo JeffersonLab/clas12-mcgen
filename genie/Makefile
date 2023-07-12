@@ -9,7 +9,7 @@ genie:
 	./build-genie.sh
 
 prune:
-	rm -rf build
+	rm -rf build LHAPDF* libxml* log4cpp* pythia* root* 
 
 clean: prune
 	rm -rf bin lib share include clean

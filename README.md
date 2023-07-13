@@ -35,7 +35,7 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
 - If shared libraries are needed, the build system should put them inside a top level "lib" directory
 - Required environment variables should be described in the repository's README.md
 - Executable should be runnable from any current working directory
-- Have a command-line option to set the output file name, or default to the same name as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
+- The default output LUND filename should be the same as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - The follow command-line arguments are always passed to all generators on OSG:
   - `--trig #` must be honored and used to specify the number of events to generate.
   - `--docker` must be accepted as a valid argument and can be ignored or used for setting conditions for OSG.

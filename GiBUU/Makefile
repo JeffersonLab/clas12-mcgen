@@ -7,9 +7,9 @@ UNAME := $(shell uname)
 
 all: $(PACKAGES)
 ifeq ($(UNAME),Darwin)
-	sed -i '' 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
+	sed -i '' 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
 else
-	sed -i 's/ cmake ../ cmake -DCMAKE_CXX_STANDARD=17 ../' ./libraries/RootTuple/Makefile
+	sed -i 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
 endif
 	+ $(MAKE) -C release buildRootTuple
 	+ $(MAKE) withROOT=1 -C release

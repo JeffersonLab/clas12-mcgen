@@ -32,8 +32,8 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
 - C/C++ or Fortran with a working GNU make or cmake build system compliant with GCC no less than 9.0
 - All python should be python3-compatible
 - An executable with the same name as the github repository name, installed at the top level directory
-- If shared libraries are needed, the build system should put them inside a top level "lib" directory
-- Required environment variables should be described in the repository's README.md
+- Shared libraries produced and required at runtime should be documented in the repository's README.md.
+- Required environment variables should be described in the repository's README.md 
 - Executable should be runnable from any current working directory
 - The default output LUND filename should be the same as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - The follow command-line arguments are always passed to all generators on OSG:

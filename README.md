@@ -31,10 +31,10 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
 
 - C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 9.0
 - The top level README file should contain:
-  - The location of the executable and any shared libraries produced and required at runtime
+  - The location of the executable(s) and any shared libraries produced and required at runtime
   - Required environment variables
   - Documentation on all command-line options
-- An executable with the same name as the github repository name, runnable from any current working directory
+- The primary executable should have the same name as the github repository name and be runnable from any current working directory
 - The default output LUND filename should be the same as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - The follow command-line arguments are always passed to all generators on OSG:
   - `--trig #` must be honored and used to specify the number of events to generate.

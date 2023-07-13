@@ -29,7 +29,7 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
 
 # Requirements
 
-- C/C++ or Fortran with a working GNU make or cmake build system compliant and GCC no less than 9.0
+- C/C++ or Fortran with a working GNU make or cmake build system compliant with GCC no less than 9.0
 - All python should be python3-compatible
 - An executable with the same name as the github repository name, installed at the top level directory
 - If shared libraries are needed, the build system should put them inside a top level "lib" directory

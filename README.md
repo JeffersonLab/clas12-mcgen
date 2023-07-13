@@ -34,6 +34,7 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
   - The location of the built executables
   - The location of shared libraries produced and required at runtime via LD_LIBRARY_PATH
   - Required environment variables
+  - Documentation on all command-line options
 - An executable with the same name as the github repository name, runnable from any current working directory
 - The default output LUND filename should be the same as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - The follow command-line arguments are always passed to all generators on OSG:

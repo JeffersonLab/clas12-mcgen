@@ -31,8 +31,7 @@ GENIE                | not supported on OSG yet, pending configuration wrapper s
 
 - C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 9.0
 - The top level README file should contain:
-  - The location of the built executables
-  - The location of shared libraries produced and required at runtime via LD_LIBRARY_PATH
+  - The location of the executable and any shared libraries produced and required at runtime
   - Required environment variables
   - Documentation on all command-line options
 - An executable with the same name as the github repository name, runnable from any current working directory

@@ -13,4 +13,5 @@ export TCSGEN_DIR=$d/TCSGen
 export TWOPEG_DATA_DIR=$d/twopeg
 export C12ELSPECTRO=$d/clas12-elSpectro
 export ELSPECTRO=$C12ELSPECTRO/elSpectro
+export CLAS_PARMS=$d/onepigen/spp_tbl
 

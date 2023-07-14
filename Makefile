@@ -14,8 +14,7 @@ build:
 	$(MAKE) -C deep-pipi-gen
 	$(MAKE) -C genepi
 	$(MAKE) -C GiBUU
-	# onepigen's Makefile doesn't support parallel:
-	make -C onepigen
+	$(MAKE) -C onepigen
 	# twopeg needs c++17 support:
 	sed -i 's/\(^CXX .*= g++ \)/\1 -std=c++17 /' twopeg/Makefile
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:

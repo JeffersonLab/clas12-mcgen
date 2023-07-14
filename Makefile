@@ -16,6 +16,8 @@ build:
 	$(MAKE) -C GiBUU
 	# onepigen's Makefile doesn't support parallel:
 	make -C onepigen
+	# twopeg needs c++17 support:
+	sed -i 's/\(^CXX .*= g++ \)/\1 -std=c++17 /' twopeg/Makefile
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; $(MAKE) nobos ; cd --
 	# clas12-elSpectro uses cmake:

@@ -38,3 +38,6 @@
 [submodule "genepi"]
 	path = genepi
 	url = https://github.com/N-Plx/genepi
+[submodule "onepigen"]
+	path = onepigen
+	url = https://github.com/tylern4/onepigen.git

@@ -10,7 +10,7 @@ name                 | description                                              
 [genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko
 [inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian
 [tcsgen]             | Timelike Compton Scattering                                    | Rafayel Paremuzyan
-[jpsigen]            | J/Psi                                                          | Rafayel Paremuzyan
+[jpsigen]            | J/Psi photoproduction                                          | Rafayel Paremuzyan
 [twopeg]             | pi+pi- electroproduction off protons                           | Iuliia Skorodumina
 [clas12-elspectro]   | General electroproduction final states                         | Derek Glazier
 [MCEGENpiN_radcorr]  | Exclusive single pion electroproduction based on MAID          | Maksim Davydov

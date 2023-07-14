@@ -17,8 +17,8 @@ name                 | description                                              
 [deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla
 [genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
 [onepigen]           | Single charged pion production based on AO/Daresbury/MAID      | Nick Tyler
-GiBUU                | not supported on OSG yet, pending configuration wrapper script and LUND output |
-GENIE                | not supported on OSG yet, pending configuration wrapper script and LUND output |
+[GiBUU]              | not supported on OSG yet, pending configuration wrapper script and LUND output |
+[GENIE]              | not supported on OSG yet, pending configuration wrapper script and LUND output |
 
 # Adding or Modifying a Generator
 
@@ -168,4 +168,6 @@ git rm -f path/to/submodule
 [deep-pipi-gen]: https://github.com/jeffersonlab/deep-pipi-gen
 [genepi]: https://github.com/N-Plx/genepi
 [onepigen]: https://github.com/tylern4/onepigen
+[GENIE]: https://github.com/GENIE-MC/Generator
+[GiBUU]: https://gibuu.hepforge.org/downloads
 

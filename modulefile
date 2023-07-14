@@ -22,6 +22,7 @@ setenv TWOPEG_DATA_DIR $top/twopeg
 setenv C12ELSPECTRO $top/clas12-elSpectro
 setenv ELSPECTRO $top/clas12-elSpectro/elSpectro
 setenv CLAS_PARMS $top/onepigen
+setenv GENIE $top/genie/genie
 
 # this becomes necessary at some version of ROOT,
 # if builds are moved after compiling:

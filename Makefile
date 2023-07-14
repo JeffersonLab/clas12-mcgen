@@ -14,7 +14,8 @@ build:
 	$(MAKE) -C deep-pipi-gen
 	$(MAKE) -C genepi
 	$(MAKE) -C GiBUU
-	$(MAKE) -C onepigen
+	# onepigen's Makefile doesn't support parallel:
+	make -C onepigen
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
 	cd twopeg ; $(MAKE) nobos ; cd --
 	# clas12-elSpectro uses cmake:

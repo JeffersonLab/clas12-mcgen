@@ -3,6 +3,9 @@ lib
 *.dat
 *.root
 *.log
+*BAK
+*.out
+*.sum
 errors.txt
 .bash_history
 RNDMSTATUS

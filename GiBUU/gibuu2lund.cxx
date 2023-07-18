@@ -1,34 +1,9 @@
-// Include a bunch of packages that we need
-#include <iostream>
-#include <cstdlib>
-#include <chrono>
 #include <TFile.h>
 #include <TTree.h>
-#include <TApplication.h>
-#include <TROOT.h>
-#include <TDatabasePDG.h>
-#include <TLorentzVector.h>
-#include <TVector3.h>
-#include <vector>
-#include <TH1.h>
-#include <TH2.h>
-#include <TH3.h>
 #include <TChain.h>
-#include <TCanvas.h>
-#include <TPaletteAxis.h>
-#include <TBenchmark.h>
-#include <stdlib.h>
-#include "Riostream.h"
-#include "TLine.h"
-#include "TVirtualPad.h"
-#include "TClass.h"
-#include "TVirtualX.h"
-#include "TMath.h"
-#include "TStyle.h"
-#include "TF1.h"
-#include "TRandom.h"
-#include "TRandom3.h"
-#include <fstream>
+#include <TF1.h>
+#include <TRandom.h>
+#include <TRandom3.h>
 
 void gibuu2lund(char* inputfilename, char* outputfilename) {
 

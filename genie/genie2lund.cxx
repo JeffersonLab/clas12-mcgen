@@ -2,8 +2,6 @@
 #include <TTree.h>
 #include <TChain.h>
 #include "TF1.h"
-#include "TRandom.h"
-#include "TRandom3.h"
 
 void genie2lund(char* inputfilename, char* outputfilename) {
 
@@ -33,7 +31,6 @@ void genie2lund(char* inputfilename, char* outputfilename) {
   TF1 *myfuncx = new TF1("myfuncx","TMath::BreitWigner(x, 0.1398, 0.366507 )",-2,2);
   TF1 *myfuncy = new TF1("myfuncy","TMath::BreitWigner(x, -0.0989511, 0.408273 )",-2,2);
   TRandom *r3 = new TRandom3(0);
-  gRandom=r3;
 
   std::cout << "data File has " << locTree->GetEntries()<<" entries " << std::endl;
 

@@ -1,4 +1,7 @@
 
+ROOT_CFLAGS := $(shell root-config --cflags)
+ROOT_LIBS := $(shell root-config --libs)
+
 deps:
 	mkdir -p build && cd build && ../build-deps.sh
 
@@ -13,4 +16,7 @@ prune:
 
 clean: prune
 	rm -rf bin lib share include clean
+
+genie2lund:
+	$(CXX) $(ROOT_CFLAGS) -o genie2lund genie2lund.cxx $(ROOT_LIBS)
 

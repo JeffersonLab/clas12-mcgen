@@ -2,7 +2,8 @@
 #include <TTree.h>
 #include <TChain.h>
 #include <TF1.h>
-#include "TRandom3.h"
+#include <TRandom3.h>
+#include <TRandom.h>
 
 void gibuu2lund(char* inputfilename, char* outputfilename) {
 

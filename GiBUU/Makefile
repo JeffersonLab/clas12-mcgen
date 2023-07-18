@@ -5,6 +5,9 @@ SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 UNAME := $(shell uname)
 
+ROOT_CFLAGS := $(shell root-config --cflags)
+ROOT_LIBS := $(shell root-config --libs)
+
 all: $(PACKAGES)
 ifeq ($(UNAME),Darwin)
 	sed -i '' 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
@@ -25,4 +28,7 @@ clean:
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries$(RELEASE)
 	rm -rf GiBUU.x 
+
+gibuu2lund:
+	$(CXX) $(ROOT_CFLAGS) -o gibuu2lund gibuu2lund.cxx $(ROOT_LIBS)
 

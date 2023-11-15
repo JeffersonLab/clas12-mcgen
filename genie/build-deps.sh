@@ -61,7 +61,7 @@ then
     wget https://root.cern/download/pythia6.tar.gz
     tar -xzvf pythia6.tar.gz
     cd pythia6
-    sed -i 's/^char /extern int /' ./pythia6_common_address.c
+    sed -i 's/^char /extern char /' ./pythia6_common_address.c
     sed -i 's/^int /extern int /' ./pythia6_common_address.c
     ./makePythia6.linuxx8664 || exit 1
     cp libPythia6.so $d/lib

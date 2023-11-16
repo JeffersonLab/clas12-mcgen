@@ -8,7 +8,7 @@ UNAME := $(shell uname)
 ROOT_CFLAGS := $(shell root-config --cflags)
 ROOT_LIBS := $(shell root-config --libs)
 
-all: $(PACKAGES)
+all: $(PACKAGES) gibuu2lund
 ifeq ($(UNAME),Darwin)
 	sed -i '' 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
 else
@@ -27,7 +27,7 @@ $(addsuffix .tar.gz,$(PACKAGES)):
 clean:
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries$(RELEASE)
-	rm -rf GiBUU.x 
+	rm -rf GiBUU.x gibuu2lund
 
 gibuu2lund:
 	$(CXX) $(ROOT_CFLAGS) -o gibuu2lund gibuu2lund.cxx $(ROOT_LIBS)

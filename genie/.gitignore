@@ -1,5 +1,6 @@
 genie
 include
 share
+build
 *~
 *.swp

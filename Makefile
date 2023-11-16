@@ -1,5 +1,5 @@
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi GiBUU onepigen
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi GiBUU onepigen genie
 
 build:
 	mkdir -p bin lib
@@ -15,6 +15,7 @@ build:
 	$(MAKE) -C genepi
 	$(MAKE) -C GiBUU
 	$(MAKE) -C onepigen
+	$(MAKE) -C genie
 	# twopeg needs c++17 support:
 	sed -i 's/\(^CXX .*= g++ \)/\1 -std=c++17 /' twopeg/Makefile
 	# seems twopeg has a non-standard(?) Makefile and requires this instead:
@@ -39,6 +40,7 @@ build:
 	install genepi/genepi bin
 	install generate-seeds.py bin
 	install GiBUU/GiBUU.x bin
+	install GiBUU/gibuu2lund bin
 	install onepigen/onepigen bin
 	install onepigen/onepigen_lund bin
 	rm -rf build

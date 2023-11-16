@@ -63,6 +63,7 @@ then
     cd pythia6
     sed -i 's/^char /extern char /' ./pythia6_common_address.c
     sed -i 's/^int /extern int /' ./pythia6_common_address.c
+    sed -i 's/^extern int pyuppr/int pyuppr /' ./pythia6_common_address.c
     ./makePythia6.linuxx8664 || exit 1
     cp libPythia6.so $d/lib
     cd -

@@ -37,16 +37,21 @@ To run genie you need to first generate a spline file (.xml) which contains the 
 * `${nEvents}` I recommend 250
 * `${target}` should be provided by the following key:
 
-L: strange number (0 for stable nuclei), ZZZ: 3-digit atomic number, AAA: 3-digit mass number, I: isomer number (0 for ground-state nuclei)
+* L: strange number (0 for stable nuclei)
+* ZZZ: 3-digit atomic number
+* AAA: 3-digit mass number
+* I: isomer number (0 for ground-state nuclei)
+
 Relevant targets for RGM:
-      Hydrogen (1H) :       L ZZZ AAA I
-      Deuteron (2H) : -t 10 0 001 002 0
-      Helium-4      : -t 10 0 002 004 0
-      Carbon-12     : -t 10 0 006 012 0
-      Calcium-40    : -t 10 0 020 040 0
-      Calcium-48    : -t 10 0 020 048 0
-      Argon-40      : -t 10 0 018 040 0   
-      Sn-120        : -t 10 0 050 120 0
+| Hydrogen (1H) |   t   | L | ZZZ | AAA | I |
+|---------------|-------|---|-----|-----|---|
+| Deuteron (2H) | -t 10 | 0 | 001 | 002 | 0 |
+| Helium-4      | -t 10 | 0 | 002 | 004 | 0 |
+| Carbon-12     | -t 10 | 0 | 006 | 012 | 0 |
+| Calcium-40    | -t 10 | 0 | 020 | 040 | 0 |
+| Calcium-48    | -t 10 | 0 | 020 | 048 | 0 |
+| Argon-40      | -t 10 | 0 | 018 | 040 | 0 |
+| Sn-120        | -t 10 | 0 | 050 | 120 | 0 |
 
 `${Energy}` is incident beam energy
 `${output_name}` is output file name

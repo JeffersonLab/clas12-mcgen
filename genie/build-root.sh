@@ -11,7 +11,7 @@ while getopts "v:p:d" opt
 do
     case $opt in
         v) ROOT_VERSION=$OPTARG ;;
-        p) INSTALL_DIR=$(realpath $OPTARG) ;;
+        p) INSTALL_DIR=$OPTARG ;;
         d) DRYRUN=1 ;;
         ?) echo "Usage: build-root.sh [-v version] [-p prefix]" && exit 1 ;;
     esac

@@ -19,7 +19,7 @@ do
         p) INSTALL_DIR=$OPTARG ;;
         j) NTHREADS=$OPTARG ;;
         d) DRYRUN=1 ;;
-        ?) echo "Usage: build-root.sh [-d] [-v version] [-p prefix]" && exit 1 ;;
+        ?) echo "Usage: build-root.sh [-d] [-v version] [-p prefix] [-j threads]" && exit 1 ;;
     esac
 done
 

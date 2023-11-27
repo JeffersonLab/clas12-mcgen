@@ -12,13 +12,14 @@ NTHREADS=16
 DRYRUN=0 
 INSTALL_DIR=
 
-while getopts "v:p:j:d" opt
+while getopts "v:p:j:dh" opt
 do
     case $opt in
         v) ROOT_VERSION=$OPTARG ;;
         p) INSTALL_DIR=$OPTARG ;;
         j) NTHREADS=$OPTARG ;;
         d) DRYRUN=1 ;;
+        h) echo "Usage: build-root.sh [-d] [-v version] [-p prefix] [-j threads]" && exit 0 ;;
         ?) echo "Usage: build-root.sh [-d] [-v version] [-p prefix] [-j threads]" && exit 1 ;;
     esac
 done

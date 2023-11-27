@@ -43,7 +43,7 @@ PYTHIA_LIB=$(dirname $(realpath ${BASH_SOURCE[0]}))/lib/libPythia6.so
 [ -e $SOURCE_DIR ] && echo ERROR:  source directory already exists: root-$SOURCE_DIR.src && exit 1
 [ -e $BUILD_DIR ] && echo ERROR:  build directory already exists: $BUILD_DIR && exit 2
 [ -e $INSTALL_DIR ] && echo ERROR:  install directory already exists: $INSTALL_DIR && exit 3
-[ -e $PYTHIA_LIB ] && echo ERROR:  pythia6 library does not exist: $PYTHIA_LIB && exit 4
+[ -e $PYTHIA_LIB ] || echo ERROR:  pythia6 library does not exist: $PYTHIA_LIB && exit 4
 [ -e $LOG_FILE ] && echo ERROR:  log file already exists: $LOG_FILE && exit 5
 
 # Echo all commands and abort if any return non-zero exit code:

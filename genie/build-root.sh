@@ -3,15 +3,15 @@
 # NAB:  Modified from /apps/root/6.26.10 on June 20, 2023
 #
 
-VERSION=6.26.10
-PREFIX=.
+ROOT_VERSION=6.28.06
+INSTALL_DIR=
 DRYRUN=0 
 
 while getopts "v:p:d" opt
 do
     case $opt in
-        v) VERSION=$OPTARG ;;
-        p) PREFIX=$(realpath $OPTARG) ;;
+        v) ROOT_VERSION=$OPTARG ;;
+        p) INSTALL_DIR=$(realpath $OPTARG) ;;
         d) DRYRUN=1 ;;
         ?) echo "Usage: build-root.sh [-v version] [-p prefix]" && exit 1 ;;
     esac
@@ -19,42 +19,46 @@ done
 
 export CXX=`which g++`
 export CC=`which gcc`
-STUB=$(gcc --version | head -1 | awk '{print$3}')
 
-if [ $DRYRUN -ne 0 ]
-then
-    echo ROOT VERSION:       $VERSION
-    echo ROOT INSTALL DIR:   $PREFIX/$STUB
-    exit
-fi
+GCC_VERSION=$(gcc --version | head -1 | awk '{print$3}')
+STUB=$ROOT_VERSION-$GCC_VERSION
+LOG_FILE=./$STUB.log
+SOURCE_DIR=./$STUB.src
+BUILD_DIR=./$STUB.build
+[ "$INSTALL_DIR" = "" ] && INSTALL_DIR=./$STUB
+echo "ROOT_VERSION:  $ROOT_VERSION"
+echo "SOURCE DIR:    $SOURCE_DIR"
+echo "BUILD DIR:     $BUILD_DIR"
+echo "INSTALL DIR:   $INSTALL_DIR"
 
-[ -e ${VERSION}.src ] && echo ERROR:  source directory already exists: root-${VERSION}.src && exit 1
-[ -e ${STUB}.build ] && echo ERROR:  build directory already exists: ${STUB}.build && exit 2
-[ -e ${PREFIX}/${STUB} ] && echo ERROR:  install directory already exists: ${PREFIX}/${STUB} && exit 3
+[ $DRYRUN -ne 0 ] && exit
+[ -e $SOURCE_DIR ] && echo ERROR:  source directory already exists: root-$SOURCE_DIR.src && exit 1
+[ -e $BUILD_DIR ] && echo ERROR:  build directory already exists: $BUILD_DIR && exit 2
+[ -e $INSTALL_DIR ] && echo ERROR:  install directory already exists: $INSTALL_DIR && exit 3
 
-touch ${STUB}.log
+touch $LOG_FILE
 
 # echo all commands and abort if anything returns non-zero exit code:
 set -x -e
 
 # Download:
-wget https://root.cern/download/root_v${VERSION}.source.tar.gz |& tee -a ${STUB}.log
-tar xzf root_v${VERSION}.source.tar.gz |& tee -a ${STUB}.log
-mv root-${VERSION} root-${VERSION}.src |& tee -a ${STUB}.log
+wget https://root.cern/download/root_v$ROOT_VERSION.source.tar.gz |& tee -a $LOG_FILE
+tar xzf root_v$ROOT_VERSION.source.tar.gz |& tee -a $LOG_FILE
+mv root-$ROOT_VERSION $SOURCE_DIR |& tee -a $LOG_FILE
 
 # Configure:
 d=$(dirname $(realpath ${BASH_SOURCE[0]}))
-cmake -S root-${VERSION}.src -B ${STUB}.build \
- -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_PREFIX=${PREFIX}/${STUB} -Dbuiltin_glew=ON \
+cmake -S $SOURCE_DIR -B $BUILD_DIR \
+ -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_INSTALL_DIR=$INSTALL_DIR -Dbuiltin_glew=ON \
  -Dpythia6=ON -DPYTHIA6_LIBRARY=$d/lib/libPythia6.so \
- |& tee -a ${STUB}.log
+ |& tee -a $LOG_FILE
 # seems extrememly standard on linux distributions, no need to use local install:
 # -DGSL_DIR=$d
 
 # Build:
-cmake --build ${STUB}.build --target install -- -j32 |& tee -a ${STUB}.log
+cmake --build $BUILD_DIR --target install -- -j32 |& tee -a $LOG_FILE
 
 echo '\n\n###############################################'
-echo ROOTSYS=${PREFIX}/${STUB}
+echo "INSTALL DIR:   $INSTALL_DIR"
 echo '###############################################'
 

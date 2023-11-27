@@ -65,7 +65,7 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR \
 cmake --build $BUILD_DIR --target install -- -j$NTHREADS |& tee -a $LOG_FILE || exit 99
 
 # Install Pythia in ROOT's lib:
-cp -f $d/lib/libPythia6.so $INSTALL_DIR/lib
+cp -f $PYTHIA_LIB $INSTALL_DIR/lib
 
 echo '\n\n###############################################'
 echo "SUCCESS - INSTALL DIR:   $INSTALL_DIR"

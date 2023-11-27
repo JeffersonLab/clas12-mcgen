@@ -13,7 +13,7 @@ do
         v) ROOT_VERSION=$OPTARG ;;
         p) INSTALL_DIR=$OPTARG ;;
         d) DRYRUN=1 ;;
-        ?) echo "Usage: build-root.sh [-v version] [-p prefix]" && exit 1 ;;
+        ?) echo "Usage: build-root.sh [-d] [-v version] [-p prefix]" && exit 1 ;;
     esac
 done
 

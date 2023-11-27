@@ -17,7 +17,7 @@ prune:
 	rm -rf build LHAPDF* libxml* log4cpp* pythia* root* 
 
 clean: prune
-	rm -rf bin lib share include clean genie
+	rm -rf bin lib share include clean genie *.src *.build *.log
 
 genie2lund:
 	mkdir -p bin

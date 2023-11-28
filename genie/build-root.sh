@@ -57,8 +57,11 @@ mv root-$ROOT_VERSION $SOURCE_DIR |& tee -a $LOG_FILE || exit 97
 
 # Configure:
 cmake -S $SOURCE_DIR -B $BUILD_DIR \
- -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_INSTALL_DIR=$INSTALL_DIR -Dbuiltin_glew=ON \
- -Dpythia6=ON -DPYTHIA6_LIBRARY=$PYTHIA_LIB \
+ -DCMAKE_CXX_STANDARD=17 \
+ -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
+ -Dbuiltin_glew=ON \
+ -Dpythia6=ON \
+ -DPYTHIA6_LIBRARY=$PYTHIA_LIB \
  |& tee -a $LOG_FILE || exit 98
 
 # Build:

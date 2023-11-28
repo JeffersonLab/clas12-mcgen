@@ -46,7 +46,7 @@ void genie2lund(char* inputfilename, char* outputfilename) {
     Int_t nParticles = 0;
     for(Int_t i_ptcle = 0; i_ptcle < sizeof(Pz)/sizeof(Pz[0]); i_ptcle++){
       if(Energy[i_ptcle] < 0.0001)continue; // This is annoying, but GENIE's gst file saves everything as an array, which is a pain to deal with
-      nParticles = nParticles++;
+      nParticles++;
     }
 
     vertex_x=myfuncx->GetRandom();

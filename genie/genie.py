@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+import os
+import sys
+import time
+import random
+import argparse
+import subprocess
+
+def run_command(cmd, dryrun=False):
+    print(' '.join(cmd))
+    if not dryrun:
+        p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
+        for line in iter(p.stdout.readline, ''):
+            if len(line.strip())>0:
+                print((line.rstrip()))
+        p.wait()
+        return p.returncode == 0
+    return True
+
+def generate_splines(opt):
+    cmd = 'gmkspl -n %d -p %d -t %d -e %.3f'%(opt.trig,opt.probe,opt.target,opt.energy)
+    cmd += ' -o %s --tune %s --event-generator-list %s'%(opt.xml,opt.tune,opt.list)
+    return run_command(cmd.split(), opt.dryrun)
+
+def generate_events(opt):
+    cmd = 'gevgen -n %d -p %d -t %d -o %s -e %.3f'%(opt.trig,opt.probe,opt.target,opt.ghep,opt.energy)
+    cmd += ' --seed %d --tune %s --cross-sections %s'%(opt.seed,opt.tune,opt.xml)
+    cmd += ' --event-generator-list %s'%(opt.list)
+    return run_command(cmd.split(), opt.dryrun)
+
+def convert_to_root(opt):
+    cmd = 'gntpc -i %s -o %s -f gst'%(opt.ghep,opt.gntp)
+    return run_command(cmd.split(), opt.dryrun)
+
+def convert_to_lund(opt):
+    cmd = 'genie2lund %s %s'%(opt.gntp,opt.lund)
+    return run_command(cmd.split(), opt.dryrun)
+
+example = 'genie.py --trig 125 --probe 11 --target 1000010020 --energy 11.1'
+
+cli = argparse.ArgumentParser(description='Run all genie event generator steps, ending with LUND output.',epilog='For example, \"%s\"'%example)
+cli.add_argument('--trig',metavar='#',help='number of events',type=int,required=True)
+cli.add_argument('--target',metavar='#',help='target PDG',type=int,required=True)
+cli.add_argument('--energy',metavar='#.#',help='probe energy in GeV',type=float,required=True)
+cli.add_argument('--probe',metavar='#',help='probe PDG',type=int,default=11)
+cli.add_argument('--tune',help='genie tune',default='G18_10a_02_11a')
+cli.add_argument('--splines',metavar='PATH',help='splines directory (else generate the spline)',default=None)
+cli.add_argument('--seed',metavar='#',help='random number seed',type=int,default=None)
+cli.add_argument('--docker',help='ignored',action='store_true')
+cli.add_argument('--dryrun',default=False,action='store_true')
+
+opt = cli.parse_opt(sys.argv[1:])
+
+stub = '%d-%d-%.0f-%s'%(opt.probe,opt.target,1000*opt.energy,opt.tune)
+opt.xml = 'spl-%s.xml'%stub
+opt.ghep = 'ghep-%s.root'%stub
+opt.gntp = 'gntp-%s.root'%stub
+opt.lund = 'lund-%s.dat'%stub
+opt.list = 'EM'
+
+if not opt.dryrun:
+    if os.path.exists(opt.ghep):
+        cli.error('File already exists:  '+opt.ghep)
+    if os.path.exists(opt.gntp):
+        cli.error('File already exists:  '+opt.gntp)
+    if os.path.exists(opt.lund):
+        cli.error('File already exists:  '+opt.lund)
+
+if opt.seed is None:
+    random.seed(int(time.time()*1e6))
+    opt.seed = random.randint(1e9,0x7FFFFFFF)
+
+if opt.splines is None:
+    if os.path.exists(opt.xml):
+        print('Using splines from local directory:  ./%s'%opt.xml)
+    else:
+        generate_splines(opt)
+else:
+    opt.xml = opt.splines + '/' + opt.xml
+    if not os.path.exists(opt.xml):
+        cli.error('Missing splines file:  '+opt.xml)
+
+generate_events(opt)
+convert_to_root(opt)
+convert_to_lund(opt)
+

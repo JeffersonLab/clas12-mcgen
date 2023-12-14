@@ -1,6 +1,6 @@
 
 URL = https://gibuu.hepforge.org/downloads
-RELEASE = 2021
+RELEASE = 2023
 SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 UNAME := $(shell uname)

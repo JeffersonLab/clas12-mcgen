@@ -1,0 +1,194 @@
+!--------------------------------------------------------- -*- fortran -*- ----
+! sample jobcard for high energy lepton on NNN target
+! specialised for EXPT calculations
+!------------------------------------------------------------------------------
+! please visit the GiBUU homepage for further information:
+! https://gibuu.hepforge.org
+!------------------------------------------------------------------------------
+
+! file: ./inputOutput/input.f90
+&input
+      eventtype           = 14 ! HiLepton
+      numEnsembles=
+      length_perturbative=
+      numTimeSteps        = 200
+      delta_T             = 0.1 ! time step size
+      num_runs_SameEnergy = 1 ! number of runs per energy
+      localEnsemble       = .TRUE.
+      freezeRealParticles = .FALSE. !.TRUE.
+      DoPrLevel(1)        = .FALSE. ! set this for production runs
+      DoPrLevel(2)        = .FALSE. ! set this for production runs
+      path_To_Input=
+/
+
+! file: ./density/nucleus.f90
+&target
+!     fermiMotion = .FALSE.
+      target_Z=
+      target_A=
+/
+
+! file: ./init/initHiLepton.f90
+&HiLeptonNucleus
+      shadow=
+      DoStatistics = T ! additional output
+
+      iExperiment=
+      Ebeam= !Beam energy in GeV
+!     user_numin   = 2.2
+!     user_costmin = 0.0
+!     user_costmax = 0.9962 !  lower limit 5°
+      user_qsqmin  = 1.0
+!     user_qsqmax  = 4.1
+!     user_maxw    = 1e-3 ! internal parameter, cf. initHiLep.AdjustMaxW.txt
+/
+
+! file: ./analysis/HiLeptonAnalysis.f90
+&HiLepton_Analysis
+!     DoLeptonKinematics = T
+!     DoHadronKinematics = T
+!     DoTimes            = T
+!     DoOutChannels      = T
+!     DoInvMasses        = T
+!     DoFindRho0         = T
+!     DoClasie           = T
+!     DoMorrow           = T
+!     DoClassifyFirst    = T
+/
+
+! file: ./density/density.f90
+&initDensity
+      densitySwitch = 2 ! 2: static density
+/
+
+! file: ./density/pauliBlocking.f90
+&initPauli
+      pauliSwitch = 2 ! 0: no Pauli blocking, 1: dynamic, 2: analytic
+/
+
+! file: ./numerics/random.f90
+&initRandom
+      SEED= ! Seed for the random number
+/
+
+! file: code/database/particleProperties.f90
+&ModifyParticles
+      stabilityFlag(32) = 4   ! Enable Lambda decay
+      mass(32) = 1.115683
+      width(32)=2.502d-15
+/
+
+! file: ./collisions/twoBodyReactions/HiEnergy/DoCollTools.f90
+&pythia
+      MSEL=2
+
+      MSTU(11)=12
+      MSTU(112)=4
+      MSTU(113)=4
+      MSTU(114)=4
+
+      MSTJ(12)=2
+      MSTJ(45)=4
+
+      MSTP(17)=6
+      MSTP(19)=1
+      MSTP(20)=0
+      MSTP(22)=4
+      MSTP(23)=0
+      MSTP(38)=3
+      MSTP(51)=
+      MSTP(52)=2
+      MSTP(58)=3
+      MSTP(61)=2
+      MSTP(71)=1
+      MSTP(81)=0
+      MSTP(82)=1
+      MSTP(92)=4
+      MSTP(101)=1
+
+      PARJ(2)=0.3
+      PARJ(3)=0.4
+      PARJ(4)=0.05
+      PARJ(5)=0.5
+      PARJ(6)=0.5
+      PARJ(7)=0.5
+      PARJ(11)=0.7
+      PARJ(12)=0.75
+      PARJ(14)=0.0
+      PARJ(15)=0.0
+      PARJ(16)=0.0
+      PARJ(17)=0.0
+      PARJ(21)=0.64
+      PARJ(23)=0.01
+      PARJ(24)=2.0
+!!    PARJ(33)=0.3
+      PARJ(41)=1.2
+      PARJ(42)=0.58
+
+!!    PARP(2)=2.0
+      PARP(18)=0.17
+      PARP(62)=0.3
+      PARP(65)=0.3
+      PARP(89)=1000.
+      PARP(91)= !D=0.44 ! width intrinsic kT
+      PARP(92)= !D=0.44 ! width intrinsic kT
+      PARP(99)=0.40
+      PARP(102)=0.4
+      PARP(104)=0.3
+      PARP(111)=0.0
+      PARP(161)=2.69
+      PARP(162)=24.6
+      PARP(163)=18.8
+      PARP(165)=0.33
+      PARP(166)=0.67597
+
+!!    CKIN(1)=1.0 !Lower limit invariant mass = sqrt(s), m^\hat
+!!    CKIN(39)=3.6 !Lower W2 cut
+!!    CKIN(65)=0.8  !Lower Q2 cut
+!!    CKIN(67)=0.8  !Lower Q2 cut
+!!    CKIN(69)=0.0872 !Lower limit lepton scat angle theta
+!!    CKIN(70)=3.1416 !Upper limit lepton scat angle theta
+!!    CKIN(77)=1.8  !Lower limit W
+
+      MDCY(32,1) = 1   ! Enable lambda decay in Pythia
+/
+
+&NuclearPDF
+      NuclearPDFtype=
+/
+
+! file: ./potential/baryonPotential.f90
+&baryonPotential
+      noPerturbativePotential = T ! perturbative baryons feel no potential
+/
+
+! file: ./potential/mesonPotential.f90
+&mesonPotential
+      noPerturbativePotential = T ! perturbative mesons feel no potential
+/
+
+! file: ./collisions/twoBodyReactions/master_2Body.f90
+&master_2Body
+      correctEnergy_message = .false. ! reduce verbosity
+/
+
+! file: ./collisions/collisionTerm.f90
+&collisionterm
+      energyCheck = 0.100
+/
+
+! file: ./collisions/insertion.f90
+&insertion
+      minimumEnergy = 0.100 ! minimal kinetic energy of produced nucleons (GeV)
+/
+
+! file: ./collisions/twoBodyReactions/hadronFormation.f90
+&hadronformation
+      useJetSetVec=
+/
+
+! file: ./analysis/EventOutputAnalysis.f90
+&EventOutput
+      WritePerturbativeParticles = T ! if you want that output
+      EventFormat                = 4 ! 1=LesHouches(default), 2=Oscar, 3=Shanghai, 4=ROOT
+/

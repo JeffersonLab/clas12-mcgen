@@ -48,10 +48,10 @@ def get_config(template, substitutions):
                     line += substitutions.get(k)
             yield line.rstrip()
 
-def run_command(cmd, dryrun):
+def run_command(cmd, dryrun, stdin=None):
     print(' '.join(cmd))
     if not dryrun:
-        p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
+        p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
         for line in iter(p.stdout.readline, ''):
             if len(line.strip())>0:
                 print((line.rstrip()))
@@ -113,6 +113,9 @@ config_path = './gibuu-%d.opt'%args.seed
 if not args.dryrun:
     with open(config_path,'w') as config_file:
         config_file.write(('\n'.join(config)))
-result = run_command(['GiBUU.x','<',config_path], args.dryrun)
-result = run_command(['gibuu2lund','gibuu.txt'], args.dryrun)
+
+with open(config_path,'r') as config_file:
+    result = run_command(['GiBUU.x'], args.dryrun, config_file)
+
+#result = run_command(['gibuu2lund','gibuu.txt'], args.dryrun)
 

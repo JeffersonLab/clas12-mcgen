@@ -100,10 +100,10 @@ substitutions = {
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
     'Ebeam' : str(args.ebeam),
+    'iExperiment' : '4',
     #
     # Are these for custom version of GiBUU?
     #'NNN' : args.targ,
-    #'iExperiment=' : '4',
     #'EXPT' : 'clas11',
     #
 }

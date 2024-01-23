@@ -1,5 +1,8 @@
 bin
 lib
+share
+include
+lhapdf
 *.dat
 *.root
 *.log

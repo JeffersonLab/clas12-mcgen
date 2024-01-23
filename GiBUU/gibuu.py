@@ -1,10 +1,16 @@
+#!/usr/bin/env python3
 import os
 import sys
+import time
 import argparse
-import tempfile
 import subprocess
 
-config_template = os.path.dirname(__file__)+'/gibuu_template.opt'
+#
+# extracted from https://github.com/alaoui-ah/GiBUU/tree/main/run_gibuu 
+#
+
+config_template = os.getenv('GIBUU','.')+'/gibuu_template.opt'
+buu_dir = os.getenv('GIBUU','.')+'/buuinput'
 
 target_choices = {
     'p' : {'A':'1','Z':'1','pdfset':'3000000','numEnsem':'6000','lenPert':'15','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
@@ -25,30 +31,67 @@ target_choices = {
     'Pb': {'A':'207','Z':'82','pdfset':'3004500','numEnsem':'100','lenPert':'4000','shadow':'T','nuclPDF':'1','useJetSetVec':'T'}
 }
 
+def check_executable(exe):
+    try:
+        subprocess.check_output(['which', exe])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+def get_config(template, substitutions):
+    with open(template,'r') as f:
+        for line in f.readlines():
+            if line.find('=') > 0:
+                k = line[:line.find('=')].strip()
+                if k in substitutions:
+                    line = line[:line.find('=')+1]
+                    line += substitutions.get(k)
+            yield line.rstrip()
+
+def run_command(cmd, dryrun):
+    print(' '.join(cmd))
+    if not dryrun:
+        p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
+        for line in iter(p.stdout.readline, ''):
+            if len(line.strip())>0:
+                print((line.rstrip()))
+        p.wait()
+        return p.returncode == 0
+    return True
+
 cli = argparse.ArgumentParser()
-cli.add_argument('-ebeam', required=True, help='beam energy in GeV', type=float)
+cli.add_argument('-ebeam', required=True, help='beam energy (units=GeV)', type=float)
 cli.add_argument('-targ', required=True, choices=target_choices.keys())
-cli.add_argument('-tgzpos', required=True, help='Target z position', type=float)
-cli.add_argument('-tgzlen', required=True, help='Target z length', type=float)
-cli.add_argument('-tgrad', required=True, help='Target Radius', type=float)
-cli.add_argument('-kt', required=True, help='kt value', type=float)
-cli.add_argument('-seed', default=0, help='RNG seed, defaults to timestamp', type=int)
-cli.add_argument('-docker', default=False, action='store_true')
+cli.add_argument('-kt', required=True, help='kt value (units=?)', type=float)
+cli.add_argument('-seed', default=int(time.time()), help='random number generator seed (default=clock)', type=int)
+cli.add_argument('-dryrun', default=False, action='store_true')
+cli.add_argument('-docker', default=False, help='ignored', action='store_true')
 args = cli.parse_args(sys.argv[1:])
 
-target = argparse.Namespace(**(target_choices[args.targ]))
+if not os.path.isdir(buu_dir):
+    print('ERROR:  could not find \'buuinput\' subdirectory in $GIBUU or .')
+    sys.exit(1)
 
-buuDir = '.'
+if not os.path.isfile(config_template):
+    print('ERROR:  could not find \'gibuu_template.opt\' in $GIBUU or .')
+    sys.exit(2)
+
+if not check_executable('GiBUU.x'):
+    print('ERROR:  could not find \'GiBUU.x\' in $PATH')
+    sys.exit(3)
+
+if not check_executable('gibuu2lund'):
+    print('ERROR:  could not find \'gibuu2lund\' in $PATH')
+    sys.exit(4)
+
+target = argparse.Namespace(**(target_choices[args.targ]))
 
 substitutions = {
     'numEnsembles' : target.numEnsem,
     'length_perturbative' : target.lenPert,
     'target_Z' : target.Z,
     'target_A' : target.A,
-    'NNN' : args.targ,
-    #'iExperiment=' : '4',
-    #'EXPT' : 'clas11',
-    'path_To_Input' : f'\'{buuDir}\'',
+    'path_To_Input' : f'\'{buu_dir}\'',
     'shadow' : target.shadow,
     'SEED' : str(args.seed),
     'useJetSetVec' : target.useJetSetVec,
@@ -56,21 +99,20 @@ substitutions = {
     'MSTP(51)' : target.pdfset,
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
-    'Ebeam' : str(args.ebeam)
+    'Ebeam' : str(args.ebeam),
+    #
+    # Are these for custom version of GiBUU?
+    #'NNN' : args.targ,
+    #'iExperiment=' : '4',
+    #'EXPT' : 'clas11',
+    #
 }
 
-def get_config(substitutions):
-    with open(config_template,'r') as f:
-        for line in f.readlines():
-            for k,v in substitutions.items():
-                line = line.strip().replace(k,str(v))
-            yield line
-
-with open('./gibuu.opt','w') as config_file:
-    config = list(get_config(substitutions))
-    config_file.write(('\n'.join(config)))
-    config_file.flush()
-    #print(subprocess.check_output(['cat',config_file.name]))
-    #cmd=['GiBUU.x','<',config_file.name]
-    #print(' '.join(cmd))
+config = list(get_config(config_template, substitutions))
+config_path = './gibuu-%d.opt'%args.seed
+if not args.dryrun:
+    with open(config_path,'w') as config_file:
+        config_file.write(('\n'.join(config)))
+result = run_command(['GiBUU.x','<',config_path], args.dryrun)
+result = run_command(['gibuu2lund','gibuu.txt'], args.dryrun)
 

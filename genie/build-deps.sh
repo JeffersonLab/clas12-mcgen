@@ -30,7 +30,7 @@ then
     make -j $n || exit 1
     make -j $n install || exit 1
     cd -
-#fi
+fi
 #if [ "$#" -eq 0 ] || [ "$1" == "gsl" ]
 #then
     # GSL ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -42,19 +42,19 @@ then
     #make -j $n || exit 1
     #make -j $n install || exit 1
     #cd -
-fi
-if [ "$#" -eq 0 ] || [ "$1" == "libxml2" ]
-then
-    # LIBXML2 ::::::::::::::::::::::::::::::::::::::::::::
-    # the standard URL finds bad mirrors, so we use a particular mirror:
-    wget http://mirror.umd.edu/gnome/sources/libxml2/2.11/libxml2-2.11.0.tar.xz
-    tar -xJvf libxml2-2.11.0.tar.xz
-    cd libxml2-2.11.0
-    ./configure --prefix=$d --without-python || exit 1
-    make -j $n || exit 1
-    make -j $n install || exit 1
-    cd -
-fi
+#fi
+#if [ "$#" -eq 0 ] || [ "$1" == "libxml2" ]
+#then
+#    # LIBXML2 ::::::::::::::::::::::::::::::::::::::::::::
+#    # the standard URL finds bad mirrors, so we use a particular mirror:
+#    wget http://mirror.umd.edu/gnome/sources/libxml2/2.11/libxml2-2.11.0.tar.xz
+#    tar -xJvf libxml2-2.11.0.tar.xz
+#    cd libxml2-2.11.0
+#    ./configure --prefix=$d --without-python || exit 1
+#    make -j $n || exit 1
+#    make -j $n install || exit 1
+#    cd -
+#fi
 if [ "$#" -eq 0 ] || [ "$1" == "pythia6" ]
 then
     # PYTHIA :::::::::::::::::::::::::::::::::::::::::::::

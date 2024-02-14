@@ -7,7 +7,7 @@ export CXX=`which g++`
 export CC=`which gcc`
 
 GCC_VERSION=$(gcc --version | head -1 | awk '{print$3}')
-ROOT_VERSION=6.28.06
+ROOT_VERSION=6.30.04
 NTHREADS=16
 DRYRUN=0 
 INSTALL_DIR=
@@ -60,6 +60,8 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR \
  -DCMAKE_CXX_STANDARD=17 \
  -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
  -Dbuiltin_glew=ON \
+ -Dmathmore=ON \
+ -Dfftw3=ON \
  -Dpythia6=ON \
  -DPYTHIA6_LIBRARY=$PYTHIA_LIB \
  |& tee -a $LOG_FILE || exit 98

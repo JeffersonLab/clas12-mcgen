@@ -1,0 +1,9 @@
+#!/bin/bash
+d=$(dirname $(realpath ${BASH_SOURCE[0]}))
+n=32
+wget 'https://lhapdf.hepforge.org/downloads/?f=LHAPDF-6.5.4.tar.gz' -O LHAPDF-6.5.4.tar.gz
+tar -xzvf LHAPDF-6.5.4.tar.gz
+cd LHAPDF-6.5.4
+./configure --prefix=$d/../ --disable-python || exit 1
+make -j $n || exit 1
+make -j $n install || exit 1

@@ -1,6 +1,7 @@
 
-URL = https://gibuu.hepforge.org/downloads
 RELEASE = 2023
+PATCH = 03
+URL = https://gibuu.hepforge.org/downloads?f=archive/r${RELEASE}_${PATCH}/
 SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 UNAME := $(shell uname)
@@ -23,7 +24,7 @@ $(PACKAGES):%:%.tar.gz
 	tar -xzvf $< && rm -f $<
 
 $(addsuffix .tar.gz,$(PACKAGES)):
-	wget -N --content-disposition "${URL}?f=$@"
+	wget -N --content-disposition "${URL}$@"
 
 clean:
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))

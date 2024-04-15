@@ -43,11 +43,9 @@ buuDir = '.'
 substitutions = {
     'numEnsembles' : target.numEnsem,
     'length_perturbative' : target.lenPert,
-    'target_Z' : target.Z,
-    'target_A' : target.A,
+    'Z' : target.Z,
+    'A' : target.A,
     'NNN' : args.targ,
-    #'iExperiment=' : '4',
-    #'EXPT' : 'clas11',
     'path_To_Input' : f'\'{buuDir}\'',
     'shadow' : target.shadow,
     'SEED' : str(args.seed),
@@ -56,7 +54,9 @@ substitutions = {
     'MSTP(51)' : target.pdfset,
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
-    'Ebeam' : str(args.ebeam)
+    'Ebeam' : str(args.ebeam),
+    #'iExperiment=' : '4',
+    #'EXPT' : 'clas11',
 }
 
 def get_config(substitutions):

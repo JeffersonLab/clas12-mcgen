@@ -11,21 +11,27 @@
       eventtype           = 14 ! HiLepton
       numEnsembles=
       length_perturbative=
-      numTimeSteps        = 200
-      delta_T             = 0.1 ! time step size
+      numTimeSteps        = 400
+      delta_T             = 0.05 ! time step size
       num_runs_SameEnergy = 1 ! number of runs per energy
       localEnsemble       = .TRUE.
       freezeRealParticles = .FALSE. !.TRUE.
       DoPrLevel(1)        = .FALSE. ! set this for production runs
       DoPrLevel(2)        = .FALSE. ! set this for production runs
       path_To_Input=
+      version = 2023
 /
 
 ! file: ./density/nucleus.f90
 &target
 !     fermiMotion = .FALSE.
-      target_Z=
-      target_A=
+      Z=
+      A=
+/
+
+! file: code/potential/coulomb/coulomb.f90
+&coulomb
+      coulombFlag = T
 /
 
 ! file: ./init/initHiLepton.f90

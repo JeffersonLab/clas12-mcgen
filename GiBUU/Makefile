@@ -1,34 +1,46 @@
 
-URL = https://gibuu.hepforge.org/downloads
 RELEASE = 2023
+PATCH = 03
 SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
-UNAME := $(shell uname)
 
-ROOT_CFLAGS := $(shell root-config --cflags)
-ROOT_LIBS := $(shell root-config --libs)
-
-all: $(PACKAGES) gibuu2lund
-ifeq ($(UNAME),Darwin)
-	sed -i '' 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
-else
-	sed -i 's/ cmake / cmake -DCMAKE_CXX_STANDARD=17 /' ./libraries/RootTuple/Makefile
-endif
+all: $(PACKAGES) gibuu2lund patch
 	+ $(MAKE) -C release buildRootTuple
-	+ $(MAKE) withROOT=1 -C release
+	+ $(MAKE) withROOT=1 -C release PDF=LHAPDF
 	install release/objects/GiBUU.x .
 
-$(PACKAGES):%:%.tar.gz
-	tar -xzvf $< && rm -f $<
+prep: $(PACKAGES)
+
+download: $(addsuffix .tar.gz,$(PACKAGES))
+	for pdf in $(PDFSETS); do\
+		wget -N $$pdf; \
+	done
+
+release$(RELEASE): release$(RELEASE).tar.gz
+	@ [ -e $@ ] || tar -xzvf $<
+
+buuinput$(RELEASE): buuinput$(RELEASE).tar.gz
+	@ [ -e $@ ] || tar -xzvf $<
+
+libraries$(RELEASE)_RootTuple: libraries$(RELEASE)_RootTuple.tar.gz
+	@ [ -e libraries${RELEASE} ] || tar -xzvf $<
 
 $(addsuffix .tar.gz,$(PACKAGES)):
-	wget -N --content-disposition "${URL}?f=$@"
-
-clean:
-	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
-	rm -rf $(SYMLINKS) $(PACKAGES) libraries$(RELEASE)
-	rm -rf GiBUU.x gibuu2lund
+	wget -N --content-disposition "https://gibuu.hepforge.org/downloads?f=archive/r${RELEASE}_${PATCH}/$@"
 
 gibuu2lund:
-	$(CXX) $(ROOT_CFLAGS) -o gibuu2lund gibuu2lund.cxx $(ROOT_LIBS)
+	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --libs)
+
+patch: $(PACKAGES)
+	cp -f FindROOT.cmake libraries/RootTuple/RootTuple-master/cmake/Modules/FindROOT.cmake
+	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
+	patch -p 0 < NuclearPDF.f90.patch
+	#ln -s ./lib/*.so ./lib
+
+clean:
+	rm -rf $(SYMLINKS) $(PACKAGES) libraries${RELEASE}
+	rm -rf GiBUU.x gibuu2lund
+
+tarclean: clean
+	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
 

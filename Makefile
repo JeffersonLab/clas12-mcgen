@@ -1,4 +1,6 @@
 
+TOP = $(shell pwd)
+
 SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi GiBUU onepigen genie
 
 build:
@@ -46,8 +48,18 @@ build:
 	rm -rf build
 
 clean:
-	rm -rf bin lib build
+	rm -rf bin lib build share include etc
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
+
+lhapdf:
+	$(eval V := 6.5.4)
+	wget https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
+	tar -xzvf LHAPDF-${V}.tar.gz
+	cd LHAPDF-6.5.4 && ./configure --prefix=${TOP} --disable-python
+	make -j 8 -C LHAPDF-${V}
+	make -j 8 -C LHAPDF-${V} install
+	rm -rf LHAPDF*
+
 

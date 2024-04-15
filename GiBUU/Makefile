@@ -33,9 +33,9 @@ gibuu2lund:
 
 patch: $(PACKAGES)
 	cp -f FindROOT.cmake libraries/RootTuple/RootTuple-master/cmake/Modules/FindROOT.cmake
-#	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
+	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
 	patch -p 0 < NuclearPDF.f90.patch
-	cd release/objects/LIB/lib && ln -s ../../../../../lib/*.so .
+	cd release/objects/LIB/lib && ln -s ../../../../../lib/lib* .
 
 clean:
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries${RELEASE}

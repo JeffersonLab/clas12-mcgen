@@ -33,14 +33,14 @@ gibuu2lund:
 
 patch: $(PACKAGES)
 	cp -f FindROOT.cmake libraries/RootTuple/RootTuple-master/cmake/Modules/FindROOT.cmake
-	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
+#	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
 	patch -p 0 < NuclearPDF.f90.patch
-	#ln -s ./lib/*.so ./lib
+	cd release/objects/LIB/lib && ln -s ../../../../../lib/*.so .
 
 clean:
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries${RELEASE}
 	rm -rf GiBUU.x gibuu2lund
 
-tarclean: clean
+purge: clean
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
 

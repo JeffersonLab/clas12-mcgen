@@ -16,3 +16,7 @@ export ELSPECTRO=$C12ELSPECTRO/elSpectro
 export CLAS_PARMS=$d/onepigen
 export GENIE=$d/genie/genie
 
+export PYTHONPATH=$d/lib64/python3.9/site-packages:${PYTHONPATH}
+
+export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
+

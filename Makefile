@@ -57,7 +57,7 @@ lhapdf:
 	$(eval V := 6.5.4)
 	wget https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
 	tar -xzvf LHAPDF-${V}.tar.gz
-	cd LHAPDF-6.5.4 && ./configure --prefix=${TOP} --disable-python
+	cd LHAPDF-6.5.4 && ./configure --prefix=${TOP}
 	make -j 8 -C LHAPDF-${V}
 	make -j 8 -C LHAPDF-${V} install
 	rm -rf LHAPDF*

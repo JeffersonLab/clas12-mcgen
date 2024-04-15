@@ -1,8 +1,7 @@
+#!/usr/bin/env python3
 import os
 import sys
 import argparse
-import tempfile
-import subprocess
 
 config_template = os.path.dirname(__file__)+'/gibuu_template.opt'
 
@@ -62,14 +61,16 @@ substitutions = {
 def get_config(substitutions):
     with open(config_template,'r') as f:
         for line in f.readlines():
-            for k,v in substitutions.items():
-                line = line.strip().replace(k,str(v))
+            k = line.strip().split('=').pop(0).strip()
+            if k in substitutions.keys():
+                line = '%s = %s'%(k,substitutions[k])
             yield line
 
 with open('./gibuu.opt','w') as config_file:
     config = list(get_config(substitutions))
     config_file.write(('\n'.join(config)))
     config_file.flush()
+    #import subprocess
     #print(subprocess.check_output(['cat',config_file.name]))
     #cmd=['GiBUU.x','<',config_file.name]
     #print(' '.join(cmd))

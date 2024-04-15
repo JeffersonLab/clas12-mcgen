@@ -3,6 +3,7 @@ import os
 import sys
 import argparse
 
+executable = os.path.abspath(os.getenv('GIBUU','./release/objects')+'/GiBUU.x')
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
 buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 
@@ -92,5 +93,5 @@ with open('./gibuu.opt','w') as config_file:
 
 with open('./gibuu.opt','r') as config_file:
     import subprocess
-    run_command(['./GiBUU.x'], args.dryrun, config_file)
+    run_command([executable], args.dryrun, config_file)
 

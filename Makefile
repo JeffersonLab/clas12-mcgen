@@ -41,6 +41,7 @@ build:
 	install deep-pipi-gen/deep-pipi-gen bin
 	install genepi/genepi bin
 	install generate-seeds.py bin
+	install GiBUU/gibuu.py bin
 	install GiBUU/GiBUU.x bin
 	install GiBUU/gibuu2lund bin
 	install onepigen/onepigen bin

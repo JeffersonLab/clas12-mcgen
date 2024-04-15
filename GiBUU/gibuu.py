@@ -3,7 +3,8 @@ import os
 import sys
 import argparse
 
-config_template = os.path.dirname(__file__)+'/gibuu_template.opt'
+config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
+buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 
 target_choices = {
     'p' : {'A':'1','Z':'1','pdfset':'3000000','numEnsem':'6000','lenPert':'15','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
@@ -33,11 +34,10 @@ cli.add_argument('-tgrad', required=True, help='Target Radius', type=float)
 cli.add_argument('-kt', required=True, help='kt value', type=float)
 cli.add_argument('-seed', default=0, help='RNG seed, defaults to timestamp', type=int)
 cli.add_argument('-docker', default=False, action='store_true')
+cli.add_argument('-dryrun', default=False, action='store_true')
 args = cli.parse_args(sys.argv[1:])
 
 target = argparse.Namespace(**(target_choices[args.targ]))
-
-buuDir = '.'
 
 substitutions = {
     'numEnsembles' : target.numEnsem,
@@ -45,7 +45,7 @@ substitutions = {
     'Z' : target.Z,
     'A' : target.A,
     'NNN' : args.targ,
-    'path_To_Input' : f'\'{buuDir}\'',
+    'path_To_Input' : f'\'{buu_directory}\'',
     'shadow' : target.shadow,
     'SEED' : str(args.seed),
     'useJetSetVec' : target.useJetSetVec,
@@ -54,7 +54,7 @@ substitutions = {
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
     'Ebeam' : str(args.ebeam),
-    #'iExperiment=' : '4',
+    'iExperiment' : '4',
     #'EXPT' : 'clas11',
 }
 
@@ -63,15 +63,34 @@ def get_config(substitutions):
         for line in f.readlines():
             k = line.strip().split('=').pop(0).strip()
             if k in substitutions.keys():
-                line = '%s = %s'%(k,substitutions[k])
+                line = '%s=%s'%(k,substitutions[k])
             yield line
+
+def check_executable(exe):
+    try:
+        subprocess.check_output(['which', exe])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+def run_command(cmd, dryrun, stdin=None):
+    import subprocess
+    print(' '.join(cmd))
+    if not dryrun:
+        p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
+        for line in iter(p.stdout.readline, ''):
+            if len(line.strip())>0:
+                print((line.rstrip()))
+        p.wait()
+        return p.returncode == 0
+    return True
 
 with open('./gibuu.opt','w') as config_file:
     config = list(get_config(substitutions))
     config_file.write(('\n'.join(config)))
     config_file.flush()
-    #import subprocess
-    #print(subprocess.check_output(['cat',config_file.name]))
-    #cmd=['GiBUU.x','<',config_file.name]
-    #print(' '.join(cmd))
+
+with open('./gibuu.opt','r') as config_file:
+    import subprocess
+    run_command(['./GiBUU.x'], args.dryrun, config_file)
 

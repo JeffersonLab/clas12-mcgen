@@ -7,7 +7,6 @@ PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 all: $(PACKAGES) gibuu2lund patch
 	+ $(MAKE) -C release buildRootTuple
 	+ $(MAKE) withROOT=1 -C release PDF=LHAPDF
-	install release/objects/GiBUU.x .
 
 prep: $(PACKAGES)
 

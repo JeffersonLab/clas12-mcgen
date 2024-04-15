@@ -169,5 +169,5 @@ git rm -f path/to/submodule
 [genepi]: https://github.com/N-Plx/genepi
 [onepigen]: https://github.com/tylern4/onepigen
 [GENIE]: https://github.com/GENIE-MC/Generator
-[GiBUU]: https://gibuu.hepforge.org/downloads
+[GiBUU]: https://github.com/jeffersonlab/gibuu
 

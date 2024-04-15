@@ -1,7 +1,7 @@
 
 TOP = $(shell pwd)
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi GiBUU onepigen genie
+SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen twopeg MCEGENpiN_radcorr deep-pipi-gen genepi gibuu onepigen genie
 
 build:
 	mkdir -p bin lib
@@ -15,7 +15,7 @@ build:
 	$(MAKE) -C MCEGENpiN_radcorr
 	$(MAKE) -C deep-pipi-gen
 	$(MAKE) -C genepi
-	$(MAKE) -C GiBUU
+	$(MAKE) -C gibuu
 	$(MAKE) -C onepigen
 	$(MAKE) -C genie
 	# twopeg needs c++17 support:
@@ -41,9 +41,9 @@ build:
 	install deep-pipi-gen/deep-pipi-gen bin
 	install genepi/genepi bin
 	install generate-seeds.py bin
-	install GiBUU/gibuu.py bin
-	install GiBUU/GiBUU.x bin
-	install GiBUU/gibuu2lund bin
+	install gibuu/gibuu bin
+	install gibuu/release/objects/GiBUU.x bin
+	install gibuu/gibuu2lund bin
 	install onepigen/onepigen bin
 	install onepigen/onepigen_lund bin
 	rm -rf build
@@ -58,7 +58,7 @@ lhapdf:
 	$(eval V := 6.5.4)
 	wget https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
 	tar -xzvf LHAPDF-${V}.tar.gz
-	cd LHAPDF-6.5.4 && ./configure --prefix=${TOP}
+	cd LHAPDF-${V} && ./configure --prefix=${TOP}
 	make -j 8 -C LHAPDF-${V}
 	make -j 8 -C LHAPDF-${V} install
 	rm -rf LHAPDF*

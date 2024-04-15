@@ -48,7 +48,7 @@ build:
 	rm -rf build
 
 clean:
-	rm -rf bin lib build share include etc
+	rm -rf bin lib lib64 build share include etc
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done

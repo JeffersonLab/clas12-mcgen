@@ -1,11 +1,17 @@
 bin
 lib
+include
+share
 *.dat
 *.root
 *.log
 *BAK
 *.out
 *.sum
+*.swp
+*.tar
+*.gz
+*.tgz
 errors.txt
 .bash_history
 .lesshst

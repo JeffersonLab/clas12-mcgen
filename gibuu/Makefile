@@ -27,7 +27,7 @@ libraries$(RELEASE)_RootTuple: libraries$(RELEASE)_RootTuple.tar.gz
 $(addsuffix .tar.gz,$(PACKAGES)):
 	wget -N --content-disposition "https://gibuu.hepforge.org/downloads?f=archive/r${RELEASE}_${PATCH}/$@"
 
-gibuu2lund:
+gibuu2lund: gibuu2lund.cxx
 	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --libs)
 
 patch: $(PACKAGES)

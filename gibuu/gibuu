@@ -4,6 +4,7 @@ import os.path
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
 buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
+gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
 
 from argparse import Namespace
 target_choices = {
@@ -28,28 +29,31 @@ target_choices = {
 import sys
 from argparse import ArgumentParser
 cli = ArgumentParser()
-cli.add_argument('-ebeam', required='-test' not in sys.argv, help='beam energy (GeV)', type=float)
-cli.add_argument('-targ', required='-test' not in sys.argv, help='target nucleus', choices=target_choices.keys())
-cli.add_argument('-tgzpos', required='-test' not in sys.argv, help='target z-position (cm)', type=float)
-cli.add_argument('-tgzlen', required='-test' not in sys.argv, help='target z-length (cm)', type=float)
-cli.add_argument('-tgrad', required='-test' not in sys.argv, help='target radius (cm)', type=float)
-cli.add_argument('-kt', required='-test' not in sys.argv, help='kt value (?)', type=float)
-cli.add_argument('-seed', default=0, help='RNG seed', type=int)
-cli.add_argument('-docker', default=False, action='store_true')
-cli.add_argument('-dryrun', default=False, action='store_true')
-cli.add_argument('-test', default=False, action='store_true')
+cli.add_argument('--trig', default=0, type=int)
+cli.add_argument('--ebeam', required='--test' not in sys.argv, help='beam energy (GeV)', type=float)
+cli.add_argument('--targ', required='--test' not in sys.argv, help='target nucleus', choices=target_choices.keys())
+cli.add_argument('--tgzpos', required='--test' not in sys.argv, help='target z-position (cm)', type=float)
+cli.add_argument('--tgzlen', required='--test' not in sys.argv, help='target z-length (cm)', type=float)
+cli.add_argument('--tgrad', required='--test' not in sys.argv, help='target radius (cm)', type=float)
+cli.add_argument('--kt', required='--test' not in sys.argv, help='kt value (?)', type=float)
+cli.add_argument('--seed', default=0, help='RNG seed', type=int)
+cli.add_argument('--docker', default=False, action='store_true')
+cli.add_argument('--dryrun', default=False, action='store_true')
+cli.add_argument('--test', default=False, action='store_true')
 
 if not os.path.isfile(config_template):
     cli.error('Could not find gibuu_template.opt at $GIBUU or .')
 if not os.path.isdir(buu_directory):
     cli.error('Could not find buuinput directory at $GIBUU or .')
 if not os.path.isfile(gibuu_executable):
-    cli.error('Could not find GiBUU.x gibuu_executable at $GIBUU or .')
+    cli.error('Could not find GiBUU.x executable at $GIBUU or .')
+if not os.path.isfile(gibuu_converter):
+    cli.error('Could not find gibuu2lund executable at $GIBUU or .')
 
 args = cli.parse_args(sys.argv[1:])
 
 if args.test:
-    args = Namespace(ebeam=11,targ='He',tgzpos=0,tgzlen=1,tgrad=1,kt=1,seed=1234567,docker=False,dryrun=args.dryrun,test=True)
+    args = Namespace(trig=0,ebeam=11,targ='He',tgzpos=0,tgzlen=1,tgrad=1,kt=1,seed=1234567,docker=False,dryrun=args.dryrun,test=True)
 
 if args.seed==0:
     import time
@@ -75,7 +79,7 @@ substitutions = {
     'iExperiment' : '4'
 }
 
-def get_config(template, substitutions):
+def generate_config(template, substitutions):
     with open(template,'r') as f:
         for line in f.readlines():
             k = line.strip().split('=').pop(0).strip()
@@ -84,10 +88,13 @@ def get_config(template, substitutions):
             yield line
 
 def run_command(cmd, dryrun, stdin=None):
-    import subprocess
     if dryrun:
-        print(' '.join(cmd)+' < '+str(stdin.name))
+        if stdin is not None:
+            print(' '.join(cmd)+' < '+str(stdin.name))
+        else:
+            print(' '.join(cmd))
     else:
+        import subprocess
         p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
         for line in iter(p.stdout.readline, ''):
             if len(line.strip())>0:
@@ -96,11 +103,11 @@ def run_command(cmd, dryrun, stdin=None):
         return p.returncode == 0
     return False
 
-with open('./gibuu.opt','x') as config_file:
-    config = list(get_config(config_template, substitutions))
+with open('./gibuu.opt','w') as config_file:
+    config = list(generate_config(config_template, substitutions))
     config_file.write(('\n'.join(config)))
-    config_file.flush()
 
 with open('./gibuu.opt','r') as config_file:
     run_command([gibuu_executable], args.dryrun, config_file)
+    run_command([gibuu_converter, str(args.trig), str(args.ebeam),'EventOutput.Pert.00000001.root','gibuu.dat'], args.dryrun)
 

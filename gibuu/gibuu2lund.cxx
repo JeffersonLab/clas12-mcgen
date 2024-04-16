@@ -10,7 +10,7 @@ struct event {
     double Q2=0;
     double nu=0;
     double eps=0;
-    double phiL=0;
+    double phi=0;
     std::vector <double> *px=0;
     std::vector <double> *py=0;
     std::vector <double> *pz=0;
@@ -19,14 +19,10 @@ struct event {
     std::vector <int> *pid=0;
 };
 
-void gibuu2lund(char* inputfilename, char* outputfilename) {
+void gibuu2lund(int nevents, float ebeam, char* inputfilename, char* outputfilename) {
 
   FILE *output = fopen(outputfilename, "w");
-
-  double ebeam = 11.0;
-
   struct event t;
-
   TChain *tree = new TChain("RootTuple");
   tree->Add(inputfilename);
   tree->SetBranchAddress("barcode", &t.pid);
@@ -38,14 +34,16 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
   tree->SetBranchAddress("Q2", &t.Q2);
   tree->SetBranchAddress("nu", &t.nu);
   tree->SetBranchAddress("eps",&t.eps);
-  tree->SetBranchAddress("phiL", &t.phiL);
+  tree->SetBranchAddress("phiL", &t.phi);
 
-  const float vertex_x=0;
-  const float vertex_y=0;
-  const float vertex_z=0;
+  const float vx=0;
+  const float vy=0;
+  const float vz=0;
 
   for(int ievent = 0; ievent < tree->GetEntries(); ++ievent) {
-    
+   
+    if (nevents>0 && ievent>nevents) break;
+
     tree->GetEvent(ievent);
 
     // The event header:
@@ -64,8 +62,8 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     // The scattered lepton:
     const double e = ebeam - t.nu;
     const double theta = 2*asin(sqrt(t.Q2/4/ebeam/e));
-    const double px = e*sin(theta)*cos(t.phiL);
-    const double py = e*sin(theta)*sin(t.phiL);
+    const double px = e*sin(theta)*cos(t.phi);
+    const double py = e*sin(theta)*sin(t.phi);
     const double pz = e*cos(theta);
     fprintf(output, "%s ", "");
     fprintf(output, "%i ", 1);
@@ -79,9 +77,9 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     fprintf(output, "%.4e ", pz);
     fprintf(output, "%.4e ", e);
     fprintf(output, "%.4e ", 0.000511);
-    fprintf(output, "%.4e ", vertex_x);
-    fprintf(output, "%.4e ", vertex_y);
-    fprintf(output, "%.4e ", vertex_z);
+    fprintf(output, "%.4e ", vx);
+    fprintf(output, "%.4e ", vy);
+    fprintf(output, "%.4e ", vz);
     fprintf(output, "\n");
 
     // The other final state particles:
@@ -99,9 +97,9 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
       fprintf(output, "%.4e ", t.pz->at(ipart));
       fprintf(output, "%.4e ", t.e->at(ipart));
       fprintf(output, "%.4e ", p->Mass());
-      fprintf(output, "%.4e ", vertex_x);
-      fprintf(output, "%.4e ", vertex_y);
-      fprintf(output, "%.4e ", vertex_z);
+      fprintf(output, "%.4e ", vx);
+      fprintf(output, "%.4e ", vy);
+      fprintf(output, "%.4e ", vz);
       fprintf(output, "\n");
     }
 
@@ -112,10 +110,10 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Usage:  gibuu2lund [-ebeam #] GiBUU-ROOT-filename LUND-filename\n");
+    if (argc != 5) {
+        printf("Usage:  gibuu2lund #EVENTS BEAM_ENERGY GiBUU-ROOT-filename LUND-filename\n");
         exit(1);
     }
-    gibuu2lund(argv[1],argv[2]);
+    gibuu2lund(atoi(argv[1]),atof(argv[2]),argv[3],argv[4]);
 }
 

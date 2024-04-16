@@ -28,7 +28,7 @@ $(addsuffix .tar.gz,$(PACKAGES)):
 	wget -N --content-disposition "https://gibuu.hepforge.org/downloads?f=archive/r${RELEASE}_${PATCH}/$@"
 
 gibuu2lund: gibuu2lund.cxx
-	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --libs)
+	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --evelibs)
 
 patch: $(PACKAGES)
 	cp -f FindROOT.cmake libraries/RootTuple/RootTuple-master/cmake/Modules/FindROOT.cmake

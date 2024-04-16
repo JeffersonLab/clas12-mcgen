@@ -1,44 +1,61 @@
 #!/usr/bin/env python3
-import os
-import sys
-import argparse
 
-executable = os.path.abspath(os.getenv('GIBUU','./release/objects')+'/GiBUU.x')
+import os.path
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
 buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
+gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
 
+from argparse import Namespace
 target_choices = {
-    'p' : {'A':'1','Z':'1','pdfset':'3000000','numEnsem':'6000','lenPert':'15','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'D' : {'A':'2','Z':'1','pdfset':'3000300','numEnsem':'5000','lenPert':'20','shadow':'F','nuclPDF':'0','useJetSetVec':'F'},
-    'He': {'A':'4','Z':'2','pdfset':'3000600','numEnsem':'4000','lenPert':'40','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Li': {'A':'6','Z':'3','pdfset':'3000900','numEnsem':'3000','lenPert':'60','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Be': {'A':'8','Z':'4','pdfset':'3001200','numEnsem':'2000','lenPert':'80','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'C' : {'A':'12','Z':'6','pdfset':'3001500','numEnsem':'1000','lenPert':'120','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'N' : {'A':'14','Z':'7','pdfset':'3001800','numEnsem':'1000','lenPert':'120','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Al': {'A':'27','Z':'13','pdfset':'3002100','numEnsem':'500','lenPert':'250','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Ca': {'A':'40','Z':'20','pdfset':'3002400','numEnsem':'300','lenPert':'360','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Fe': {'A':'56','Z':'28','pdfset':'3002700','numEnsem':'100','lenPert':'560','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Cu': {'A':'63','Z':'29','pdfset':'3003000','numEnsem':'100','lenPert':'560','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Ag': {'A':'108','Z':'47','pdfset':'3003300','numEnsem':'100','lenPert':'1500','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Sn': {'A':'118','Z':'50','pdfset':'3003600','numEnsem':'100','lenPert':'2000','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Xe': {'A':'131','Z':'54','pdfset':'3003900','numEnsem':'100','lenPert':'3000','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Au': {'A':'200','Z':'79','pdfset':'3004200','numEnsem':'100','lenPert':'4000','shadow':'T','nuclPDF':'1','useJetSetVec':'T'},
-    'Pb': {'A':'207','Z':'82','pdfset':'3004500','numEnsem':'100','lenPert':'4000','shadow':'T','nuclPDF':'1','useJetSetVec':'T'}
+    'p' : Namespace(A=1,Z=1,pdfset=3000000,numEnsem=6000,lenPert=15,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'D' : Namespace(A=2,Z=1,pdfset=3000300,numEnsem=5000,lenPert=20,shadow='F',nuclPDF=0,useJetSetVec='F'),
+    'He': Namespace(A=4,Z=2,pdfset=3000600,numEnsem=4000,lenPert=40,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Li': Namespace(A=6,Z=3,pdfset=3000900,numEnsem=3000,lenPert=60,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Be': Namespace(A=8,Z=4,pdfset=3001200,numEnsem=2000,lenPert=80,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'C' : Namespace(A=12,Z=6,pdfset=3001500,numEnsem=1000,lenPert=120,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'N' : Namespace(A=14,Z=7,pdfset=3001800,numEnsem=1000,lenPert=120,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Al': Namespace(A=27,Z=13,pdfset=3002100,numEnsem=500,lenPert=250,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Ca': Namespace(A=40,Z=20,pdfset=3002400,numEnsem=300,lenPert=360,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Fe': Namespace(A=56,Z=28,pdfset=3002700,numEnsem=100,lenPert=560,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Cu': Namespace(A=63,Z=29,pdfset=3003000,numEnsem=100,lenPert=560,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Ag': Namespace(A=108,Z=47,pdfset=3003300,numEnsem=100,lenPert=1500,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Sn': Namespace(A=118,Z=50,pdfset=3003600,numEnsem=100,lenPert=2000,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Xe': Namespace(A=131,Z=54,pdfset=3003900,numEnsem=100,lenPert=3000,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Au': Namespace(A=200,Z=79,pdfset=3004200,numEnsem=100,lenPert=4000,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'Pb': Namespace(A=207,Z=82,pdfset=3004500,numEnsem=100,lenPert=4000,shadow='T',nuclPDF=1,useJetSetVec='T'),
 }
 
-cli = argparse.ArgumentParser()
-cli.add_argument('-ebeam', required=True, help='beam energy in GeV', type=float)
-cli.add_argument('-targ', required=True, choices=target_choices.keys())
-cli.add_argument('-tgzpos', required=True, help='Target z position', type=float)
-cli.add_argument('-tgzlen', required=True, help='Target z length', type=float)
-cli.add_argument('-tgrad', required=True, help='Target Radius', type=float)
-cli.add_argument('-kt', required=True, help='kt value', type=float)
-cli.add_argument('-seed', default=0, help='RNG seed, defaults to timestamp', type=int)
+import sys
+from argparse import ArgumentParser
+cli = ArgumentParser()
+cli.add_argument('-ebeam', required='-test' not in sys.argv, help='beam energy (GeV)', type=float)
+cli.add_argument('-targ', required='-test' not in sys.argv, help='target nucleus', choices=target_choices.keys())
+cli.add_argument('-tgzpos', required='-test' not in sys.argv, help='target z-position (cm)', type=float)
+cli.add_argument('-tgzlen', required='-test' not in sys.argv, help='target z-length (cm)', type=float)
+cli.add_argument('-tgrad', required='-test' not in sys.argv, help='target radius (cm)', type=float)
+cli.add_argument('-kt', required='-test' not in sys.argv, help='kt value (?)', type=float)
+cli.add_argument('-seed', default=0, help='RNG seed', type=int)
 cli.add_argument('-docker', default=False, action='store_true')
 cli.add_argument('-dryrun', default=False, action='store_true')
+cli.add_argument('-test', default=False, action='store_true')
+
+if not os.path.isfile(config_template):
+    cli.error('Could not find gibuu_template.opt at $GIBUU or .')
+if not os.path.isdir(buu_directory):
+    cli.error('Could not find buuinput directory at $GIBUU or .')
+if not os.path.isfile(gibuu_executable):
+    cli.error('Could not find GiBUU.x gibuu_executable at $GIBUU or .')
+
 args = cli.parse_args(sys.argv[1:])
 
-target = argparse.Namespace(**(target_choices[args.targ]))
+if args.test:
+    args = Namespace(ebeam=11,targ='He',tgzpos=0,tgzlen=1,tgrad=1,kt=1,seed=1234567,docker=False,dryrun=args.dryrun,test=True)
+
+if args.seed==0:
+    import time
+    args.seed = int(int(time.time()*1e6)%1e9)
+
+target = target_choices[args.targ]
 
 substitutions = {
     'numEnsembles' : target.numEnsem,
@@ -55,43 +72,35 @@ substitutions = {
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
     'Ebeam' : str(args.ebeam),
-    'iExperiment' : '4',
-    #'EXPT' : 'clas11',
+    'iExperiment' : '4'
 }
 
-def get_config(substitutions):
-    with open(config_template,'r') as f:
+def get_config(template, substitutions):
+    with open(template,'r') as f:
         for line in f.readlines():
             k = line.strip().split('=').pop(0).strip()
             if k in substitutions.keys():
                 line = '%s=%s'%(k,substitutions[k])
             yield line
 
-def check_executable(exe):
-    try:
-        subprocess.check_output(['which', exe])
-        return True
-    except subprocess.CalledProcessError:
-        return False
-
 def run_command(cmd, dryrun, stdin=None):
     import subprocess
-    print(' '.join(cmd))
-    if not dryrun:
+    if dryrun:
+        print(' '.join(cmd)+' < '+str(stdin.name))
+    else:
         p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
         for line in iter(p.stdout.readline, ''):
             if len(line.strip())>0:
                 print((line.rstrip()))
         p.wait()
         return p.returncode == 0
-    return True
+    return False
 
-with open('./gibuu.opt','w') as config_file:
-    config = list(get_config(substitutions))
+with open('./gibuu.opt','x') as config_file:
+    config = list(get_config(config_template, substitutions))
     config_file.write(('\n'.join(config)))
     config_file.flush()
 
 with open('./gibuu.opt','r') as config_file:
-    import subprocess
-    run_command([executable], args.dryrun, config_file)
+    run_command([gibuu_executable], args.dryrun, config_file)
 

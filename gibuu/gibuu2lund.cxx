@@ -2,8 +2,20 @@
 #include <TTree.h>
 #include <TChain.h>
 #include <TF1.h>
-#include <TRandom3.h>
-#include <TRandom.h>
+
+struct tree {
+    double Q2=0;
+    double nu=0;
+    double eps=0;
+    double phiL=0;
+    std::vector <double> *px=0;
+    std::vector <double> *py=0;
+    std::vector <double> *pz=0;
+    std::vector <double> *energy=0;
+    std::vector <double> *weight=0;
+    std::vector <int> *barcode=0;
+    std::vector <int> *pid=0;
+};
 
 void gibuu2lund(char* inputfilename, char* outputfilename) {
 
@@ -13,39 +25,33 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
   std::vector <int> *Pid = 0;
   double Weight = 0.0, Lep_Px = 0.0, Lep_Py = 0.0, Lep_Pz = 0.0, Lep_Energy = 0.0;
 
-  TChain *locTree = new TChain("gst");
+  double ebeam = 11.0;
+
+  struct tree t;
+
+  TChain *locTree = new TChain("RootTuple");
   locTree->Add(inputfilename);
-  locTree->SetBranchAddress("weight", &Weight);
+  locTree->SetBranchAddress("barcode", &Pid);
   locTree->SetBranchAddress("Px", &Px);
   locTree->SetBranchAddress("Py", &Py);
   locTree->SetBranchAddress("Pz", &Pz);
-  locTree->SetBranchAddress("E", &Energy);
-  locTree->SetBranchAddress("lepOut_Px", &Lep_Px);
-  locTree->SetBranchAddress("lepOut_Py", &Lep_Py);
-  locTree->SetBranchAddress("lepOut_Pz", &Lep_Pz);
-  locTree->SetBranchAddress("lepOut_E", &Lep_Energy);
-  locTree->SetBranchAddress("barcode", &Pid);
-  std::cout << "data File has " << locTree->GetEntries()<<" entries " << std::endl;
+  locTree->SetBranchAddress("E",  &Energy); 
+  locTree->SetBranchAddress("weight", &Weight);
+  locTree->SetBranchAddress("Q2", &t.Q2);
+  locTree->SetBranchAddress("nu", &t.nu);
+  locTree->SetBranchAddress("eps",&t.eps);
+  locTree->SetBranchAddress("phiL", &t.phiL);
 
-  float vertex_x, vertex_y, vertex_z;
-  TF1 *myfuncx = new TF1("myfuncx","TMath::BreitWigner(x, 0.1398, 0.366507 )",-2,2);
-  TF1 *myfuncy = new TF1("myfuncy","TMath::BreitWigner(x, -0.0989511, 0.408273 )",-2,2);
-  TRandom *r3 = new TRandom3(0);
+  const float vertex_x=0;
+  const float vertex_y=0;
+  const float vertex_z=0;
 
-  for(int loc_i = 0; loc_i < locTree->GetEntries(); ++loc_i) {
-    locTree->GetEvent(loc_i);
+  for(int i = 0; i < locTree->GetEntries(); ++i) {
+    
+    locTree->GetEvent(i);
 
-    if(loc_i % 10000 == 0){
-      fprintf (stderr, "%d Thousand\r ", loc_i/1000);
-      fflush (stderr);
-    }
-
-    vertex_x=myfuncx->GetRandom();
-    vertex_y=myfuncy->GetRandom();
-    vertex_z=r3->Uniform(-5,1); // Give the z vertex a unifrorm value between the two extrema
-
-    // The header file stuff
-    fprintf(output, "%lu ", Px->size() + 1); // + 1 because we need to do scattered lepton too
+    // The event header:
+    fprintf(output, "%lu ", Px->size());
     fprintf(output, "%i ", 4); // Number of nucleons in the nucleus N
     fprintf(output, "%i ", 2); // Number of protons in the nucleus Z
     fprintf(output, "%i ", 0);
@@ -57,7 +63,12 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     fprintf(output, "%.4e ", Weight);
     fprintf(output, "\n");
 
-    // Fill in the data according to the GEMC LUND file structure for the scattered lepton
+    // The scattered lepton:
+    const double e = ebeam - t.nu;
+    const double theta = 2*asin(sqrt(t.Q2/4/ebeam/e));
+    const double px = e*sin(theta)*cos(t.phiL);
+    const double py = e*sin(theta)*sin(t.phiL);
+    const double pz = e*cos(theta);
     fprintf(output, "%s ", "");
     fprintf(output, "%i ", 1);
     fprintf(output, "%i ", -1);
@@ -65,17 +76,17 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     fprintf(output, "%i ", 11);
     fprintf(output, "%i ", 0);
     fprintf(output, "%i ", 0);
-    fprintf(output, "%.4e ", Lep_Px);
-    fprintf(output, "%.4e ", Lep_Py);
-    fprintf(output, "%.4e ", Lep_Pz);
-    fprintf(output, "%.4e ", Lep_Energy);
+    fprintf(output, "%.4e ", px);
+    fprintf(output, "%.4e ", py);
+    fprintf(output, "%.4e ", pz);
+    fprintf(output, "%.4e ", e);
     fprintf(output, "%.4e ", 0.000511);
     fprintf(output, "%.4e ", vertex_x);
     fprintf(output, "%.4e ", vertex_y);
     fprintf(output, "%.4e ", vertex_z);
     fprintf(output, "\n");
 
-    // Now we will fill the final state particles by sorting their masses and charges
+    // The other final state particles:
     Double_t mass;
     Int_t Charge;
     for(Int_t i_ptcle = 0; i_ptcle < Pid->size(); i_ptcle++){

@@ -2,8 +2,11 @@
 #include <TTree.h>
 #include <TChain.h>
 #include <TF1.h>
+#include <TDatabasePDG.h>
+#include <TParticlePDG.h>
 
-struct tree {
+struct event {
+    double weight=0;
     double Q2=0;
     double nu=0;
     double eps=0;
@@ -11,8 +14,7 @@ struct tree {
     std::vector <double> *px=0;
     std::vector <double> *py=0;
     std::vector <double> *pz=0;
-    std::vector <double> *energy=0;
-    std::vector <double> *weight=0;
+    std::vector <double> *e=0;
     std::vector <int> *barcode=0;
     std::vector <int> *pid=0;
 };
@@ -21,37 +23,33 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
 
   FILE *output = fopen(outputfilename, "w");
 
-  std::vector <double> *Px = 0, *Py = 0, *Pz = 0, *Energy = 0;
-  std::vector <int> *Pid = 0;
-  double Weight = 0.0, Lep_Px = 0.0, Lep_Py = 0.0, Lep_Pz = 0.0, Lep_Energy = 0.0;
-
   double ebeam = 11.0;
 
-  struct tree t;
+  struct event t;
 
-  TChain *locTree = new TChain("RootTuple");
-  locTree->Add(inputfilename);
-  locTree->SetBranchAddress("barcode", &Pid);
-  locTree->SetBranchAddress("Px", &Px);
-  locTree->SetBranchAddress("Py", &Py);
-  locTree->SetBranchAddress("Pz", &Pz);
-  locTree->SetBranchAddress("E",  &Energy); 
-  locTree->SetBranchAddress("weight", &Weight);
-  locTree->SetBranchAddress("Q2", &t.Q2);
-  locTree->SetBranchAddress("nu", &t.nu);
-  locTree->SetBranchAddress("eps",&t.eps);
-  locTree->SetBranchAddress("phiL", &t.phiL);
+  TChain *tree = new TChain("RootTuple");
+  tree->Add(inputfilename);
+  tree->SetBranchAddress("barcode", &t.pid);
+  tree->SetBranchAddress("Px", &t.px);
+  tree->SetBranchAddress("Py", &t.py);
+  tree->SetBranchAddress("Pz", &t.pz);
+  tree->SetBranchAddress("E",  &t.e); 
+  tree->SetBranchAddress("weight", &t.weight);
+  tree->SetBranchAddress("Q2", &t.Q2);
+  tree->SetBranchAddress("nu", &t.nu);
+  tree->SetBranchAddress("eps",&t.eps);
+  tree->SetBranchAddress("phiL", &t.phiL);
 
   const float vertex_x=0;
   const float vertex_y=0;
   const float vertex_z=0;
 
-  for(int i = 0; i < locTree->GetEntries(); ++i) {
+  for(int ievent = 0; ievent < tree->GetEntries(); ++ievent) {
     
-    locTree->GetEvent(i);
+    tree->GetEvent(ievent);
 
     // The event header:
-    fprintf(output, "%lu ", Px->size());
+    fprintf(output, "%lu ", t.px->size()+1);
     fprintf(output, "%i ", 4); // Number of nucleons in the nucleus N
     fprintf(output, "%i ", 2); // Number of protons in the nucleus Z
     fprintf(output, "%i ", 0);
@@ -60,7 +58,7 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     fprintf(output, "%.4e ", 5.986);
     fprintf(output, "%.4e ", 2212.0);
     fprintf(output, "%.4e ", 1.0);
-    fprintf(output, "%.4e ", Weight);
+    fprintf(output, "%.4e ", t.weight);
     fprintf(output, "\n");
 
     // The scattered lepton:
@@ -87,63 +85,20 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
     fprintf(output, "\n");
 
     // The other final state particles:
-    Double_t mass;
-    Int_t Charge;
-    for(Int_t i_ptcle = 0; i_ptcle < Pid->size(); i_ptcle++){
-      mass = 0.0;
-      Charge = 0.0;
-      if(Pid->at(i_ptcle) == 11){
-        mass = 0.0005;
-        Charge = -1.0;
-      }
-      else if(Pid->at(i_ptcle) == 111){
-        mass = 0.1349;
-        Charge = 0.0;
-      }
-      else if(Pid->at(i_ptcle) == 211){
-        mass = 0.1396;
-        Charge = 1.0;
-      }
-      else if(Pid->at(i_ptcle) == -211){
-        mass = 0.1396;
-        Charge = -1.0;
-      }
-      else if(Pid->at(i_ptcle) == 321){
-        mass = 0.495;
-        Charge = 1.0;
-      }
-      else if(Pid->at(i_ptcle) == -321){
-        mass = 0.495;
-        Charge = -1.0;
-      }
-      else if(Pid->at(i_ptcle) == 311 || Pid->at(i_ptcle) == -311){
-        mass = 0.495;
-        Charge = 0.0;
-      }
-      else if(Pid->at(i_ptcle) == 2212){
-        mass = 0.938;
-        Charge = 1.0;
-      }
-      else if(Pid->at(i_ptcle) == -2212){
-        mass = 0.938;
-        Charge = -1.0;
-      }
-      else if(Pid->at(i_ptcle) == 2112){
-        mass = 0.939;
-        Charge = 0.0;
-      }
+    for(int ipart = 0; ipart < t.pid->size(); ipart++){
+      TParticlePDG *p = TDatabasePDG::Instance()->GetParticle(t.pid->at(ipart));
       fprintf(output, "%s ", "");
-      fprintf(output, "%i ", i_ptcle + 2);
-      fprintf(output, "%i ", Charge);
+      fprintf(output, "%i ", (ipart + 2));
+      fprintf(output, "%i ", int(p->Charge()/3));
       fprintf(output, "%i ", 1);
-      fprintf(output, "%i ", Pid->at(i_ptcle));
+      fprintf(output, "%i ", t.pid->at(ipart));
       fprintf(output, "%i ", 0);
       fprintf(output, "%i ", 0);
-      fprintf(output, "%.4e ", Px->at(i_ptcle));
-      fprintf(output, "%.4e ", Py->at(i_ptcle));
-      fprintf(output, "%.4e ", Pz->at(i_ptcle));
-      fprintf(output, "%.4e ", Energy->at(i_ptcle));
-      fprintf(output, "%.4e ", mass);
+      fprintf(output, "%.4e ", t.px->at(ipart));
+      fprintf(output, "%.4e ", t.py->at(ipart));
+      fprintf(output, "%.4e ", t.pz->at(ipart));
+      fprintf(output, "%.4e ", t.e->at(ipart));
+      fprintf(output, "%.4e ", p->Mass());
       fprintf(output, "%.4e ", vertex_x);
       fprintf(output, "%.4e ", vertex_y);
       fprintf(output, "%.4e ", vertex_z);
@@ -158,7 +113,7 @@ void gibuu2lund(char* inputfilename, char* outputfilename) {
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        printf("Usage:  gibuu2lund  GiBUU-ROOT-filename LUND-filename\n");
+        printf("Usage:  gibuu2lund [-ebeam #] GiBUU-ROOT-filename LUND-filename\n");
         exit(1);
     }
     gibuu2lund(argv[1],argv[2]);

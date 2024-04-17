@@ -1,0 +1,11 @@
+--- release/code/collisions/twoBodyReactions/HiEnergy/NuclearPDF.f90	2023-08-21 19:39:22.000000000 -0400
++++ release/code/collisions/twoBodyReactions/HiEnergy/NuclearPDF.f90	2024-03-21 15:12:18.356282471 -0400
+@@ -60,7 +60,7 @@
+     case (0)
+        write(*,*) 'Nuclear PDF: none'
+     case (1)
+-       write(*,*) 'Nuclear PDF: EKS98'
++       write(*,*) 'Nuclear PDF: LHAPDF' !write(*,*) 'Nuclear PDF: EKS98'
+     case default
+        call TRACEBACK('wrong NuclearPDFtype')
+     end select

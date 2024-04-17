@@ -6,6 +6,9 @@ buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
 gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
 
+def generate_buuinput(buu_directory):
+    pass
+
 from argparse import Namespace
 target_choices = {
     'p' : Namespace(A=1,Z=1,pdfset=3000000,numEnsem=6000,lenPert=15,shadow='T',nuclPDF=1,useJetSetVec='T'),
@@ -87,12 +90,13 @@ def generate_config(template, substitutions):
                 line = '%s=%s'%(k,substitutions[k])
             yield line
 
-def run_command(cmd, dryrun, stdin=None):
+def run(cmd, dryrun, stdin=None):
     if dryrun:
         if stdin is not None:
             print(' '.join(cmd)+' < '+str(stdin.name))
         else:
             print(' '.join(cmd))
+        return True
     else:
         import subprocess
         p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
@@ -101,13 +105,15 @@ def run_command(cmd, dryrun, stdin=None):
                 print((line.rstrip()))
         p.wait()
         return p.returncode == 0
-    return False
 
 with open('./gibuu.opt','w') as config_file:
     config = list(generate_config(config_template, substitutions))
     config_file.write(('\n'.join(config)))
 
 with open('./gibuu.opt','r') as config_file:
-    run_command([gibuu_executable], args.dryrun, config_file)
-    run_command([gibuu_converter, str(args.trig), str(args.ebeam),'EventOutput.Pert.00000001.root','gibuu.dat'], args.dryrun)
+    if not run([gibuu_executable], args.dryrun, config_file):
+        sys.exit(23)
+    cmd = [gibuu_converter, str(args.trig), str(args.ebeam)]
+    if not run(cmd,'EventOutput.Pert.00000001.root','gibuu.dat'], args.dryrun):
+        sys.exit(24)
 

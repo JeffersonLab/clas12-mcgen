@@ -1,23 +1,16 @@
-# Just a recipe for building GiBUU.
-
-(And fixing its build system for linking against a ROOT built with modern C++ support)
+# clas12 GiBUU
+1. A recipe for building GiBUU with LHAPDF support and other cleanups
+2. A clas12 wrapper script
 
 ## Prerequisites
-1. `wget`
-2. ROOT
-3. Reasonably modern `gcc`
+1. gcc
+1. wget
+1. LHAPDF
+1. ROOT
 
 ## Build Procedure
-* `make`
+1. make
 
-## Notes from Rhidian
-
-To run GiBUU you simply need to run the following command:
-
-`./${path_to_GiBUU_Executable}/GiBUU.x <${path_to_jobcard}/${jobcard}`
-
-* `${path_to_GiBUU_Executable}` is where your gibuu executbale is located
-* `${path_to_jobcard}` is the path to your job card
-* `${jobcard}` is what you feed gibuu for your simulation
-
-Examples of the gibuu job cards will be provided, but can also be found in `GiBUU/release2021/testRun/jobCards/ `
+# See Also
+* https://github.com/alaoui-ah/GiBUU/tree/main/run_gibuu
+* https://gibuu.hepforge.org/

@@ -1,6 +1,5 @@
 # clas12 GiBUU
-1. A recipe for building GiBUU with LHAPDF support and other cleanups
-2. A clas12 wrapper script
+A recipe for building GiBUU with LHAPDF support and other cleanups, plus a clas12 wrapper script.
 
 ## Prerequisites
 1. gcc

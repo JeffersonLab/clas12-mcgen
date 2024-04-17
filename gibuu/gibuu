@@ -2,12 +2,11 @@
 
 import os.path
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
-buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
 gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
-
-def generate_buuinput(buu_directory):
-    pass
+buu_directory = os.path.abspath('./buuinput')
+if not os.getenv('GIBUU') is None and not os.path.exists('./buuinput'):
+    os.symlink(os.getenv('GIBUU')+'/buuinput','./buuinput')
 
 from argparse import Namespace
 target_choices = {
@@ -113,7 +112,7 @@ with open('./gibuu.opt','w') as config_file:
 with open('./gibuu.opt','r') as config_file:
     if not run([gibuu_executable], args.dryrun, config_file):
         sys.exit(23)
-    cmd = [gibuu_converter, str(args.trig), str(args.ebeam)]
-    if not run(cmd,'EventOutput.Pert.00000001.root','gibuu.dat'], args.dryrun):
+    cmd = [gibuu_converter, str(args.trig), str(args.ebeam), 'EventOutput.Pert.00000001.root','gibuu.dat']
+    if not run(cmd, args.dryrun):
         sys.exit(24)
 

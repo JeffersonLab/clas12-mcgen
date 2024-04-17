@@ -51,7 +51,7 @@ clean: prune
 	done
 
 prune:
-	rm -rf LHAPDF* log4cpp*
+	rm -rf LHAPDF* log4cpp* pythia6*
 
 gibuu: lhapdf
 	$(MAKE) -C gibuu 
@@ -75,4 +75,13 @@ log4cpp:
 	$(MAKE) -C log4cpp
 	$(MAKE) -C log4cpp install
 	rm -rf log4cpp*
+
+pythia6:
+	wget https://root.cern/download/pythia6.tar.gz
+	tar -xzvf pythia6.tar.gz
+	sed -i 's/^char /extern char /' ./pythia6/pythia6_common_address.c
+	sed -i 's/^int /extern int /' ./pythia6/pythia6_common_address.c
+	sed -i 's/^extern int pyuppr/int pyuppr /' ./pythia6/pythia6_common_address.c
+	cd pythia6 && ./makePythia6.linuxx8664
+	install -D pythia6/libPythia6.so lib
 

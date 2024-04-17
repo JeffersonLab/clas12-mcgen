@@ -125,5 +125,5 @@ clean: prune
 #$(MAKE) -C genie clean
 
 prune:
-	rm -rf LHAPDF* log4cpp* pythia6* gsl* build
+	rm -rf LHAPDF* log4cpp* pythia6* gsl* libxml* build
 

@@ -5,8 +5,6 @@ config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
 gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
 gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
 buu_directory = os.path.abspath('./buuinput')
-if not os.getenv('GIBUU') is None and not os.path.exists('./buuinput'):
-    os.symlink(os.getenv('GIBUU')+'/buuinput','./buuinput')
 
 from argparse import Namespace
 target_choices = {
@@ -31,17 +29,13 @@ target_choices = {
 import sys
 from argparse import ArgumentParser
 cli = ArgumentParser()
-cli.add_argument('--trig', default=0, type=int)
-cli.add_argument('--ebeam', required='--test' not in sys.argv, help='beam energy (GeV)', type=float)
-cli.add_argument('--targ', required='--test' not in sys.argv, help='target nucleus', choices=target_choices.keys())
-cli.add_argument('--tgzpos', required='--test' not in sys.argv, help='target z-position (cm)', type=float)
-cli.add_argument('--tgzlen', required='--test' not in sys.argv, help='target z-length (cm)', type=float)
-cli.add_argument('--tgrad', required='--test' not in sys.argv, help='target radius (cm)', type=float)
-cli.add_argument('--kt', required='--test' not in sys.argv, help='kt value (?)', type=float)
-cli.add_argument('--seed', default=0, help='RNG seed', type=int)
+cli.add_argument('--targ', required=True, help='target nucleus', choices=target_choices.keys())
+cli.add_argument('--ebeam', required=True, help='beam energy (GeV)', type=float)
+cli.add_argument('--kt', required=True, help='kt value (GeV)', type=float)
+cli.add_argument('--trig', default=0, help='number of events', type=int)
+cli.add_argument('--seed', default=0, help='random number generator seed', type=int)
 cli.add_argument('--docker', default=False, action='store_true')
 cli.add_argument('--dryrun', default=False, action='store_true')
-cli.add_argument('--test', default=False, action='store_true')
 
 if not os.path.isfile(config_template):
     cli.error('Could not find gibuu_template.opt at $GIBUU or .')
@@ -51,11 +45,13 @@ if not os.path.isfile(gibuu_executable):
     cli.error('Could not find GiBUU.x executable at $GIBUU or .')
 if not os.path.isfile(gibuu_converter):
     cli.error('Could not find gibuu2lund executable at $GIBUU or .')
+if os.getenv('GIBUU') is not None:
+    if os.path.exists('./buuinput'):
+        print('WARNING:  Using existing local ./buuinput')
+    else:
+        os.symlink(os.getenv('GIBUU')+'/buuinput','./buuinput')
 
 args = cli.parse_args(sys.argv[1:])
-
-if args.test:
-    args = Namespace(trig=0,ebeam=11,targ='He',tgzpos=0,tgzlen=1,tgrad=1,kt=1,seed=1234567,docker=False,dryrun=args.dryrun,test=True)
 
 if args.seed==0:
     import time
@@ -78,7 +74,7 @@ substitutions = {
     'PARP(91)' : str(args.kt),
     'PARP(92)' : str(args.kt),
     'Ebeam' : str(args.ebeam),
-    'iExperiment' : '4'
+    'iExperiment' : '17'
 }
 
 def generate_config(template, substitutions):

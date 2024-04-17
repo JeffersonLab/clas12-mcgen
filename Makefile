@@ -44,11 +44,14 @@ build: gibuu
 	install onepigen/onepigen_lund bin
 	rm -rf build
 
-clean:
+clean: prune
 	rm -rf bin lib lib64 build share include etc
 	for dir in $(SUBDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
+
+prune:
+	rm -rf LHAPDF* log4cpp*
 
 gibuu: lhapdf
 	$(MAKE) -C gibuu 
@@ -65,4 +68,11 @@ lhapdf:
 	$(MAKE) -C LHAPDF-${V} install
 	rm -rf LHAPDF*
 
+log4cpp:
+	wget https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
+	tar -xzvf log4cpp-1.1.4.tar.gz
+	cd log4cpp && ./configure --prefix=${TOP}
+	$(MAKE) -C log4cpp
+	$(MAKE) -C log4cpp install
+	rm -rf log4cpp*
 

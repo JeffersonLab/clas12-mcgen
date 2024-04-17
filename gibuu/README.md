@@ -8,5 +8,5 @@ A recipe for building GiBUU with LHAPDF support and other cleanups, plus a clas1
 1. ROOT
 
 # See Also
-* https://github.com/alaoui-ah/GiBUU/tree/main/run_gibuu
 * https://gibuu.hepforge.org/
+* https://github.com/alaoui-ah/GiBUU/tree/main/run_gibuu

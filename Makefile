@@ -1,10 +1,19 @@
 
-TOP = $(shell pwd)
+MAKEDIRS := $(shell find . -maxdepth 2 -mindepth 2 -name Makefile | awk -F/ '{print$$2}')
+SUBMODULES := $(shell grep ^\\[submodule .gitmodules | awk -F\" '{print$$2}')
+CLEANDIRS := $(MAKEDIRS)
+MAKEDIRS := $(filter-out gibuu,$(MAKEDIRS))
+MAKEDIRS := $(filter-out genie,$(MAKEDIRS))
+MAKEDIRS := $(filter-out twopeg,$(MAKEDIRS))
 
-SUBDIRS = clasdis claspyth dvcsgen inclusive-dis-rad TCSGen genKYandOnePion JPsiGen MCEGENpiN_radcorr deep-pipi-gen genepi onepigen
+TOP := $(shell pwd)
 
-all: gibuu genie twopeg elspectro
-	for dir in $(SUBDIRS); do\
+export GENIE := $(TOP)/genie
+
+all: gibuu genie twopeg elspectro makedirs
+
+makedirs:
+	for dir in $(MAKEDIRS); do\
 		$(MAKE) -C $$dir; \
 	done
 
@@ -17,12 +26,13 @@ twopeg:
 	sed -i 's/\(^CXX .*= g++ \)/\1 -std=c++17 /' twopeg/Makefile
 	cd twopeg && $(MAKE) nobos
 
-gibuu: lhapdf
-	$(MAKE) -C gibuu 
-
+gibuu: bin/GiBUU.x
 lhapdf: lib/libLHAPDF.so
 log4cpp: lib/liblog4cpp.so
 pythia6: lib/libPythia6.so
+
+bin/GiBUU.x: lhapdf
+	$(MAKE) -C gibuu install 
 
 lib/libLHAPDF.so:
 	$(eval V := 6.5.4)
@@ -66,19 +76,18 @@ root: pythia6
 	$(eval V := 6.30.04)
 	wget https://root.cern/download/root_v${V}.source.tar.gz
 	tar xzf root_v${V}.source.tar.gz
-	mv root-${V} ${SOURCE_DIR}
-	+ cmake -S ${SOURCE_DIR} -B ${BUILD_DIR} \
+	+ cmake -S root-${V} -B root-${V}-build \
 		-DCMAKE_CXX_STANDARD=17 \
-		-DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
+		-DCMAKE_INSTALL_PREFIX=${TOP}/root \
 		-Dbuiltin_glew=ON \
 		-Dmathmore=ON \
 		-Dfftw3=ON \
 		-Dpythia6=ON \
-		-DPYTHIA6_LIBRARY=${PYTHIA_LIB}
-	+ cmake --build ${BUILD_DIR} --target install -- -j${NTHREADS}
-	cp -f ${PYTHIA_LIB} ${INSTALL_DIR/lib}
+		-DPYTHIA6_LIBRARY=${TOP}/lib/libPythia6.so
+	+ cmake --build root-${V}-build --target install
 
-genie: pythia6 lhapdf
+genie: pythia6 lhapdf log4cpp
+	rm -rf genie
 	git clone -b R-3_04_00 --depth 1 https://github.com/GENIE-MC/Generator.git genie
 	cd genie && ./configure \
 	 --prefix=${TOP} --disable-profiler --disable-validation-tools \
@@ -111,19 +120,19 @@ install:
 	install -D generate-seeds.py bin
 	install -D onepigen/onepigen bin
 	install -D onepigen/onepigen_lund bin
-	install -D gibuu/gibuu bin
-	install -D gibuu/release/objects/GiBUU.x bin
-	install -D gibuu/gibuu2lund bin
 
-clean: prune
+clean:
 	rm -rf bin lib lib64 build share include etc
-	for dir in $(SUBDIRS); do\
+	for dir in $(CLEANDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
-	$(MAKE) -C twopeg clean
-#$(MAKE) -C gibuu clean
-#$(MAKE) -C genie clean
+	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build
 
 prune:
-	rm -rf LHAPDF* log4cpp* pythia6* gsl* libxml* build
+	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build
+
+debug:
+	@ echo SUBMODULES: $(SUBMODULES)
+	@ echo CLEANDIRS:  $(CLEANDIRS)
+	@ echo MAKEDIRS:   $(MAKEDIRS)
 

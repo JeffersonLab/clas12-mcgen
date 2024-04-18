@@ -19,5 +19,5 @@ errors.txt
 RNDMSTATUS
 LHAPDF*
 genie
-log4cpp
-pythia6
+log4cpp*
+pythia6*

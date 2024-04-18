@@ -1,5 +1,5 @@
 # clas12 GiBUU
-A recipe for building GiBUU with LHAPDF support and other cleanups, plus a clas12 wrapper script.
+A recipe for building GiBUU with LHAPDF support and other cleanups, plus a clas12 wrapper script and LUND converter.
 
 ## Prerequisites
 1. c++17

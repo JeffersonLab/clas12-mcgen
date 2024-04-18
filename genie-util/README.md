@@ -1,4 +1,8 @@
-# Just a recipe for building GENIE.
+A recipe for building genie (moved to Makefile one up) plus a clas12 wrapper script and LUND converter.
+
+See https://github.com/GENIE-MC/Generator
+
+# A recipe for building GENIE.
 
 ## Prerequesites
 1. GSL, not included because it seems to be standard in package managers, e.g., `yum install gsl-devel`, and a local install caused issues with ROOT's XRootD build

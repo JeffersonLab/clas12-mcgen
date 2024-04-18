@@ -98,27 +98,28 @@ genie: pythia6 lhapdf log4cpp
 	 --with-log4cpp-inc=${TOP}/include --with-log4cpp-lib=${TOP}/lib
 	$(MAKE) -C genie
 	$(MAKE) -C genie install
+	mv -f bin/genie bin/genie.exe
 
 install:
+	install -D clasdis/clasdis bin/clasdis
+	install -D claspyth/claspyth bin/claspyth
+	install -D dvcsgen/dvcsgen bin/dvcsgen
+	install -D genKYandOnePion/genKYandOnePion bin/genKYandOnePion
+	install -D inclusive-dis-rad/inclusive-dis-rad bin/inclusive-dis-rad
+	install -D JPsiGen/JPsiGen.exe bin/JPsiGen.exe
+	install -D JPsiGen/JPsiGen bin/JPsiGen
+	install -D twopeg/twopeg bin/twopeg
+	install -D JPsiGen/lib/libJPsiGen.so lib/libJPsiGen.so
+	install -D TCSGen/TCSGen.exe bin/TCSGen.exe
+	install -D TCSGen/TCSGen bin/TCSGen
+	install -D TCSGen/lib/libTCSGen.so lib/libTCSGen.so
+	install -D MCEGENpiN_radcorr/MCEGENpiN_radcorr bin/MCEGENpiN_radcorr
+	install -D deep-pipi-gen/deep-pipi-gen bin/deep-pipi-gen
+	install -D genepi/genepi bin/genepi
+	install -D generate-seeds.py bin/generate-seeds.py
+	install -D onepigen/onepigen bin/onepigen
+	install -D onepigen/onepigen_lund bin/onepigen_lund
 	install -D clas12-elSpectro/elSpectro/jpacPhoto/lib/* lib
-	install -D clasdis/clasdis bin
-	install -D claspyth/claspyth bin
-	install -D dvcsgen/dvcsgen bin
-	install -D genKYandOnePion/genKYandOnePion bin
-	install -D inclusive-dis-rad/inclusive-dis-rad bin
-	install -D JPsiGen/JPsiGen.exe bin
-	install -D JPsiGen/JPsiGen bin
-	install -D twopeg/twopeg bin
-	install -D JPsiGen/lib/libJPsiGen.so lib
-	install -D TCSGen/TCSGen.exe bin
-	install -D TCSGen/TCSGen bin
-	install -D TCSGen/lib/libTCSGen.so lib
-	install -D MCEGENpiN_radcorr/MCEGENpiN_radcorr bin
-	install -D deep-pipi-gen/deep-pipi-gen bin
-	install -D genepi/genepi bin
-	install -D generate-seeds.py bin
-	install -D onepigen/onepigen bin
-	install -D onepigen/onepigen_lund bin
 
 clean:
 	rm -rf bin lib lib64 build share include etc

@@ -38,7 +38,7 @@ lib/libLHAPDF.so:
 	$(eval V := 6.5.4)
 	wget https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
 	tar -xzvf LHAPDF-${V}.tar.gz
-	cd LHAPDF-${V} && ./configure --prefix=${TOP}
+	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
 	$(MAKE) -C LHAPDF-${V}
 	$(MAKE) -C LHAPDF-${V} install
 

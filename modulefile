@@ -11,6 +11,7 @@ set top $env(JLAB_ROOT)/$env(OSRELEASE)/clas12-mcgen/$version
 
 prepend-path PATH $top/bin
 prepend-path LD_LIBRARY_PATH $top/lib
+prepend-path PYTHONPATH $top/lib64/python3.9/site-packages
 
 setenv TCSGEN_DIR $top/TCSGen
 setenv CLASDIS_PDF $top/clasdis/pdf/
@@ -28,4 +29,6 @@ setenv GENIE $top/genie/genie
 # if builds are moved after compiling:
 set el $top/clas12-elSpectro/elSpectro
 prepend-path ROOT_INCLUDE_PATH $el/core:$el/jpacPhoto/include:$el/jpacPhoto/include/amplitudes
+
+prepend-path LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
 

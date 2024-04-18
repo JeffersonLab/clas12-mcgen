@@ -10,12 +10,12 @@ TOP := $(shell pwd)
 
 export GENIE := $(TOP)/genie
 
-all: gibuu genie twopeg elspectro makedirs
+all: gibuu genie twopeg elspectro $(MAKEDIRS)
 
-makedirs:
-	for dir in $(MAKEDIRS); do\
-		$(MAKE) -C $$dir; \
-	done
+$(MAKEDIRS):
+	echo $(MAKE) -C $@
+
+.PHONY: $(MAKEDIRS)
 
 elspectro:
 	rm -rf build && mkdir build

@@ -99,6 +99,7 @@ genie: pythia6 lhapdf log4cpp
 	$(MAKE) -C genie
 	$(MAKE) -C genie install
 	mv -f bin/genie bin/genie.exe
+	$(MAKE) -C genie-util install
 
 install:
 	install -D clasdis/clasdis bin/clasdis

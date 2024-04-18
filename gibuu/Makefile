@@ -9,9 +9,9 @@ build: $(PACKAGES) gibuu2lund patch
 	+ $(MAKE) withROOT=1 -C release PDF=LHAPDF
 
 install: build
-	install -D gibuu ../bin
-	install -D release/objects/GiBUU.x ../bin
-	install -D gibuu2lund ../bin
+	install -D gibuu ../bin/gibuu
+	install -D release/objects/GiBUU.x ../bin/GiBUU.x
+	install -D gibuu2lund ../bin/gibuu2lund
 
 prep: $(PACKAGES)
 

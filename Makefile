@@ -13,7 +13,7 @@ export GENIE := $(TOP)/genie
 all: gibuu genie twopeg elspectro $(MAKEDIRS)
 
 $(MAKEDIRS):
-	echo $(MAKE) -C $@
+	$(MAKE) -C $@
 
 .PHONY: $(MAKEDIRS)
 

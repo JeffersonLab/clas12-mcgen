@@ -36,7 +36,7 @@ def convert_to_lund(opt):
     cmd = 'genie2lund %s %s'%(opt.gntp,opt.lund)
     return run_command(cmd.split(), opt.dryrun)
 
-example = 'genie.py --trig 125 --probe 11 --target 1000010020 --energy 11.1'
+example = 'genie --trig 125 --probe 11 --target 1000010020 --energy 11.1'
 
 cli = argparse.ArgumentParser(description='Run all genie event generator steps, ending with LUND output.',epilog='For example, \"%s\"'%example)
 cli.add_argument('--trig',metavar='#',help='number of events',type=int,required=True)

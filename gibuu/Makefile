@@ -4,9 +4,14 @@ PATCH = 03
 SYMLINKS = release buuinput libraries
 PACKAGES = release$(RELEASE) buuinput$(RELEASE) libraries$(RELEASE)_RootTuple
 
-all: $(PACKAGES) gibuu2lund patch
+build: $(PACKAGES) gibuu2lund patch
 	+ $(MAKE) -C release buildRootTuple
 	+ $(MAKE) withROOT=1 -C release PDF=LHAPDF
+
+install: build
+	install -D gibuu ../bin/gibuu
+	install -D release/objects/GiBUU.x ../bin/GiBUU.x
+	install -D gibuu2lund ../bin/gibuu2lund
 
 prep: $(PACKAGES)
 
@@ -40,6 +45,6 @@ clean:
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries${RELEASE}
 	rm -rf GiBUU.x gibuu2lund
 
-purge: clean
+prune:
 	rm -rf $(addsuffix .tar.gz,$(PACKAGES))
 

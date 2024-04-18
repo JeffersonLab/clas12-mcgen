@@ -17,8 +17,8 @@ name                 | description                                              
 [deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla
 [genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
 [onepigen]           | Single charged pion production based on AO/Daresbury/MAID      | Nick Tyler
-[GiBUU]              | | 
-[GENIE]              | not supported on OSG yet, pending configuration wrapper script and LUND output |
+[GiBUU]              | | Ahmed El Alaoui 
+[GENIE]              | Not ready for OSG |
 
 # Adding or Modifying a Generator
 
@@ -74,6 +74,8 @@ clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 MCEGENpiN_radcorr | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 deep-pipi-gen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 genepi | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+gibuu | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+genie | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 # Maintanance
 
@@ -168,6 +170,6 @@ git rm -f path/to/submodule
 [deep-pipi-gen]: https://github.com/jeffersonlab/deep-pipi-gen
 [genepi]: https://github.com/N-Plx/genepi
 [onepigen]: https://github.com/tylern4/onepigen
-[GENIE]: https://github.com/GENIE-MC/Generator
+[GENIE]: https://github.com/jeffersonlab/clas12-mcgen/genie-util
 [GiBUU]: https://github.com/jeffersonlab/clas12-mcgen/gibuu
 

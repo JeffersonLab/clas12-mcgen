@@ -18,3 +18,7 @@ errors.txt
 .lesshst
 RNDMSTATUS
 LHAPDF*
+genie
+log4cpp*
+pythia6*
+root*

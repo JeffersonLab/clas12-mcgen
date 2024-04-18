@@ -9,3 +9,6 @@ install: build
 build:
 	$(CXX) $(ROOT_CFLAGS) -o genie2lund genie2lund.cxx $(ROOT_LIBS)
 
+clean:
+	rm -f genie2lund
+

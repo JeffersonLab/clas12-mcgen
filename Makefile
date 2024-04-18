@@ -56,7 +56,7 @@ lib/libPythia6.so:
 	sed -i 's/^int /extern int /' ./pythia6/pythia6_common_address.c
 	sed -i 's/^extern int pyuppr/int pyuppr /' ./pythia6/pythia6_common_address.c
 	cd pythia6 && ./makePythia6.linuxx8664
-	install -D pythia6/libPythia6.so lib
+	install -D pythia6/libPythia6.so lib/libPythia6.so
 
 lib/libgsl.so: 
 	wget https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
@@ -87,7 +87,6 @@ root: pythia6
 	+ cmake --build root-${V}-build --target install
 
 genie: pythia6 lhapdf log4cpp
-	rm -rf genie
 	git clone -b R-3_04_00 --depth 1 https://github.com/GENIE-MC/Generator.git genie
 	cd genie && ./configure \
 	 --prefix=${TOP} --disable-profiler --disable-validation-tools \

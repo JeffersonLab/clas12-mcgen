@@ -14,17 +14,18 @@ all: gibuu genie twopeg elspectro $(MAKEDIRS)
 
 $(MAKEDIRS):
 	$(MAKE) -C $@
-
 .PHONY: $(MAKEDIRS)
 
 elspectro:
 	rm -rf build && mkdir build
 	+ cd build && cmake -DCMAKE_CXX_COMPILER=`which g++` -DCMAKE_C_COMPILER=`which gcc` ../
-	+ cd build && cmake --build . --target install && cd ..
+	+ cd build && cmake --build . --target install
+.PHONY: elspectro
 
 twopeg:
 	sed -i 's/\(^CXX .*= g++ \)/\1 -std=c++17 /' twopeg/Makefile
 	cd twopeg && $(MAKE) nobos
+.PHONY: twopeg
 
 gibuu: bin/GiBUU.x
 lhapdf: lib/libLHAPDF.so

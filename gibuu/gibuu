@@ -39,8 +39,6 @@ cli.add_argument('--dryrun', default=False, action='store_true')
 
 if not os.path.isfile(config_template):
     cli.error('Could not find gibuu_template.opt at $GIBUU or .')
-if not os.path.isdir(buu_directory):
-    cli.error('Could not find buuinput directory at $GIBUU or .')
 if not os.path.isfile(gibuu_executable):
     cli.error('Could not find GiBUU.x executable at $GIBUU or .')
 if not os.path.isfile(gibuu_converter):

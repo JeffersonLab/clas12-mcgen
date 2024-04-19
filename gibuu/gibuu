@@ -8,7 +8,7 @@ buu_directory = os.path.abspath('./buuinput')
 
 from argparse import Namespace
 target_choices = {
-    'p' : Namespace(A=1,Z=1,pdfset=3000000,numEnsem=6000,lenPert=15,shadow='T',nuclPDF=1,useJetSetVec='T'),
+    'p' : Namespace(A=1,Z=1,pdfset=3000000,numEnsem=6000,lenPert=15,shadow='F',nuclPDF=0,useJetSetVec='F'),
     'D' : Namespace(A=2,Z=1,pdfset=3000300,numEnsem=5000,lenPert=20,shadow='F',nuclPDF=0,useJetSetVec='F'),
     'He': Namespace(A=4,Z=2,pdfset=3000600,numEnsem=4000,lenPert=40,shadow='T',nuclPDF=1,useJetSetVec='T'),
     'Li': Namespace(A=6,Z=3,pdfset=3000900,numEnsem=3000,lenPert=60,shadow='T',nuclPDF=1,useJetSetVec='T'),

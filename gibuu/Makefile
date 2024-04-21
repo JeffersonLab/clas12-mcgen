@@ -36,9 +36,9 @@ gibuu2lund: gibuu2lund.cxx
 	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --evelibs)
 
 patch: $(PACKAGES)
-	patch -p 0 < patches/eks98.patch
-	patch -p 0 < patches/nuclear.patch
-	patch -p 0 < patches/root.patch
+	patch -p 0 --forward --reject-file=- < patches/eks98.patch
+	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
+	patch -p 0 --forward --reject-file=- < patches/root.patch
 	cd release/objects/LIB/lib && ln -s ../../../../../lib/lib* .
 
 clean:

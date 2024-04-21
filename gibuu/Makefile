@@ -36,9 +36,9 @@ gibuu2lund: gibuu2lund.cxx
 	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --evelibs)
 
 patch: $(PACKAGES)
-	cp -f FindROOT.cmake libraries/RootTuple/RootTuple-master/cmake/Modules/FindROOT.cmake
-	cp -f eks98_dummy.f90 release/code/collisions/twoBodyReactions/HiEnergy
-	patch -p 0 < NuclearPDF.f90.patch
+	patch -p 0 < patches/eks98.patch
+	patch -p 0 < patches/nuclear.patch
+	patch -p 0 < patches/root.patch
 	cd release/objects/LIB/lib && ln -s ../../../../../lib/lib* .
 
 clean:

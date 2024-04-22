@@ -1,0 +1,11 @@
+--- release/code/inputOutput/inputGeneral.f90	2024-04-22 10:58:19.157038516 -0400
++++ release/code/inputOutput/inputGeneral.f90	2024-04-22 11:06:12.803677657 -0400
+@@ -581,7 +581,7 @@
+ 
+   subroutine ExpandPath(p)
+     character(len=*),intent(inout) :: p
+-    character(len=100) :: home
++    character(len=512) :: home
+     integer :: stat
+ 
+     if (p(1:1)/='~') return

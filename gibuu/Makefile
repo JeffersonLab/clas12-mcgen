@@ -39,7 +39,11 @@ patch: $(PACKAGES)
 	patch -p 0 --forward --reject-file=- < patches/eks98.patch
 	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
 	patch -p 0 --forward --reject-file=- < patches/root.patch
+	patch -p 0 --forward < patches/input.patch
 	cd release/objects/LIB/lib && ln -s ../../../../../lib/lib* .
+
+unpatch: clean
+	$(MAKE) $(PACKAGES)
 
 clean:
 	rm -rf $(SYMLINKS) $(PACKAGES) libraries${RELEASE}

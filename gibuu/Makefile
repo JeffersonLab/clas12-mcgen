@@ -35,7 +35,7 @@ $(addsuffix .tar.gz,$(PACKAGES)):
 gibuu2lund: gibuu2lund.cxx
 	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --evelibs)
 
-patch: $(PACKAGES)
+patch: $(PACKAGES) ../lib/libLHAPDF.so
 	patch -p 0 --forward --reject-file=- < patches/eks98.patch
 	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
 	patch -p 0 --forward --reject-file=- < patches/root.patch

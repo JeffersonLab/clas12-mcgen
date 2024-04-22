@@ -30,5 +30,6 @@ setenv GENIE $top/genie/genie
 set el $top/clas12-elSpectro/elSpectro
 prepend-path ROOT_INCLUDE_PATH $el/core:$el/jpacPhoto/include:$el/jpacPhoto/include/amplitudes
 
-prepend-path LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
+setenv LHAPDF_DATA_PATH /cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
+append-path LHAPDF_DATA_PATH $top/share/LHAPDF
 

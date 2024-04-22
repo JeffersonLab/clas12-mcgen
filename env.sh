@@ -22,5 +22,5 @@ export CLAS_PARMS=$d/onepigen
 export GENIE=$d/genie/genie
 export GIBUU=$d/gibuu
 
-export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
+export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current:$d/share/LHAPDF
 

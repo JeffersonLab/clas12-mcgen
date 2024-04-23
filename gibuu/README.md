@@ -10,7 +10,11 @@ A recipe for building GiBUU with LHAPDF support and other cleanups, plus a confi
 ## Building
 1. make
 
-_Note, LHAPDF will be built with the [Makefile above](../Makefile), if necessary._
+Note, this includes a few automatic patches:
+1. Symlinking LHAPDF libraries, which will be built with the [Makefile above](../Makefile) if necessary, to a special directory inside GiBUU.
+2. Adding a dummy Fortran runtime, also for LHAPDF support.
+3. Increasing character array lengths to support long filesystem paths.
+4. "Fixing" ROOT version detection (probably broke with recent ROOT versions).
 
 ## Running
 

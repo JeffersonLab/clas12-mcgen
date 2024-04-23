@@ -5,30 +5,11 @@ _Note, GENIE requires a large startup time for calculations that (should) get re
 ## See also
 * https://github.com/GENIE-MC/Generator
 
-# A recipe for building GENIE.
-
 ## Prerequesites
 1. GSL, not included because it seems to be standard in package managers, e.g., `yum install gsl-devel`, and a local install caused issues with ROOT's XRootD build
     * Looks like libxml2 is also standard, but currently include in the build procedure below 
 2. `wget`
 3. Reasonably modern `gcc` and `cmake`
-
-## Build Procedure
-1. Download and build the genie-specific dependencies:
- 
-   `make deps`
-
-2. Download and build ROOT with Pythia6 support (built in the previous step):
-
-   `make root ROOTSYS=/path/to/new/ROOT/installation`
-
-3. Download and build genie:
-
-   `source ROOTSYS/bin/thisroot.sh`
-
-   `source env.sh`
-
-   `make genie`
 
 ## Notes from Rhidian
 

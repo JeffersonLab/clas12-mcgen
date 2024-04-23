@@ -39,7 +39,7 @@ patch: $(PACKAGES) ../lib/libLHAPDF.so
 	patch -p 0 --forward --reject-file=- < patches/eks98.patch
 	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
 	patch -p 0 --forward --reject-file=- < patches/root.patch
-	patch -p 0 --forward < patches/input.patch
+	find ./release/code -name '*.f90' -exec sed -i 's/character(100)/character(1000)/' {} \;
 	cd release/objects/LIB/lib && ln -s ../../../../../lib/lib* .
 
 unpatch: clean

@@ -13,7 +13,10 @@ install: build
 	install -D release/objects/GiBUU.x ../bin/GiBUU.x
 	install -D gibuu2lund ../bin/gibuu2lund
 
-prep: $(PACKAGES)
+lhapdf:
+	$(MAKE) -C .. lhapdf
+
+prep: $(PACKAGES) lhapdf
 
 download: $(addsuffix .tar.gz,$(PACKAGES))
 	for pdf in $(PDFSETS); do\
@@ -35,7 +38,7 @@ $(addsuffix .tar.gz,$(PACKAGES)):
 gibuu2lund: gibuu2lund.cxx
 	$(CXX) $(shell root-config --cflags) -o gibuu2lund gibuu2lund.cxx $(shell root-config --evelibs)
 
-patch: $(PACKAGES) ../lib/libLHAPDF.so
+patch: prep
 	patch -p 0 --forward --reject-file=- < patches/eks98.patch
 	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
 	patch -p 0 --forward --reject-file=- < patches/root.patch

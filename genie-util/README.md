@@ -1,6 +1,9 @@
-A recipe for building genie (moved to Makefile one up) plus a clas12 wrapper script and LUND converter.
+A clas12 wrapper script and LUND converter for GENIE.
 
-See https://github.com/GENIE-MC/Generator
+_Note, GENIE requires a large startup time for calculations that (should) get reused across many jobs._
+
+## See also
+* https://github.com/GENIE-MC/Generator
 
 # A recipe for building GENIE.
 

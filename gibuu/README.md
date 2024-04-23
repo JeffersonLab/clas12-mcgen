@@ -9,6 +9,7 @@ A recipe for building GiBUU with LHAPDF support and other cleanups, plus a confi
 
 ## Building
 1. make
+Note, LHAPDF will be built with the [Makefile above](../Makefile), if necessary.
 
 ## Running
 
@@ -20,9 +21,9 @@ Usage:
 * gibuu -h
   
 Here's what it does:
-1. generate a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
+1. generates a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
 1. runs GiBUU.x proper
-1. runs gibuu2lund
+1. runs gibuu2lund to generate `./gibuu.dat`
 
 ## See Also
 * https://gibuu.hepforge.org/

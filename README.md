@@ -1,4 +1,4 @@
-This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.  These generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
+``This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.  These generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
 
 # Current Generators 
 
@@ -171,5 +171,4 @@ git rm -f path/to/submodule
 [genepi]: https://github.com/N-Plx/genepi
 [onepigen]: https://github.com/tylern4/onepigen
 [GENIE]: https://github.com/jeffersonlab/clas12-mcgen/genie-util
-[GiBUU]: https://github.com/jeffersonlab/clas12-mcgen/gibuu
-
+[GiBUU]: gibuu

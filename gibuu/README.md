@@ -23,8 +23,8 @@ Usage:
  
 Here's what it does:
 1. generates a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
-1. runs GiBUU.x proper
-1. runs gibuu2lund to generate `./gibuu.dat`
+1. runs `GiBUU.x` proper
+1. runs `gibuu2lund` to generate `./gibuu.dat`
 
 ## See Also
 * https://gibuu.hepforge.org/

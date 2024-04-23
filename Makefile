@@ -102,7 +102,7 @@ genie: pythia6 lhapdf log4cpp
 	mv -f bin/genie bin/genie.exe
 	$(MAKE) -C genie-util install
 
-install:
+install: fixperms
 	install -D clasdis/clasdis bin/clasdis
 	install -D claspyth/claspyth bin/claspyth
 	install -D dvcsgen/dvcsgen bin/dvcsgen
@@ -123,6 +123,10 @@ install:
 	install -D onepigen/onepigen_lund bin/onepigen_lund
 	install -D clas12-elSpectro/elSpectro/jpacPhoto/lib/* lib
 
+fixperms:
+	chmod 755 onepigen/spp_tbl
+	chmod -R +r onepigen/spp_tbl
+
 clean:
 	rm -rf bin lib lib64 build share include etc
 	for dir in $(CLEANDIRS); do\
@@ -131,7 +135,7 @@ clean:
 	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build
 
 prune:
-	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build
+	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build onepigen/spp_tbl.tar.gz
 
 debug:
 	@ echo SUBMODULES: $(SUBMODULES)

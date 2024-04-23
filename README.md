@@ -170,5 +170,5 @@ git rm -f path/to/submodule
 [deep-pipi-gen]: https://github.com/jeffersonlab/deep-pipi-gen
 [genepi]: https://github.com/N-Plx/genepi
 [onepigen]: https://github.com/tylern4/onepigen
-[GENIE]: https://github.com/jeffersonlab/clas12-mcgen/genie-util
+[GENIE]: genie-util
 [GiBUU]: gibuu

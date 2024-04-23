@@ -9,7 +9,8 @@ A recipe for building GiBUU with LHAPDF support and other cleanups, plus a confi
 
 ## Building
 1. make
-Note, LHAPDF will be built with the [Makefile above](../Makefile), if necessary.
+
+_Note, LHAPDF will be built with the [Makefile above](../Makefile), if necessary._
 
 ## Running
 
@@ -18,8 +19,8 @@ Requirements:
 * $GIBUU environment variable set to this directory
 
 Usage:
-* gibuu -h
-  
+* See `gibuu -h`
+ 
 Here's what it does:
 1. generates a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
 1. runs GiBUU.x proper

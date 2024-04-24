@@ -4,7 +4,7 @@ import os.path
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
 gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
 gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
-buu_directory = os.path.abspath('./buuinput')
+buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 
 from argparse import Namespace
 target_choices = {
@@ -43,11 +43,8 @@ if not os.path.isfile(gibuu_executable):
     cli.error('Could not find GiBUU.x executable at $GIBUU or .')
 if not os.path.isfile(gibuu_converter):
     cli.error('Could not find gibuu2lund executable at $GIBUU or .')
-if os.getenv('GIBUU') is not None:
-    if os.path.exists('./buuinput'):
-        print('WARNING:  Using existing local ./buuinput')
-    else:
-        os.symlink(os.getenv('GIBUU')+'/buuinput','./buuinput')
+if not os.path.isdir(buu_directory):
+    cli.error('Could not find buuinput directory at $GIBUU or .')
 
 args = cli.parse_args(sys.argv[1:])
 

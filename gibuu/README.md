@@ -1,4 +1,4 @@
-A recipe for building GiBUU with LHAPDF support and other cleanups, plus a configuration wrapper script and LUND converter.
+A recipe for building [GiBUU](https://gibuu.hepforge.org/) with [LHAPDF](https://lhapdf.hepforge.org/) support and other cleanups, plus a [configuration wrapper script](./gibuu) and [LUND converter](./gibuu2lund.cxx).
 
 ## Prerequisites
 1. c++17
@@ -32,4 +32,5 @@ Here's what it does:
 
 ## See Also
 * https://gibuu.hepforge.org/
+* https://lhapdf.hepforge.org/
 * https://github.com/alaoui-ah/GiBUU/tree/main/run_gibuu

@@ -19,8 +19,8 @@ Note, this includes a few automatic patches:
 ## Running
 
 Requirements:
-* Write access to $PWD
-* $GIBUU environment variable set to this directory
+* Write access to `$PWD`
+* `$GIBUU` environment variable set to this directory
 
 Usage:
 * See `gibuu -h`

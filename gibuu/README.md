@@ -25,7 +25,7 @@ Requirements:
 Usage:
 * See `gibuu -h`
  
-Here's what it does:
+What it does:
 1. generates a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
 1. runs `GiBUU.x` proper
 1. runs `gibuu2lund` to generate `./gibuu.dat`

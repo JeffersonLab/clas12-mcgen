@@ -17,14 +17,18 @@ Note, this includes a few automatic patches:
 4. "Fixing" ROOT version detection (probably broke with recent ROOT versions).
 
 ## Running
-
-Requirements:
+### Requirements
 * Write access to `$PWD`
 * `$GIBUU` environment variable set to this directory
-
-Usage:
-* See `gibuu -h`
- 
+### Usage
+Required options:
+```
+  --targ {p,D,He,Li,Be,C,N,Al,Ca,Fe,Cu,Ag,Sn,Xe,Au,Pb}
+                        target nucleus
+  --ebeam EBEAM         beam energy (GeV)
+  --kt KT               kt value (GeV)
+```
+See `gibuu -h` for full options.
 What it does:
 1. generates a GiBUU configuration file based on command-line options and [this template](gibuu_template.opt)
 1. runs `GiBUU.x` proper

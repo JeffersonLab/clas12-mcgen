@@ -75,7 +75,7 @@ MCEGENpiN_radcorr | :white_check_mark: | :white_check_mark: | :white_check_mark:
 deep-pipi-gen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 genepi | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 gibuu | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-genie | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+genie | :white_check_mark: | :white_check_mark: | :red_circle: |
 
 ### [Maintenance](./doc/maintenance.md)
 

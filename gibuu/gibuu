@@ -100,7 +100,7 @@ if args.docker:
     import atexit,glob,os
     @atexit.register
     def cleanup():
-        for x in ['txt','tex','opt','bin','RG','run']:
+        for x in ['dat','txt','tex','opt','bin','RG','run']:
             for y in glob.glob('*.'+x):
                 os.remove(y)
 

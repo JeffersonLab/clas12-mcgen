@@ -11,6 +11,7 @@ struct event {
     double nu=0;
     double eps=0;
     double phi=0;
+    int    evType=0;
     std::vector <double> *px=0;
     std::vector <double> *py=0;
     std::vector <double> *pz=0;
@@ -19,12 +20,12 @@ struct event {
     std::vector <int> *pid=0;
 };
 
-void gibuu2lund(int nevents, float ebeam, char* inputfilename, char* outputfilename) {
+void gibuu2lund(int nevents, float ebeam, int A, int Z) {
 
-  FILE *output = fopen(outputfilename, "w");
+  FILE *output = fopen("gibuu.dat", "w");
   struct event t;
   TChain *tree = new TChain("RootTuple");
-  tree->Add(inputfilename);
+  tree->Add("EventOutput.Pert.00000001.root");
   tree->SetBranchAddress("barcode", &t.pid);
   tree->SetBranchAddress("Px", &t.px);
   tree->SetBranchAddress("Py", &t.py);
@@ -35,6 +36,7 @@ void gibuu2lund(int nevents, float ebeam, char* inputfilename, char* outputfilen
   tree->SetBranchAddress("nu", &t.nu);
   tree->SetBranchAddress("eps",&t.eps);
   tree->SetBranchAddress("phiL", &t.phi);
+  tree->SetBranchAddress("evType", &t.evType);
 
   const float vx=0;
   const float vy=0;
@@ -48,14 +50,14 @@ void gibuu2lund(int nevents, float ebeam, char* inputfilename, char* outputfilen
 
     // The event header:
     fprintf(output, "%lu ", t.px->size()+1);
-    fprintf(output, "%i ", 4); // Number of nucleons in the nucleus N
-    fprintf(output, "%i ", 2); // Number of protons in the nucleus Z
+    fprintf(output, "%i ", A); // Number of nucleons in the nucleus N
+    fprintf(output, "%i ", Z); // Number of protons in the nucleus Z
     fprintf(output, "%i ", 0);
     fprintf(output, "%i ", 0);
     fprintf(output, "%.4e ", 0.00051184);
-    fprintf(output, "%.4e ", 5.986);
+    fprintf(output, "%.4e ", ebeam); // 5.986 replaced with ebeam ahmed
     fprintf(output, "%.4e ", 2212.0);
-    fprintf(output, "%.4e ", 1.0);
+    fprintf(output, "%i ", t.evType);
     fprintf(output, "%.4e ", t.weight);
     fprintf(output, "\n");
 
@@ -111,9 +113,9 @@ void gibuu2lund(int nevents, float ebeam, char* inputfilename, char* outputfilen
 
 int main(int argc, char* argv[]) {
     if (argc != 5) {
-        printf("Usage:  gibuu2lund #EVENTS BEAM_ENERGY GiBUU-ROOT-filename LUND-filename\n");
+        printf("Usage:  gibuu2lund #EVENTS BEAM_ENERGY A Z\n");
         exit(1);
     }
-    gibuu2lund(atoi(argv[1]),atof(argv[2]),argv[3],argv[4]);
+    gibuu2lund(atoi(argv[1]),atof(argv[2]),atoi(argv[3]),atoi(argv[4]));
 }
 

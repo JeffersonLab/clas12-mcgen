@@ -97,13 +97,13 @@ def run(cmd, dryrun, stdin=None):
         return p.returncode == 0
 
 with open('./gibuu.opt','w') as config_file:
-    config = list(generate_config(config_template, substitutions))
-    config_file.write(('\n'.join(config)))
+	config = list(generate_config(config_template, substitutions))
+	config_file.write(('\n'.join(config)))
 
 with open('./gibuu.opt','r') as config_file:
-    if not run([gibuu_executable], args.dryrun, config_file):
-        sys.exit(23)
-    cmd = [gibuu_converter, str(args.trig), str(args.ebeam), 'EventOutput.Pert.00000001.root','gibuu.dat']
-    if not run(cmd, args.dryrun):
-        sys.exit(24)
+	if not run([gibuu_executable], args.dryrun, config_file):
+		sys.exit(23)
+	cmd = [gibuu_converter, str(args.trig), str(args.ebeam), str(target.A), str(target.Z)]
+	if not run(cmd, args.dryrun):
+		sys.exit(24)
 

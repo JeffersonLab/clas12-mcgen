@@ -24,7 +24,7 @@ To test builds on CVMFS in the singularity container:
 ```
 singularity shell --home ${PWD}:/srv --pwd /srv --bind /cvmfs --contain --ipc --pid --cleanenv /cvmfs/singularity.opensciencegrid.org/jeffersonlab/clas12software:production
 source /etc/profile.d/modules.sh
-source /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/soft/setup.sh
+source /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/setup.sh
 module load root mcgen
 ```
 _Starting with some later versions of ROOT, if it is moved after it's built, then linking against it doesn't always appear to work.  Hopefully there is some way to address that properly, meanwhile the `$ROOTSYS` above must be where it was originally built (e.g. cannot be its final destination on CVMFS).  A centos8 build of ROOT is available at `/work/clas12/users/baltzell/Linux_Centos8...` that can be used for building clas12-mcgen in singularity.  Its exact path in the container must be `/srv/root-6.22.06-build`!_

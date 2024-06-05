@@ -27,7 +27,7 @@ twopeg:
 	cd twopeg && $(MAKE) nobos
 .PHONY: twopeg
 
-clas-stringspinner:
+clas-stringspinner: pythia8
 	meson setup $@/build $@ --prefix=${TOP}
 	meson install -C $@/build
 .PHONY: clas-stringspinner
@@ -36,6 +36,7 @@ gibuu: bin/GiBUU.x
 lhapdf: lib/libLHAPDF.so
 log4cpp: lib/liblog4cpp.so
 pythia6: lib/libPythia6.so
+pythia8: lib/libpythia8.so
 
 bin/GiBUU.x: lhapdf
 	$(MAKE) -C gibuu install 
@@ -63,6 +64,11 @@ lib/libPythia6.so:
 	sed -i 's/^extern int pyuppr/int pyuppr /' ./pythia6/pythia6_common_address.c
 	cd pythia6 && ./makePythia6.linuxx8664
 	install -D pythia6/libPythia6.so lib/libPythia6.so
+
+lib/libpythia8.so:
+	cd pythia8 && ./configure --prefix=${TOP}
+	$(MAKE) -C pythia8
+	$(MAKE) -C pythia8 install
 
 lib/libgsl.so: 
 	wget https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz

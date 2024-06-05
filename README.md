@@ -82,6 +82,7 @@ genie | :white_check_mark: | :white_check_mark: | :red_circle: |
 
 [clasdis]: https://github.com/jeffersonlab/clasdis 
 [claspyth]: https://github.com/jeffersonlab/claspyth
+[clas-stringspinner]: https://github.com/JeffersonLab/clas-stringspinner.git
 [dvcsgen]: https://github.com/jeffersonlab/dvcsgen
 [genKYandOnePion]: https://github.com/ValeriiKlimenko/genKYandOnePion
 [inclusive-dis-rad]: https://github.com/jeffersonlab/inclusive-dis-rad

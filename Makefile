@@ -27,6 +27,12 @@ twopeg:
 	cd twopeg && $(MAKE) nobos
 .PHONY: twopeg
 
+clas-stringspinner:
+	rm -rf $@/build
+	+ meson setup $@/build $@ --prefix=${TOP}
+	+ meson install -C $@/build
+.PHONY: clas-stringspinner
+
 gibuu: bin/GiBUU.x
 lhapdf: lib/libLHAPDF.so
 log4cpp: lib/liblog4cpp.so

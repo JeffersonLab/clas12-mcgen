@@ -6,6 +6,7 @@ name                 | description                                              
 -------------------- | -------------------------------------------------------------- | ------------------
 [clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian
 [claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian
+[clas-stringspinner] | SIDIS PYTHIA with hadronization spin effects                   | Christopher Dilks
 [dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian
 [genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko
 [inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian
@@ -81,6 +82,7 @@ genie | :white_check_mark: | :white_check_mark: | :red_circle: |
 
 [clasdis]: https://github.com/jeffersonlab/clasdis 
 [claspyth]: https://github.com/jeffersonlab/claspyth
+[clas-stringspinner]: https://github.com/JeffersonLab/clas-stringspinner.git
 [dvcsgen]: https://github.com/jeffersonlab/dvcsgen
 [genKYandOnePion]: https://github.com/ValeriiKlimenko/genKYandOnePion
 [inclusive-dis-rad]: https://github.com/jeffersonlab/inclusive-dis-rad

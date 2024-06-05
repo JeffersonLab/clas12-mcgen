@@ -41,3 +41,10 @@
 [submodule "onepigen"]
 	path = onepigen
 	url = https://github.com/tylern4/onepigen.git
+[submodule "clas-stringspinner"]
+	path = clas-stringspinner
+	url = https://github.com/JeffersonLab/clas-stringspinner.git
+[submodule "pythia8"]
+	path = pythia8
+	url = https://gitlab.com/Pythia8/releases.git
+	ignore = untracked ; ignore build artifacts

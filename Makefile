@@ -66,7 +66,11 @@ lib/libPythia6.so:
 	install -D pythia6/libPythia6.so lib/libPythia6.so
 
 lib/libpythia8.so:
-	cd pythia8 && ./configure --prefix=${TOP}
+	cd pythia8 && ./configure \
+		--prefix=${TOP} \
+		--cxx=$(shell which g++) \
+		--cxx-common="-fPIC" \
+		--cxx-shared="-shared -ldl"
 	$(MAKE) -C pythia8
 	$(MAKE) -C pythia8 install
 

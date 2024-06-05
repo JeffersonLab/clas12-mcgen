@@ -41,3 +41,6 @@
 [submodule "onepigen"]
 	path = onepigen
 	url = https://github.com/tylern4/onepigen.git
+[submodule "clas-stringspinner"]
+	path = clas-stringspinner
+	url = https://github.com/JeffersonLab/clas-stringspinner.git

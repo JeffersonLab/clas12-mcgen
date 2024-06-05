@@ -28,9 +28,8 @@ twopeg:
 .PHONY: twopeg
 
 clas-stringspinner:
-	rm -rf $@/build
-	+ meson setup $@/build $@ --prefix=${TOP}
-	+ meson install -C $@/build
+	meson setup $@/build $@ --prefix=${TOP}
+	meson install -C $@/build
 .PHONY: clas-stringspinner
 
 gibuu: bin/GiBUU.x
@@ -141,10 +140,10 @@ clean:
 	for dir in $(CLEANDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done
-	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build
+	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build clas-stringspinner/build
 
 prune:
-	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build onepigen/spp_tbl.tar.gz
+	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build onepigen/spp_tbl.tar.gz clas-stringspinner/build
 
 debug:
 	@ echo SUBMODULES: $(SUBMODULES)

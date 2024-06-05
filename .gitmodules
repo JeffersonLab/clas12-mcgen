@@ -47,3 +47,4 @@
 [submodule "pythia8"]
 	path = pythia8
 	url = https://gitlab.com/Pythia8/releases.git
+	ignore = untracked ; ignore build artifacts

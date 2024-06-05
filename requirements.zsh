@@ -15,7 +15,7 @@ d="$( cd "$( dirname "${(%):-%N}" )" && pwd )"
 
 . $d/env.zsh
 
-generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen twopeg clas12-elSpectro onepigen)
+generators=(clasdis claspyth dvcsgen genKYandOnePion inclusive-dis-rad JPsiGen TCSGen twopeg clas12-elSpectro onepigen clas-stringspinner)
 
 declare -A executableN
 declare -A outputExist

@@ -6,6 +6,7 @@ name                 | description                                              
 -------------------- | -------------------------------------------------------------- | ------------------
 [clasdis]            | SIDIS MC based on PEPSI LUND MC                                | Harut Avakian
 [claspyth]           | SIDIS full event generator based on PYTHIA                     | Harut Avakian
+[clas-stringspinner] | SIDIS PYTHIA with hadronization spin effects                   | Christopher Dilks
 [dvcsgen]            | DVCS/pi0/eta generator based on GPD and PDF parameterizations  | Harut Avakian
 [genKYandOnePion]    | KY, pi0P and pi+N                                              | Valerii Klimenko
 [inclusive-dis-rad]  | Inclusive electron and optionally radiative photon using PDFs  | Harut Avakian

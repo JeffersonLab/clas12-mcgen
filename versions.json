@@ -12,5 +12,6 @@
     "deep-pipi-gen" :     "1.2",
     "genepi" :            "v1.2",
     "onepigen" :          "v1.2",
-    "GiBUU" :             "2023"
+    "GiBUU" :             "2023",
+    "clas-stringspinner": "v0.1.0"
 }

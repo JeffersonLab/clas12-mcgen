@@ -7,6 +7,7 @@ MAKEDIRS := $(filter-out genie,$(MAKEDIRS))
 MAKEDIRS := $(filter-out twopeg,$(MAKEDIRS))
 
 TOP := $(shell pwd)
+PATH := $(TOP)/bin:$(PATH)
 
 export GENIE := $(TOP)/genie
 

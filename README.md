@@ -18,7 +18,7 @@ name                 | description                                              
 [deep-pipi-gen]      | Deep double pion production                                    | Dilini Bulumulla
 [genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
 [onepigen]           | Single charged pion production based on AO/Daresbury/MAID      | Nick Tyler
-[GiBUU]              | | Ahmed El Alaoui 
+[GiBUU]              | Quark and hadron propagation in nuclear media                  | Ahmed El Alaoui 
 [GENIE]              | Not ready for OSG |
 
 # Adding or Modifying a Generator

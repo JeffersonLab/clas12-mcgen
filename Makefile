@@ -47,21 +47,21 @@ bin/GiBUU.x: lhapdf
 
 lib/libLHAPDF.so:
 	$(eval V := 6.5.4)
-	wget https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
+	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
 	tar -xzvf LHAPDF-${V}.tar.gz
 	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
 	$(MAKE) -C LHAPDF-${V}
 	$(MAKE) -C LHAPDF-${V} install
 
 lib/liblog4cpp.so:
-	wget https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
+	wget --no-check-certificate https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
 	tar -xzvf log4cpp-1.1.4.tar.gz
 	cd log4cpp && ./configure --prefix=${TOP}
 	$(MAKE) -C log4cpp
 	$(MAKE) -C log4cpp install
 
 lib/libPythia6.so:
-	wget https://root.cern/download/pythia6.tar.gz
+	wget --no-check-certificate https://root.cern/download/pythia6.tar.gz
 	tar -xzvf pythia6.tar.gz
 	sed -i 's/^char /extern char /' ./pythia6/pythia6_common_address.c
 	sed -i 's/^int /extern int /' ./pythia6/pythia6_common_address.c
@@ -79,14 +79,14 @@ lib/libpythia8.so:
 	$(MAKE) -C pythia8 install
 
 lib/libgsl.so: 
-	wget https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
+	wget --no-check-certificate https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
 	tar -xzvf gsl-2.7.tar.gz
 	cd gsl-2.7 && ./configure --prefix=${TOP}
 	$(MAKE) -C gsl-2.7
 	$(MAKE) -C gsl-2.7 install
 
 lib/libxml2.so:
-	wget http://mirror.umd.edu/gnome/sources/libxml2/2.11/libxml2-2.11.0.tar.xz
+	wget --no-check-certificate http://mirror.umd.edu/gnome/sources/libxml2/2.11/libxml2-2.11.0.tar.xz
 	tar -xJvf libxml2-2.11.0.tar.xz
 	cd libxml2-2.11.0 && ./configure --prefix=${TOP} --without-python
 	$(MAKE) -C libxml2-2.11.0
@@ -97,7 +97,7 @@ ifndef prefix
 	$(error prefix must be defined.)
 endif
 	$(eval V := 6.30.04)
-	wget https://root.cern/download/root_v${V}.source.tar.gz
+	wget --no-check-certificate https://root.cern/download/root_v${V}.source.tar.gz
 	tar xzf root_v${V}.source.tar.gz
 	+ cmake -S root-${V} -B root-${V}-build \
 		-DCMAKE_CXX_STANDARD=17 \

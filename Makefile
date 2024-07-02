@@ -93,8 +93,8 @@ lib/libxml2.so:
 	$(MAKE) -C libxml2-2.11.0 install
 
 root: pythia6
-ifndef CMAKE_INSTALL_PREFIX
-	$(error CMAKE_INSTALL_PREFIX must be defined.)
+ifndef prefix
+	$(error prefix must be defined.)
 endif
 	$(eval V := 6.30.04)
 	wget https://root.cern/download/root_v${V}.source.tar.gz
@@ -107,7 +107,7 @@ endif
 		-Dfftw3=ON \
 		-Dpythia6=ON \
 		-DPYTHIA6_LIBRARY=${TOP}/lib/libPythia6.so
-	+ cmake --build root-${V}-build --target ${CMAKE_INSTALL_PREFIX}
+	+ cmake --build root-${V}-build --target ${prefix}
 
 genie: pythia6 lhapdf log4cpp
 	git clone -b R-3_04_00 --depth 1 https://github.com/GENIE-MC/Generator.git genie

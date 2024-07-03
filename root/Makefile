@@ -1,23 +1,28 @@
 
-ROOTV := 6.32.02
-TOP := $(shell pwd)
+VERSION := 6.32.02
+PREFIX ?= ${TOP}/root-${VERSION}-install
+TOP ?= $(shell pwd)
 
 download:
-	wget -N --no-check-certificate https://root.cern/download/root_v${ROOTV}.source.tar.gz
+	wget -N --no-check-certificate https://root.cern/download/root_v${VERSION}.source.tar.gz
 
 build: download
-ifndef prefix
-	$(error prefix must be defined.)
-endif
-	rm -rf root_v${ROOTV}
-	tar xzf root_v${ROOTV}.source.tar.gz
-	+ cmake -S root-${ROOTV} -B root-${ROOTV}-build \
+	rm -rf root_v${VERSION}
+	tar xzf root_v${VERSION}.source.tar.gz
+	+ cmake -S root-${VERSION} -B root-${VERSION}-build \
 		-DCMAKE_CXX_STANDARD=17 \
-		-DCMAKE_INSTALL_PREFIX=${prefix} \
+		-DCMAKE_INSTALL_PREFIX=${PREFIX} \
 		-Dbuiltin_glew=ON \
 		-Dmathmore=ON \
 		-Dfftw3=ON \
 		-DPYTHIA6_LIBRARY=${TOP}/lib/libPythia6.so
-#		-Dpythia6=ON \
-#	+ cmake --build root-${ROOTV}-build --target ${prefix}
+
+clean:
+	rm -rf root_v${VERSION} root_v${VERSION}-build
+
+prune: clean
+	rm -rf root_v${VERSION}.source.tar.gz
+
+install:
+	+ cmake --build root-${VERSION}-build --target ${prefix}
 

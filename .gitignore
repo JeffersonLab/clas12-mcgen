@@ -2,7 +2,6 @@ bin
 lib
 lib64
 include
-etc
 share
 *.dat
 *.root

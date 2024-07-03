@@ -150,7 +150,7 @@ fixperms:
 	chmod -R +r onepigen/spp_tbl
 
 clean:
-	rm -rf bin lib lib64 build share include etc
+	rm -rf bin lib lib64 build share include
 	for dir in $(CLEANDIRS); do\
 		$(MAKE) -C $$dir clean; \
 	done

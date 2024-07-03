@@ -65,7 +65,7 @@ name | compilation and executable name | CLI options | runs in container w/ outp
 ---- | ------------------------------- | --------------------- | -----------------
 clasdis | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 claspyth | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-classtringspinner | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+clas-stringspinner | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 dvcsgen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 genKYandOnePion | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark: |

@@ -23,6 +23,8 @@ jobs:
   generate_documentation:
     runs-on: ubuntu-latest
     steps:
+      - name: install dependencies
+        run: python -m pip install ninja meson
       - uses: actions/checkout@v4
         with:
           path: tmp
@@ -39,8 +41,6 @@ jobs:
           repository: JeffersonLab/clas12-mcgen # only the main fork has tags
           ref: ${{ steps.tag.outputs.tag }}
           submodules: recursive
-      - name: install dependencies
-        run: sudo apt -y install meson
       - name: build
         run: make clas-stringspinner -j4
       - name: generate documentation

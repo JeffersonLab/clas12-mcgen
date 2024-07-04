@@ -34,6 +34,7 @@ jobs:
         with:
           ref: ${{ steps.tag.outputs.tag }}
           submodules: recursive
+          fetch-tags: true
       - name: build
         run: make clas-stringspinner -j4
       - name: generate documentation

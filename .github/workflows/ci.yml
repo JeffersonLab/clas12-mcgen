@@ -25,7 +25,7 @@ jobs:
       - name: get latest tag
         id: tag
         run: |
-          tag=$(tmp/.github/get_highest_tag.rb JeffersonLab/clas12-mcgen
+          tag=$(tmp/.github/get_highest_tag.rb JeffersonLab/clas12-mcgen)
           echo $tag
           echo tag=$tag >> $GITHUB_OUTPUT
           rm -rf tmp

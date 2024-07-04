@@ -1,4 +1,4 @@
-name: CI
+name: documentation
 
 # FIXME: this will run on PRs, so we know more quickly when it fails; alternatively, if
 # we only want this to be triggered on 'push', we should make failures open up issues

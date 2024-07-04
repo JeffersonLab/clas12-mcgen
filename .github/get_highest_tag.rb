@@ -24,15 +24,15 @@ end
 
 tag_list = tag_list_unsorted.split.map{ |tag|
   begin
-    Gem::Version.new tag.gsub(/^v/,'')
+    [ Gem::Version.new(tag.gsub(/^v/,'')), tag ]
   rescue
     nil
   end
-}.compact.sort.reverse.map &:to_s
+}.compact.sort_by{|a|a.first}.reverse
 
 if tag_list.empty?
   $stderr.puts "ERROR: no semver tags found"
   exit 1
 end
 
-puts tag_list.first
+puts tag_list.first.last

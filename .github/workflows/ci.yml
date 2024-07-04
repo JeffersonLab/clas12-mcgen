@@ -35,9 +35,9 @@ jobs:
           repository: JeffersonLab/clas12-mcgen ###############FIXME DELETE!!!
           ref: ${{ steps.tag.outputs.tag }}
           submodules: recursive
-          fetch-tags: true
-          clean: false
-          fetch-depth: 0
+          # fetch-tags: true
+          # clean: false
+          # fetch-depth: 0
       - name: build
         run: make clas-stringspinner -j4
       - name: generate documentation

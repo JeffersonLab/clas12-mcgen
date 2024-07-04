@@ -1,5 +1,9 @@
 name: CI
 
+# FIXME: this will run on PRs, so we know more quickly when it fails; alternatively, if
+# we only want this to be triggered on 'push', we should make failures open up issues
+# (see, for example, `clas12-validation`)
+
 on:
   pull_request:
   push:
@@ -32,12 +36,11 @@ jobs:
       - name: checkout latest tag
         uses: actions/checkout@v4
         with:
-          repository: JeffersonLab/clas12-mcgen ###############FIXME DELETE!!!
+          repository: JeffersonLab/clas12-mcgen # only the main fork has tags
           ref: ${{ steps.tag.outputs.tag }}
           submodules: recursive
-          # fetch-tags: true
-          # clean: false
-          # fetch-depth: 0
+      - name: install dependencies
+        run: sudo apt install meson ninja
       - name: build
         run: make clas-stringspinner -j4
       - name: generate documentation

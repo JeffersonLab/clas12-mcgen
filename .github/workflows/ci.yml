@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+    tags: [ '*' ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  generate_documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: tmp
+      - name: get latest tag
+        id: tag
+        run: |
+          tag=$(.github/get_highest_tag.rb ${{ github.repository }})
+          echo $tag
+          echo tag=$tag >> $GITHUB_OUTPUT
+          rm -rf tmp
+      - name: checkout latest tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.tag }}
+          submodules: recursive
+      - name: build
+        run: make clas-stringspinner -j4
+      - name: generate documentation
+        run: |
+          mkdir publish
+          cp .github/index.html publish/
+          clas-stringspinner/.github/generate_usage_guide.sh bin/clas-stringspinner > publish/clas-stringspinner.html
+      - name: upload documentation
+        uses: actions/upload-pages-artifact@v3
+        with:
+          retention-days: 3
+          path: publish/
+
+  deploy_webpages:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: generate_documentation
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deployment
+        id: deployment
+        uses: actions/deploy-pages@v4

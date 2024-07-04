@@ -32,6 +32,7 @@ jobs:
       - name: checkout latest tag
         uses: actions/checkout@v4
         with:
+          repository: JeffersonLab/clas12-mcgen ###############FIXME DELETE!!!
           ref: ${{ steps.tag.outputs.tag }}
           submodules: recursive
           fetch-tags: true

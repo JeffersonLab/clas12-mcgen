@@ -47,11 +47,11 @@ bin/GiBUU.x: lhapdf
 
 lib/libLHAPDF.so:
 	$(eval V := 6.5.4)
-	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
-	tar -xzvf LHAPDF-${V}.tar.gz
-	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
-	$(MAKE) -C LHAPDF-${V}
-	$(MAKE) -C LHAPDF-${V} install
+	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${ROOTV}.tar.gz -O LHAPDF-${ROOTV}.tar.gz
+	tar -xzvf LHAPDF-${ROOTV}.tar.gz
+	cd LHAPDF-${ROOTV} && ./configure --prefix=${TOP} --disable-python
+	$(MAKE) -C LHAPDF-${ROOTV}
+	$(MAKE) -C LHAPDF-${ROOTV} install
 
 lib/liblog4cpp.so:
 	wget --no-check-certificate https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
@@ -91,23 +91,6 @@ lib/libxml2.so:
 	cd libxml2-2.11.0 && ./configure --prefix=${TOP} --without-python
 	$(MAKE) -C libxml2-2.11.0
 	$(MAKE) -C libxml2-2.11.0 install
-
-root: pythia6
-ifndef prefix
-	$(error prefix must be defined.)
-endif
-	$(eval V := 6.30.04)
-	wget --no-check-certificate https://root.cern/download/root_v${V}.source.tar.gz
-	tar xzf root_v${V}.source.tar.gz
-	+ cmake -S root-${V} -B root-${V}-build \
-		-DCMAKE_CXX_STANDARD=17 \
-		-DCMAKE_INSTALL_PREFIX=${TOP}/root \
-		-Dbuiltin_glew=ON \
-		-Dmathmore=ON \
-		-Dfftw3=ON \
-		-Dpythia6=ON \
-		-DPYTHIA6_LIBRARY=${TOP}/lib/libPythia6.so
-	+ cmake --build root-${V}-build --target ${prefix}
 
 genie: pythia6 lhapdf log4cpp
 	git clone -b R-3_04_00 --depth 1 https://github.com/GENIE-MC/Generator.git genie

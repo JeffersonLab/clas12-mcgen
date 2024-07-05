@@ -1,12 +1,12 @@
 
 VERSION := 6.32.02
-PREFIX ?= ${TOP}/root-${VERSION}-install
+PREFIX ?= ${TOP}/${VERSION}
 TOP ?= $(shell pwd)
 
 download:
 	wget -N --no-check-certificate https://root.cern/download/root_v${VERSION}.source.tar.gz
 
-build: download
+configure: download
 	rm -rf root_v${VERSION}
 	tar xzf root_v${VERSION}.source.tar.gz
 	+ cmake -S root-${VERSION} -B root-${VERSION}-build \
@@ -15,14 +15,17 @@ build: download
 		-Dbuiltin_glew=ON \
 		-Dmathmore=ON \
 		-Dfftw3=ON \
-		-DPYTHIA6_LIBRARY=${TOP}/lib/libPythia6.so
+		-Dpythia8=ON
+
+build: configure
+	+ cmake --build root-${VERSION}-build
+
+install: build
+	+ cmake --build --target ${PPREFIX} root-${VERSION}-build
 
 clean:
-	rm -rf root_v${VERSION} root_v${VERSION}-build
+	rm -rf root-${VERSION} root-${VERSION}-build
 
 prune: clean
 	rm -rf root_v${VERSION}.source.tar.gz
-
-install:
-	+ cmake --build root-${VERSION}-build --target ${prefix}
 

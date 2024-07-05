@@ -21,7 +21,7 @@ build: configure
 	+ cmake --build root-${VERSION}-build
 
 install: build
-	+ cmake --build --target ${PPREFIX} root-${VERSION}-build
+	+ cd root-${VERSION}-build && make install
 
 clean:
 	rm -rf root-${VERSION} root-${VERSION}-build

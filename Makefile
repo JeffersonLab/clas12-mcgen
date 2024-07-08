@@ -12,7 +12,7 @@ PATH := $(TOP)/bin:$(PATH)
 
 export GENIE := $(TOP)/genie
 
-all: gibuu genie twopeg elspectro clas-stringspinner simple
+all: gibuu twopeg elspectro clas-stringspinner simple
 
 simple: $(MAKEDIRS)
 

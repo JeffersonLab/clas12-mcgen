@@ -47,11 +47,11 @@ bin/GiBUU.x: lhapdf
 
 lib/libLHAPDF.so:
 	$(eval V := 6.5.4)
-	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${ROOTV}.tar.gz -O LHAPDF-${ROOTV}.tar.gz
-	tar -xzvf LHAPDF-${ROOTV}.tar.gz
-	cd LHAPDF-${ROOTV} && ./configure --prefix=${TOP} --disable-python
-	$(MAKE) -C LHAPDF-${ROOTV}
-	$(MAKE) -C LHAPDF-${ROOTV} install
+	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
+	tar -xzvf LHAPDF-${V}.tar.gz
+	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
+	$(MAKE) -C LHAPDF-${V}
+	$(MAKE) -C LHAPDF-${V} install
 
 lib/liblog4cpp.so:
 	wget --no-check-certificate https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz

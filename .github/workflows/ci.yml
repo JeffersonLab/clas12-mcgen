@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+    tags: [ '*' ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: cvmfs-contrib/github-action-cvmfs@v4
+      - name: build
+        uses: addnab/docker-run-action@v3
+        with:
+          image: jeffersonlab/clas12software:production
+          shell: tcsh
+          options: '-v /cvmfs:/cvmfs:shared'
+          run: |
+            echo '[+] module use'
+            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
+            echo '[+] module avail'
+            module avail --no-pager
+            echo '[+] module load clas12'
+            module load clas12
+            echo '[+] module list'
+            module list
+            echo '[+] ls'
+            ls -l
+            echo '[+] make'
+            make clas-stringspinner

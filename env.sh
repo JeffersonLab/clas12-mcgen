@@ -22,5 +22,7 @@ export CLAS_PARMS=$d/onepigen
 export GENIE=$d/genie/genie
 export GIBUU=$d/gibuu
 
+export PYTHIA8DATA=$d/share/Pythia8/xmldoc
+
 export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current:$d/share/LHAPDF
 

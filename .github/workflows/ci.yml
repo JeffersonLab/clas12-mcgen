@@ -40,4 +40,4 @@ jobs:
             echo '[+] ls'
             ls -l
             echo '[+] make'
-            make -j4 clas-stringspinner
+            make

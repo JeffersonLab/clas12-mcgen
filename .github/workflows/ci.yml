@@ -27,7 +27,7 @@ jobs:
         with:
           image: jeffersonlab/clas12software:production
           shell: tcsh
-          options: '-v /cvmfs:/cvmfs:shared'
+          options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work'
           run: |
             echo '[+] module use'
             module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
@@ -38,6 +38,7 @@ jobs:
             echo '[+] module list'
             module list
             echo '[+] ls'
+            cd /work
             ls -l
             echo '[+] make'
             make clas-stringspinner

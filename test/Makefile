@@ -1,6 +1,13 @@
 
 trig ?= 100
 
+define test_header
+	@echo ''
+	@echo '[++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++]'
+	@echo " TEST $(1)"
+	@echo '[++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++]'
+endef
+
 ALL := $(shell awk '{print$$1}' ../versions.txt)
 ALL := $(filter-out gibuu,$(ALL))
 
@@ -12,10 +19,12 @@ default:
 all: $(ALL)
 
 $(ALL):
+	@$(call test_header,$@)
 	$@ --trig $(trig) --docker
 
 gibuu:
-	gibuu --trig $(trig) --docker --targ D --ebeam 11.0 --kt 0.5  
+	@$(call test_header,$@)
+	gibuu --trig $(trig) --docker --targ D --ebeam 11.0 --kt 0.5
 
 clean:
 	rm -rf $(addsuffix *,$(ALL))

@@ -6,5 +6,5 @@ module avail --no-pager
 echo '[+++++++++++] module load clas12'
 module load clas12
 echo '[+++++++++++] module list'
-module list
+module list --no-pager
 echo '[+++++++++++++++++++++++++++++++++] done loading modules'

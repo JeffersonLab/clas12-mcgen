@@ -32,7 +32,11 @@ jobs:
             source .github/load-modules.csh
             make
       - name: tree installation
-        run: tree bin include lib lib64 share
+        run: |
+          for d in bin include lib lib64 share; do
+            echo '[+++++] tree $d'
+            tree $d
+          done
       - name: test
         uses: addnab/docker-run-action@v3
         with:

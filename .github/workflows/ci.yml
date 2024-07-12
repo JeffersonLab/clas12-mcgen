@@ -34,8 +34,9 @@ jobs:
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do
-            echo '[+++++] tree $d'
-            tree $d
+            echo ""
+            echo "[+++++] tree $d"
+            tree --noreport $d || true
           done
       - name: test
         uses: addnab/docker-run-action@v3

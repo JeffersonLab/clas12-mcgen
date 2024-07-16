@@ -21,6 +21,7 @@ export ELSPECTRO=${C12ELSPECTRO}/elSpectro
 export CLAS_PARMS=$d/onepigen
 export GENIE=$d/genie/genie
 export GIBUU=$d/gibuu
+export GENEPI=$d/genepi
 
 export PYTHIA8DATA=$d/share/Pythia8/xmldoc
 

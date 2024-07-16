@@ -47,7 +47,11 @@ pythia8: lib/libpythia8.so
 bin/GiBUU.x: lhapdf
 	$(MAKE) -C gibuu install 
 
-lib/libLHAPDF.so:
+dirs:
+	mkdir -p bin lib etc share doc
+.PHONY: dirs
+
+lib/libLHAPDF.so: dirs
 	$(eval V := 6.5.4)
 	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
 	tar -xzvf LHAPDF-${V}.tar.gz
@@ -55,14 +59,14 @@ lib/libLHAPDF.so:
 	$(MAKE) -C LHAPDF-${V}
 	$(MAKE) -C LHAPDF-${V} install
 
-lib/liblog4cpp.so:
+lib/liblog4cpp.so: dirs
 	wget --no-check-certificate https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
 	tar -xzvf log4cpp-1.1.4.tar.gz
 	cd log4cpp && ./configure --prefix=${TOP}
 	$(MAKE) -C log4cpp
 	$(MAKE) -C log4cpp install
 
-lib/libPythia6.so:
+lib/libPythia6.so: dirs
 	wget --no-check-certificate https://root.cern/download/pythia6.tar.gz
 	tar -xzvf pythia6.tar.gz
 	sed -i 's/^char /extern char /' ./pythia6/pythia6_common_address.c
@@ -71,7 +75,7 @@ lib/libPythia6.so:
 	cd pythia6 && ./makePythia6.linuxx8664
 	install -D pythia6/libPythia6.so lib/libPythia6.so
 
-lib/libpythia8.so:
+lib/libpythia8.so: dirs
 	cd pythia8 && ./configure \
 		--prefix=${TOP} \
 		--cxx=$(shell which g++) \
@@ -80,21 +84,21 @@ lib/libpythia8.so:
 	$(MAKE) -C pythia8
 	$(MAKE) -C pythia8 install
 
-lib/libgsl.so: 
+lib/libgsl.so: dirs
 	wget --no-check-certificate https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
 	tar -xzvf gsl-2.7.tar.gz
 	cd gsl-2.7 && ./configure --prefix=${TOP}
 	$(MAKE) -C gsl-2.7
 	$(MAKE) -C gsl-2.7 install
 
-lib/libxml2.so:
+lib/libxml2.so: dirs
 	wget --no-check-certificate http://mirror.umd.edu/gnome/sources/libxml2/2.11/libxml2-2.11.0.tar.xz
 	tar -xJvf libxml2-2.11.0.tar.xz
 	cd libxml2-2.11.0 && ./configure --prefix=${TOP} --without-python
 	$(MAKE) -C libxml2-2.11.0
 	$(MAKE) -C libxml2-2.11.0 install
 
-genie: pythia6 lhapdf log4cpp
+genie: pythia6 lhapdf log4cpp dirs
 	git clone -b R-3_04_00 --depth 1 https://github.com/GENIE-MC/Generator.git genie
 	cd genie && ./configure \
 	 --prefix=${TOP} --disable-profiler --disable-validation-tools \

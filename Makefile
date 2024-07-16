@@ -6,6 +6,7 @@ MAKEDIRS := $(filter-out gibuu,$(MAKEDIRS))
 MAKEDIRS := $(filter-out genie,$(MAKEDIRS))
 MAKEDIRS := $(filter-out twopeg,$(MAKEDIRS))
 MAKEDIRS := $(filter-out pythia8,$(MAKEDIRS))
+MAKEDIRS := $(filter-out root,$(MAKEDIRS))
 MAKEDIRS := $(filter-out test,$(MAKEDIRS))
 
 TOP := $(shell pwd)

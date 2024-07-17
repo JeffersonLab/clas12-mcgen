@@ -6,7 +6,6 @@ trig ?= 100
 # (use "make local=0" to test whatever's in your environment already)
 local ?= 1
 
-SHELL := /bin/bash
 ALL := $(shell awk '{print$$1}' ../versions.txt)
 ALL := $(filter-out gibuu,$(ALL))
 
@@ -35,11 +34,11 @@ all: $(ALL)
 
 $(ALL):
 	@$(call test_header,$@)
-	[ $(local) -eq 0 ] || source ../env.sh && $@ --trig $(trig) --docker
+	[ $(local) -eq 0 ] || . ../env.sh && $@ --trig $(trig) --docker
 
 gibuu:
 	@$(call test_header,$@)
-	[ $(local) -eq 0 ] || source ../env.sh && $@ --trig $(trig) --docker --targ D --ebeam 11.0 --kt 0.5
+	[ $(local) -eq 0 ] || . ../env.sh && $@ --trig $(trig) --docker --targ D --ebeam 11.0 --kt 0.5
 
 clean:
 	rm -rf $(addsuffix *,$(ALL))

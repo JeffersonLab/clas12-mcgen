@@ -30,7 +30,7 @@ jobs:
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
           run: |
             source .github/load-modules.csh
-            make
+            make -j4
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do

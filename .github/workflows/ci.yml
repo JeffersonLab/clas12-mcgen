@@ -31,7 +31,7 @@ jobs:
             source /etc/profile.d/modules.sh
             module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
             module avail --no-pager
-            module load clas12
+            module load root system
             module list --no-pager
             make
       - name: tree installation

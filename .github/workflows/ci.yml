@@ -45,6 +45,9 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: jeffersonlab/clas12software:production
-          shell: tcsh
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
-          run: make -C test all
+          run: |
+            source /etc/profile.d/modules.sh
+            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
+            module load root system
+            make -C test all

@@ -34,6 +34,7 @@ jobs:
             module load root system pymods
             module list --no-pager
             make -j4
+            make install
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do

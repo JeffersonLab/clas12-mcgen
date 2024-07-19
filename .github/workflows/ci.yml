@@ -52,3 +52,4 @@ jobs:
             module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
             module load root system
             make -C test all
+            ls -lhtr

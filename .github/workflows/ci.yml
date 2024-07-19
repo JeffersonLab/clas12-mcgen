@@ -26,11 +26,15 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: jeffersonlab/clas12software:production
-          shell: tcsh
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
           run: |
-            source .github/load-modules.csh
+            source /etc/profile.d/modules.sh
+            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
+            module avail --no-pager
+            module load root system pymods
+            module list --no-pager
             make -j4
+            make install
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do
@@ -42,8 +46,9 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: jeffersonlab/clas12software:production
-          shell: tcsh
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
           run: |
-            source .github/load-modules.csh
-            bash -c 'source ./env.sh && make -C test all'
+            source /etc/profile.d/modules.sh
+            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
+            module load root system
+            make -C test all

@@ -33,7 +33,7 @@ jobs:
             module avail --no-pager
             module load root system
             module list --no-pager
-            make
+            make -j4
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do

@@ -1,7 +1,6 @@
-
 VERSION := 6.32.02
-PREFIX ?= ${TOP}/${VERSION}
 TOP ?= $(shell pwd)
+PREFIX ?= ${TOP}/${VERSION}
 
 download:
 	wget -N --no-check-certificate https://root.cern/download/root_v${VERSION}.source.tar.gz

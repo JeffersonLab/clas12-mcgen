@@ -1,4 +1,4 @@
-This repository is the collection of generators available in the CLAS12 Docker/Singularity containers for offsite (e.g. OSG) simulation jobs.  These generators are also available for use on JLab machines via the [CLAS12 environment](https://clasweb.jlab.org/wiki/index.php/CLAS12_Software_Environment_@_JLab) module `mcgen`.
+This repository is a collection of CLAS12 collaboration event generators, plus a central build system.  Builds for these generators are supported on the CLAS12 Open Science Grid portal, locally at JLab, and via CVMFS.
 
 # Current Generators 
 

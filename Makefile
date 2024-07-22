@@ -1,6 +1,7 @@
 
 SUBMODULES := $(shell grep ^\\[submodule .gitmodules | awk -F\" '{print$$2}')
 MAKEDIRS := $(shell find . -maxdepth 2 -mindepth 2 -name Makefile | awk -F/ '{print$$2}')
+MAKEDIRS := $(filter-out build,$(MAKEDIRS))
 CLEANDIRS := $(MAKEDIRS)
 MAKEDIRS := $(filter-out gibuu,$(MAKEDIRS))
 MAKEDIRS := $(filter-out genie,$(MAKEDIRS))

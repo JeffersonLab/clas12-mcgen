@@ -19,7 +19,6 @@ name                 | description                                              
 [genepi]             | Photon and meson electroproduction                             | Noémie Pilleuxi
 [onepigen]           | Single charged pion production based on AO/Daresbury/MAID      | Nick Tyler
 [GiBUU]              | Quark and hadron propagation in nuclear media                  | Ahmed El Alaoui 
-[GENIE]              | Not ready for OSG |
 
 # Adding or Modifying a Generator
 

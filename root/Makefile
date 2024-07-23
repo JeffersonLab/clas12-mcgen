@@ -1,4 +1,4 @@
-VERSION := 6.32.02
+VERSION ?= 6.32.02
 TOP ?= $(shell pwd)
 PREFIX ?= ${TOP}/${VERSION}
 

@@ -61,7 +61,7 @@ lib/libLHAPDF.so: dirs
 	$(MAKE) -C LHAPDF-${V} install
 
 linkcvmfs:
-	mkdir -p share && rm -f share/LHAPDF
+	mkdir -p share && rm -rf share/LHAPDF
 	cd share && ln -s /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/noarch/data/LHAPDF
 
 lib/liblog4cpp.so: dirs

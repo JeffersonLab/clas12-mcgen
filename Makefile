@@ -40,10 +40,14 @@ clas-stringspinner: pythia8
 .PHONY: clas-stringspinner
 
 gibuu: bin/GiBUU.x
-lhapdf: lib/libLHAPDF.so
+lhapdf: lib/libLHAPDF.so linkcvmfs
 log4cpp: lib/liblog4cpp.so
 pythia6: lib/libPythia6.so
 pythia8: lib/libpythia8.so
+
+linkcvmfs:
+	mkdir -p share && rm -f share/LHAPDF
+	cd share && ln -s /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/noarch/data/LHAPDF
 
 bin/GiBUU.x: lhapdf
 	$(MAKE) -C gibuu install 

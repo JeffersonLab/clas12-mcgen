@@ -1,4 +1,4 @@
-This repository is a collection of CLAS12 collaboration event generators, plus a central build system.  Builds for these generators are supported on the CLAS12 Open Science Grid portal, locally at JLab, and via CVMFS.
+This repository is a collection of CLAS12 collaboration event generators, mostly in the form of git submodules, plus a central build "system".  Builds for these generators are supported on the CLAS12 Open Science Grid portal, locally at JLab, and via CVMFS.
 
 # Current Generators 
 

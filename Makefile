@@ -40,14 +40,10 @@ clas-stringspinner: pythia8
 .PHONY: clas-stringspinner
 
 gibuu: bin/GiBUU.x
-lhapdf: lib/libLHAPDF.so linkcvmfs
+lhapdf: lib/libLHAPDF.so
 log4cpp: lib/liblog4cpp.so
 pythia6: lib/libPythia6.so
 pythia8: lib/libpythia8.so
-
-linkcvmfs:
-	mkdir -p share && rm -f share/LHAPDF
-	cd share && ln -s /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/noarch/data/LHAPDF
 
 bin/GiBUU.x: lhapdf
 	$(MAKE) -C gibuu install 
@@ -63,6 +59,10 @@ lib/libLHAPDF.so: dirs
 	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
 	$(MAKE) -C LHAPDF-${V}
 	$(MAKE) -C LHAPDF-${V} install
+
+linkcvmfs:
+	mkdir -p share && rm -f share/LHAPDF
+	cd share && ln -s /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/noarch/data/LHAPDF
 
 lib/liblog4cpp.so: dirs
 	wget --no-check-certificate https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.4.tar.gz
@@ -118,7 +118,7 @@ genie: pythia6 lhapdf log4cpp dirs
 	mv -f bin/genie bin/genie.exe
 	$(MAKE) -C genie-util install
 
-install: fixperms
+install: fixperms linkcvmfs
 	install -D clasdis/clasdis bin/clasdis
 	install -D claspyth/claspyth bin/claspyth
 	install -D dvcsgen/dvcsgen bin/dvcsgen

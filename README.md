@@ -1,6 +1,6 @@
 This repository is a collection of CLAS12 collaboration event generators, mostly in the form of git submodules, plus a central build "system".  Builds for these generators are supported on the CLAS12 Open Science Grid portal, locally at JLab, and via CVMFS.
 
-# Current Generators 
+# List of Generators 
 
 name                 | description                                                    | maintainer
 -------------------- | -------------------------------------------------------------- | ------------------
@@ -57,26 +57,6 @@ GENERATOR_NAME --trig 10 --docker --seed 1448577483
 That should produce a file `GENERATOR_NAME.dat` in the current working directory.
 
 The script `requirements.zsh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
-
-### Requirements Summary
-
-name | compilation and executable name | CLI options | runs in container w/ output
----- | ------------------------------- | --------------------- | -----------------
-clasdis | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-claspyth | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-clas-stringspinner | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-dvcsgen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-genKYandOnePion | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-inclusive-dis-rad | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-JPsiGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-TCSGen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-twopeg | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-clas12-elSpectro | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-MCEGENpiN_radcorr | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-deep-pipi-gen | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-genepi | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-gibuu | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-genie | :white_check_mark: | :white_check_mark: | :red_circle: |
 
 ### [Maintenance](./doc/maintenance.md)
 

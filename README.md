@@ -46,18 +46,6 @@ name                 | description                                              
   -  Some generators do that via a wrapper script that generates a configuration file on-the-fly.
   -  If there's popular demand for it, support for user-defined configuration files could be added.
 
-### Test of Requirements
-
-We use this command line to check if the runtime requirements are met:
-
-```
-GENERATOR_NAME --trig 10 --docker --seed 1448577483
-```
-
-That should produce a file `GENERATOR_NAME.dat` in the current working directory.
-
-The script `requirements.zsh` will compile all the generators, check for their executable names, run them with their environment and the above options, and check for the output file, and then output the table in the next section.
-
 ### [Maintenance](./doc/maintenance.md)
 
 [clasdis]: https://github.com/jeffersonlab/clasdis 

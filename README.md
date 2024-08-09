@@ -36,12 +36,12 @@ name                 | description                                              
   - Required environment variables
   - Documentation on all command-line options
 - The executable to be used on OSG should have the same name as the github repository name and be runnable from any current working directory
-- The default output LUND filename should be the same as the exectuable + `.dat`. For example, the output of clasdis must be clasdis.dat
+- The default output LUND filename should be the same as the executable + `.dat`. For example, the output of clasdis must be clasdis.dat
 - The follow command-line arguments are always passed to all generators on OSG:
   - `--trig #` must be honored and used to specify the number of events to generate.
   - `--docker` must be accepted as a valid argument and can be ignored or used for setting conditions for OSG.
   - `--seed #` must be accepted as a valid argument and can be ignored or used to initialize the event generator's RNG.  Its value is a 32-bit RNG seed based on system clock with microsecond precision.  If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
-- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.json](versions.json) stores the current verisions for insertion into the data stream.
+- A git tag to reference for including the generator as a submodule into this repository.  Note [versions.txt](versions.txt) stores the current versions for insertion into the data stream.
 - Note, currently CLAS12's OSG web submission portal does not support configuration files for event generators, so users' runtime options must be supported via command-line options.
   -  Some generators do that via a wrapper script that generates a configuration file on-the-fly.
   -  If there's popular demand for it, support for user-defined configuration files could be added.

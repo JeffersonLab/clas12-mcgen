@@ -12,4 +12,4 @@ deep-pipi-gen 1.2
 genepi v1.2
 onepigen v1.2
 gibuu 2023
-clas-stringspinner v0.1.3
+clas-stringspinner v0.1.4

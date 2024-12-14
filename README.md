@@ -22,7 +22,7 @@ name                 | description                                              
 
 # Adding or Modifying a Generator
 
-1. Create a github repository for your source code, ideally at https://github.com/JeffersonLab or https://code.jlab.org
+1. A git repository for your source code is required, ideally at https://github.com/JeffersonLab or https://code.jlab.org
 2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
 4. Satisfy the additional requirements described below

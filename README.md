@@ -26,7 +26,6 @@ name                 | description                                              
 2. Make sure to include the README.md describing the generator, its options, and requirements
 3. Have a working build system (for example a Makefile)
 4. Satisfy the additional requirements described below
-5. Send email to Mauri (`ungaro at jlab.org`) or Nathan (`baltzell at jlab.org`) with the repository address and the git tag to use
 
 # Requirements
 

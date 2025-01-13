@@ -2,16 +2,7 @@
 
 To clone this repo:
 ```
-git clone  --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git
-git checkout <tagversion>
-```
-To compile on JLab machines:
-```
-source /group/clas12/packages/setup.sh
-module load gcc
-module load cmake
-module load root
-make -j8
+git clone --branch tag --recurse-submodules https://github.com/JeffersonLab/clas12-mcgen.git
 ```
 To compile in the singularity container on JLab machines:
 ```

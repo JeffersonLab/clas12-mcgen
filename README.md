@@ -25,13 +25,13 @@ name                 | description                                              
 1. A git repository for your source code is required, ideally at https://github.com/JeffersonLab or https://code.jlab.org
 1. Make sure to include the README.md describing the generator, its options, and requirements
 1. Have a working build system (for example a Makefile)
-1. Satisfy the additional requirements described below
+1. Satisfy the more detailed requirements described below
 
-#  New, Upcoming Requirements in 2025 
-1. - `--ebeam #[.#]` must be accepted as a valid argument, and, if beam energy is a user configuration parameter for the generator, honored and used
-2. - `--docker` should set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
-
-# Requirements
+## Requirements
+> [!WARNING]
+> ***New, Upcoming Requirements in 2025***
+> 1. - `--ebeam #[.#]` must be accepted as a valid argument, and, if beam energy is a user configuration parameter for the generator, honored and used
+> 1. - `--docker` should set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
 1. C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 9.0
 1. The top level README file should contain:
    - The location of the executable(s) and any shared libraries produced and required at runtime
@@ -48,7 +48,8 @@ name                 | description                                              
    -  Some generators do that via a wrapper script that generates a configuration file on-the-fly.
    -  If there's popular demand for it, support for user-defined configuration files could be added.
 
-### [Maintenance](./doc/maintenance.md)
+
+# [Maintenance](./doc/maintenance.md)
 
 [clasdis]: https://github.com/jeffersonlab/clasdis 
 [claspyth]: https://github.com/jeffersonlab/claspyth

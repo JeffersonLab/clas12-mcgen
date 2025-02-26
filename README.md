@@ -27,15 +27,18 @@ name                 | description                                              
 1. Have a working build system (for example a Makefile)
 1. Satisfy the additional requirements described below
 
-# Requirements
+#  New, Upcoming Requirements in 2025 
+1. - `--ebeam #[.#]` must be accepted as a valid argument, and, if beam energy is a user configuration parameter for the generator, honored and used
+2. - `--docker` should set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
 
+# Requirements
 1. C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 9.0
 1. The top level README file should contain:
    - The location of the executable(s) and any shared libraries produced and required at runtime
    - Required environment variables
    - Documentation on all command-line options
 1. The executable to be used on OSG should have the same name as the github repository name and be runnable from any current working directory
-1. The default output LUND filename should be the same as the executable + `.dat`. For example, the output of clasdis must be clasdis.dat
+1. The default output LUND filename should be the same as the executable + `.dat`. For example, the output of clasdis must be `clasdis.dat`
 1. The follow command-line arguments are always passed to all generators on OSG:
    - `--trig #` must be honored and used to specify the number of events to generate.
    - `--docker` must be accepted as a valid argument and can be ignored or used for setting conditions for OSG.

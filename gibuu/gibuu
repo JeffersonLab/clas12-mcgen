@@ -2,8 +2,6 @@
 
 import os
 config_template = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu_template.opt')
-gibuu_executable = os.path.abspath(os.getenv('GIBUU','.')+'/release/objects/GiBUU.x')
-gibuu_converter = os.path.abspath(os.getenv('GIBUU','.')+'/gibuu2lund')
 buu_directory = os.path.abspath(os.getenv('GIBUU','.')+'/buuinput')
 
 from argparse import Namespace
@@ -39,12 +37,15 @@ cli.add_argument('--dryrun', default=False, action='store_true')
 
 args = cli.parse_args(sys.argv[1:])
 
+import shutil
+gibuu_executable = shutil.which('GiBUU.x')
+gibuu_converter = shutil.which('gibuu2lund')
+if not gibuu_executable:
+    cli.error('Could not find GiBUU.x in $PATH.')
+if not gibuu_converter:
+    cli.error('Could not find gibuu2lund in $PATH.')
 if not os.path.isfile(config_template):
     cli.error('Could not find gibuu_template.opt at $GIBUU or .')
-if not os.path.isfile(gibuu_executable):
-    cli.error('Could not find GiBUU.x executable at $GIBUU or .')
-if not os.path.isfile(gibuu_converter):
-    cli.error('Could not find gibuu2lund executable at $GIBUU or .')
 if not os.path.isdir(buu_directory):
     cli.error('Could not find buuinput directory at $GIBUU or .')
 

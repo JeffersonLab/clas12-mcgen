@@ -37,6 +37,8 @@ cli.add_argument('--seed', default=0, help='random number generator seed', type=
 cli.add_argument('--docker', default=False, action='store_true', help='delete all intermediate output files')
 cli.add_argument('--dryrun', default=False, action='store_true')
 
+args = cli.parse_args(sys.argv[1:])
+
 if not os.path.isfile(config_template):
     cli.error('Could not find gibuu_template.opt at $GIBUU or .')
 if not os.path.isfile(gibuu_executable):
@@ -45,8 +47,6 @@ if not os.path.isfile(gibuu_converter):
     cli.error('Could not find gibuu2lund executable at $GIBUU or .')
 if not os.path.isdir(buu_directory):
     cli.error('Could not find buuinput directory at $GIBUU or .')
-
-args = cli.parse_args(sys.argv[1:])
 
 if args.seed==0:
     import time

@@ -109,9 +109,9 @@ with open('./gibuu.opt','w') as config_file:
 	config_file.write(('\n'.join(config)))
 
 with open('./gibuu.opt','r') as config_file:
-	if not run([gibuu_executable], args.dryrun, config_file):
+	if 0 != run([gibuu_executable], args.dryrun, config_file):
 		sys.exit(23)
 	cmd = [gibuu_converter, str(args.trig), str(args.ebeam), str(target.A), str(target.Z)]
-	if not run(cmd, args.dryrun):
+	if 0 != run(cmd, args.dryrun):
 		sys.exit(24)
 

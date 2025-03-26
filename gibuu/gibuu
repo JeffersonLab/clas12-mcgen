@@ -94,7 +94,7 @@ def run(cmd, dryrun, stdin=None):
             if len(line.strip())>0:
                 print((line.rstrip()))
         p.wait()
-        return p.returncode == 0
+        return p.returncode
 
 if args.docker:
     import atexit,glob,os

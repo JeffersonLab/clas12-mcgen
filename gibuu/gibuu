@@ -105,13 +105,13 @@ if args.docker:
                 os.remove(y)
 
 with open('./gibuu.opt','w') as config_file:
-	config = list(generate_config(config_template, substitutions))
-	config_file.write(('\n'.join(config)))
+    config = list(generate_config(config_template, substitutions))
+    config_file.write(('\n'.join(config)))
 
 with open('./gibuu.opt','r') as config_file:
-	if 0 != run([gibuu_executable], args.dryrun, config_file):
-		sys.exit(23)
-	cmd = [gibuu_converter, str(args.trig), str(args.ebeam), str(target.A), str(target.Z)]
-	if 0 != run(cmd, args.dryrun):
-		sys.exit(24)
+    if 0 != run([gibuu_executable], args.dryrun, config_file):
+        sys.exit(23)
+    cmd = [gibuu_converter, str(args.trig), str(args.ebeam), str(target.A), str(target.Z)]
+    if 0 != run(cmd, args.dryrun):
+        sys.exit(24)
 

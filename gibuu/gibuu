@@ -86,7 +86,7 @@ def run(cmd, dryrun, stdin=None):
     else:
         print(' '.join(cmd))
     if dryrun:
-        return True
+        return 0
     else:
         import subprocess
         p = subprocess.Popen(cmd,stdin=stdin,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
@@ -109,9 +109,9 @@ with open('./gibuu.opt','w') as config_file:
     config_file.write(('\n'.join(config)))
 
 with open('./gibuu.opt','r') as config_file:
-    if 0 != run([gibuu_executable], args.dryrun, config_file):
-        sys.exit(23)
+    ret = run([gibuu_executable], args.dryrun, config_file)
+    if 0 != ret:
+        sys.exit(ret)
     cmd = [gibuu_converter, str(args.trig), str(args.ebeam), str(target.A), str(target.Z)]
-    if 0 != run(cmd, args.dryrun):
-        sys.exit(24)
+    run(cmd, args.dryrun)
 

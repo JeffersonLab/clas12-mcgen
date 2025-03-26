@@ -81,11 +81,11 @@ def generate_config(template, substitutions):
             yield line
 
 def run(cmd, dryrun, stdin=None):
+    if stdin is not None:
+        print(' '.join(cmd)+' < '+str(stdin.name))
+    else:
+        print(' '.join(cmd))
     if dryrun:
-        if stdin is not None:
-            print(' '.join(cmd)+' < '+str(stdin.name))
-        else:
-            print(' '.join(cmd))
         return True
     else:
         import subprocess

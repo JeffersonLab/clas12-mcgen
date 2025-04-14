@@ -42,6 +42,7 @@ patch: prep
 	patch -p 0 --forward --reject-file=- < patches/eks98.patch
 	patch -p 0 --forward --reject-file=- < patches/nuclear.patch
 	patch -p 0 --forward --reject-file=- < patches/root.patch
+	patch -p 0 --forward --reject-file=- < patches/cmake_v4.patch
 	find ./release/code -name '*.f90' -exec sed -i 's/character(100)/character(1000)/' {} \;
 	find ./release/code -name '*.f90' -exec sed -i 's/character(len=100)/character(1000)/' {} \;
 	find ./release/code -name '*.f90' -exec sed -i 's/character(len=40)/character(1000)/' {} \;

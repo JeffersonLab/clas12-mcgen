@@ -1,0 +1,10 @@
+--- ./libraries/RootTuple/RootTuple-master/CMakeLists.txt
++++ ./libraries/RootTuple/RootTuple-master/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Require CMake-2.8.6 for FortranCInterface module
+-set (CMAKE_MINIMUM_VERSION_REQUIRED 2.8.6)
++# Require CMake-3.5 for compatibility with CMake-4.0.0
++set (CMAKE_MINIMUM_VERSION_REQUIRED 3.5)
+ cmake_minimum_required (VERSION ${CMAKE_MINIMUM_VERSION_REQUIRED})
+ 
+ # Set project name and language dependencies

@@ -5,7 +5,7 @@ genKYandOnePion v1.2
 inclusive-dis-rad v1.2
 TCSGen v.00.07
 JPsiGen v.00.07
-twopeg v1.1
+twopeg v1.2
 clas12-elSpectro 0.12
 MCEGENpiN_radcorr 3.2
 deep-pipi-gen 1.2

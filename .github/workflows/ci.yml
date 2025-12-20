@@ -25,7 +25,7 @@ jobs:
       - name: build
         uses: addnab/docker-run-action@v3
         with:
-          image: jeffersonlab/clas12software:production
+          image: codecr.jlab.org/hallb/clas12/container-forge/analysis:latest
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
           run: |
             source /etc/profile.d/modules.sh

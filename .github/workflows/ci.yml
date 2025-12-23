@@ -28,7 +28,7 @@ jobs:
           image: codecr.jlab.org/hallb/clas12/container-forge/analysis:latest
           options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
           run: |
-            source /etc/profile.d/modules.sh
+            #source /etc/profile.d/modules.sh
             module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
             module avail --no-pager
             module load root system pymods

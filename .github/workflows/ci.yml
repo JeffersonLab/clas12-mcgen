@@ -23,10 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: codecr.jlab.org/hallb/clas12/container-forge/base_root:latest
+      options: --user root
     steps:
       - uses: actions/checkout@v6
         with:
           submodules: recursive
+      - name: install dependencies
+        run: |
+          pacman -Sy --noconfirm
+          pacman -S --noconfirm fmt
       - run: make
       - run: make install
       - name: tree installation

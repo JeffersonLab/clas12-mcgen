@@ -14,6 +14,9 @@ defaults:
   run:
     shell: bash
 
+env:
+  CMAKE_POLICY_VERSION_MINIMUM: 3.5 # kluge for cmake v4 support
+
 jobs:
   build:
     name: build and test
@@ -29,9 +32,9 @@ jobs:
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do
-          echo ""
-          echo "[+++++] tree $d"
-          tree --noreport $d || true
+            echo ""
+            echo "[+++++] tree $d"
+            tree --noreport $d || true
           done
       - name: test
         run: |

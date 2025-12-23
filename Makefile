@@ -54,17 +54,17 @@ dirs:
 
 lib/libLHAPDF.so: dirs
 	$(eval pkg := LHAPDF-6.5.5)
-	@if [ ! -f ${pkg}.tar.gz ]; then                                    \
-		wget https://lhapdf.hepforge.org/downloader?f=${pkg}.tar.gz \
-			--no-check-certificate                              \
-			-O ${pkg}.tar.gz;                                   \
-	else                                                                \
-		echo "${pkg}.tar.gz already exists, not re-downloading";    \
+	@if [ ! -f ${pkg}.tar.gz ]; then                              \
+	  wget https://lhapdf.hepforge.org/downloader?f=${pkg}.tar.gz \
+	    --no-check-certificate                                    \
+	    -O ${pkg}.tar.gz;                                         \
+	else                                                          \
+	  echo "${pkg}.tar.gz already exists, not re-downloading";    \
 	fi
 	tar xf ${pkg}.tar.gz
 	cd ${pkg} && ./configure \
-		--prefix=${TOP}  \
-		--disable-python
+	  --prefix=${TOP}        \
+	  --disable-python
 	$(MAKE) -C ${pkg}
 	$(MAKE) -C ${pkg} install
 

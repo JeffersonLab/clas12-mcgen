@@ -53,12 +53,20 @@ dirs:
 .PHONY: dirs
 
 lib/libLHAPDF.so: dirs
-	$(eval V := 6.5.4)
-	wget --no-check-certificate https://lhapdf.hepforge.org/downloads/?f=LHAPDF-${V}.tar.gz -O LHAPDF-${V}.tar.gz
-	tar -xzvf LHAPDF-${V}.tar.gz
-	cd LHAPDF-${V} && ./configure --prefix=${TOP} --disable-python
-	$(MAKE) -C LHAPDF-${V}
-	$(MAKE) -C LHAPDF-${V} install
+	$(eval pkg := LHAPDF-6.5.5)
+	@if [ ! -f ${pkg}.tar.gz ]; then                                    \
+		wget https://lhapdf.hepforge.org/downloader?f=${pkg}.tar.gz \
+			--no-check-certificate                              \
+			-O ${pkg}.tar.gz;                                   \
+	else                                                                \
+		echo "${pkg}.tar.gz already exists, not re-downloading";    \
+	fi
+	tar xf ${pkg}.tar.gz
+	cd ${pkg} && ./configure \
+		--prefix=${TOP}  \
+		--disable-python
+	$(MAKE) -C ${pkg}
+	$(MAKE) -C ${pkg} install
 
 linkcvmfs:
 	mkdir -p share && rm -rf share/LHAPDF

@@ -2,8 +2,8 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [ main ]
+    push:
+      branches: [ main ]
     tags: [ '*' ]
 
 concurrency:
@@ -17,39 +17,22 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: codecr.jlab.org/hallb/clas12/container-forge/base_root:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
-      - uses: cvmfs-contrib/github-action-cvmfs@v4
-      - name: build
-        uses: addnab/docker-run-action@v3
-        with:
-          image: jeffersonlab/clas12software:production
-          options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
-          run: |
-            source /etc/profile.d/modules.sh
-            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
-            module avail --no-pager
-            module load root system pymods
-            module list --no-pager
-            make -j4
-            make install
+      - run: make
+      - run: make install
       - name: tree installation
         run: |
           for d in bin include lib lib64 share; do
-            echo ""
-            echo "[+++++] tree $d"
-            tree --noreport $d || true
+          echo ""
+          echo "[+++++] tree $d"
+          tree --noreport $d || true
           done
       - name: test
-        uses: addnab/docker-run-action@v3
-        with:
-          image: jeffersonlab/clas12software:production
-          options: '-v /cvmfs:/cvmfs:shared -v ${{ github.workspace }}:/work -w /work'
-          run: |
-            source /etc/profile.d/modules.sh
-            module use /cvmfs/oasis.opensciencegrid.org/jlab/hallb/clas12/sw/modulefiles
-            module load root system
-            make -C test all
-            ls -lhtr
+        run: |
+          make -C test all
+          ls -lhtr

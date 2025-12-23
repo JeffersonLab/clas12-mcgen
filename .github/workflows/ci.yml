@@ -2,8 +2,8 @@ name: CI
 
 on:
   pull_request:
-    push:
-      branches: [ main ]
+  push:
+    branches: [ main ]
     tags: [ '*' ]
 
 concurrency:
@@ -16,6 +16,7 @@ defaults:
 
 jobs:
   build:
+    name: build and test
     runs-on: ubuntu-latest
     container:
       image: codecr.jlab.org/hallb/clas12/container-forge/base_root:latest

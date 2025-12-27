@@ -25,7 +25,7 @@ if args.command == 'generate':
   with os.fdopen(fd,'w') as f:
     for i in range(MAXSEEDS):
       # maximum signed 32-bit int
-      f.write('%d\n'%random.randint(1e9,0x7FFFFFFF))
+      f.write('%d\n'%random.randint(int(1e9),0x7FFFFFFF))
 
 else:
   if args.row<0 or args.row>=MAXSEEDS:

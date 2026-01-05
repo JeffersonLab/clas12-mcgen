@@ -25,7 +25,7 @@ $(MAKEDIRS):
 
 elspectro:
 	rm -rf build && mkdir build
-	+ cd build && cmake -DCMAKE_CXX_COMPILER=`which g++` -DCMAKE_C_COMPILER=`which gcc` ../
+	+ cd build && cmake -DCMAKE_CXX_COMPILER=`which g++` -DCMAKE_C_COMPILER=`which gcc` -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ../
 	+ cd build && cmake --build . --target install
 .PHONY: elspectro
 

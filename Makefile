@@ -162,6 +162,33 @@ prune:
 	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build onepigen/spp_tbl.tar.gz clas-stringspinner/build
 	make -C gibuu prune
 
+slim: prune
+	rm -rf .git
+	for dir in $(SUBMODULES); do\
+		rm -rf $$dir/.git; \
+	done
+	rm -rf pythia8
+	rm -rf clas-stringspinner
+	rm -rf clas12-elSpectro/elSpectro/jpacPhoto/lib
+	rm -f clasdis/clasdis
+	rm -f claspyth/claspyth
+	rm -f dvcsgen/dvcsgen
+	rm -f genKYandOnePion/genKYandOnePion
+	rm -f inclusive-dis-rad/inclusive-dis-rad
+	rm -f JPsiGen/JPsiGen.exe
+	rm -f JPsiGen/JPsiGen
+	rm -f twopeg/twopeg
+	rm -f JPsiGen/lib/libJPsiGen.so
+	rm -f TCSGen/TCSGen.exe
+	rm -f TCSGen/TCSGen
+	rm -f TCSGen/lib/libTCSGen.so
+	rm -f MCEGENpiN_radcorr/MCEGENpiN_radcorr
+	rm -f deep-pipi-gen/deep-pipi-gen
+	rm -f genepi/genepi
+	rm -f generate-seeds.py
+	rm -f onepigen/onepigen
+	rm -f onepigen/onepigen_lund
+
 debug:
 	@ echo SUBMODULES: $(SUBMODULES)
 	@ echo CLEANDIRS:  $(CLEANDIRS)

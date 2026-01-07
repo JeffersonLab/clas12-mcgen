@@ -160,6 +160,7 @@ clean:
 
 prune:
 	rm -rf LHAPDF* log4cpp* pythia6* libxml* root-* build onepigen/spp_tbl.tar.gz clas-stringspinner/build
+	make -C gibuu prune
 
 debug:
 	@ echo SUBMODULES: $(SUBMODULES)

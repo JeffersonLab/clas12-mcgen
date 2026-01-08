@@ -13,6 +13,7 @@ MAKEDIRS := $(filter-out test,$(MAKEDIRS))
 TOP := $(shell pwd)
 PATH := $(TOP)/bin:$(PATH)
 
+unexport CMAKE_GENERATOR
 export GENIE := $(TOP)/genie
 
 all: gibuu twopeg elspectro clas-stringspinner simple

@@ -14,9 +14,6 @@ defaults:
   run:
     shell: bash
 
-env:
-  CMAKE_POLICY_VERSION_MINIMUM: 3.5 # kluge for cmake v4 support
-
 jobs:
   build:
     name: build and test

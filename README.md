@@ -29,7 +29,7 @@ name                 | description                                              
 
 ## Requirements
 > [!WARNING]
-> ***New, Upcoming Requirements in 2025***
+> ***New, Upcoming Requirements in 2026***
 > 1. - `--ebeam #[.#]` must be accepted as a valid argument, and, if beam energy is a user configuration parameter for the generator, honored and used
 > 1. - `--docker` should set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
 1. C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 11

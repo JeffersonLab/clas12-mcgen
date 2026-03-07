@@ -128,6 +128,7 @@ genie: pythia6 lhapdf log4cpp dirs
 	$(MAKE) -C genie-util install
 
 install: fixperms linkcvmfs
+	install -D mcdj bin/mcdj
 	install -D clasdis/clasdis bin/clasdis
 	install -D claspyth/claspyth bin/claspyth
 	install -D dvcsgen/dvcsgen bin/dvcsgen

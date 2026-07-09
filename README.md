@@ -28,10 +28,6 @@ name                 | description                                              
 1. Satisfy the more detailed requirements described below
 
 ## Requirements
-> [!WARNING]
-> ***New, Upcoming Requirements in 2026***
-> 1. - `--ebeam #[.#]` must be accepted as a valid argument, and, if beam energy is a user configuration parameter for the generator, honored and used
-> 1. - `--docker` should set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
 1. C/C++/Fortran/python3, with a working GNU make or cmake build system compliant with GCC no less than 11
 1. The top level README file should contain:
    - The location of the executable(s) and any shared libraries produced and required at runtime
@@ -41,8 +37,9 @@ name                 | description                                              
 1. The default output LUND filename should be the same as the executable + `.dat`. For example, the output of clasdis must be `clasdis.dat`
 1. The follow command-line arguments are always passed to all generators on OSG:
    - `--trig #` must be honored and used to specify the number of events to generate.
-   - `--docker` must be accepted as a valid argument and can be ignored or used for setting conditions for OSG.
+   - `--docker` must set default kinematic parameters reasonably appropriate for standard CLAS12 acceptance, i.e., not send a bunch of electron down the beampipe
    - `--seed #` must be accepted as a valid argument and can be ignored or used to initialize the event generator's RNG.  Its value is a 32-bit RNG seed based on system clock with microsecond precision.  If `--seed` is ignored, the generator is responsible for choosing unique random seeds, without preserving state between jobs, which can be done from a millisecond or better precision system clock.
+   - `--ebeam #[.#]` must be accepted as a valid argument, and, if applicable, honored and used to set the beam energy
 1. A git tag to reference for including the generator as a submodule into this repository.  Note [versions.txt](versions.txt) stores the current versions for insertion into the data stream.
 1. Note, currently CLAS12's OSG web submission portal does not support configuration files for event generators, so users' runtime options must be supported via command-line options.
    -  Some generators do that via a wrapper script that generates a configuration file on-the-fly.

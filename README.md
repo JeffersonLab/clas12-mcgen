@@ -1,3 +1,7 @@
+***This reopisotry is archival, read-only, moved to https://code.jlab.org/hallb/clas12/mcgen***
+
+# clas12-mcgen
+
 This repository is a collection of CLAS12 collaboration event generators, mostly in the form of git submodules, plus a central build "system".  Builds for these generators are supported on the CLAS12 Open Science Grid portal, locally at JLab, and via CVMFS.
 
 # List of Generators 
